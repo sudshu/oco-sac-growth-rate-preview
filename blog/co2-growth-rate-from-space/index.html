@@ -217,6 +217,11 @@ figcaption .fig-no{color:var(--ink);font-weight:650}
 .get-data:hover{background:color-mix(in srgb,var(--accent) 6%,transparent)}
 .get-data .gd-title{display:block;font-family:"Newsreader",Georgia,serif;font-size:1.45rem;color:var(--accent);line-height:1.2}
 .get-data .gd-sub{display:block;font-size:.9375rem;color:var(--muted);margin-top:.25rem}
+/* How to cite, under "Get the data" (user, 2026-11-04); the text is the files' citation, filled in by the build */
+.cite{font-size:.9375rem;background:var(--panel);border-radius:6px;padding:.75rem .95rem;margin:0 0 1rem}
+.cite h3{font-family:"Public Sans",system-ui,sans-serif;font-size:1rem;font-weight:650;margin:0 0 .4rem}
+.cite p{margin:0 0 .4rem}
+.cite p:last-child{margin:0}
 
 /* Further reading: one closed box (user decision 15), styled like the deep dives; opens for printing and for links into it */
 details.further-reading{margin:2.4rem 0 1rem}
@@ -428,7 +433,7 @@ details.further-reading .dd-body>h3:first-child{margin-top:.6rem}
  <!-- ===================== 7 ===================== -->
  <section id="takeaway" aria-labelledby="h-takeaway">
   <h2 id="h-takeaway">Takeaway</h2>
-  <p>It isn't satellite versus ground; it's both. The surface network anchors the long-term trend and the calibration scale that every CO₂ measurement relies on. The satellite sees the whole column, fills the gaps between stations, and adds a monthly, latitude-resolved view, with a first estimate about two months after each month ends. GRESO already appears as a column in the Global Carbon Budget 2025, next to NOAA (<a href="https://doi.org/10.5194/essd-18-3211-2026">Friedlingstein et al., 2026</a>). Together they show the carbon cycle's pulse: a steady push from our emissions, and a large, fast, climate-driven response from land and ocean. With a strong El Niño building, the next few months are a real-time test, and we will be watching.</p>
+  <p>It isn't satellite versus ground; it's both. The surface network anchors the long-term trend and the calibration scale that every CO₂ measurement relies on. The satellite sees the whole column, fills the gaps between stations, and adds a monthly, latitude-resolved view, with a first estimate about two months after each month ends. GRESO already appears as a column in the Global Carbon Budget 2025, next to NOAA (<a href="https://doi.org/10.5194/essd-18-3211-2026">Friedlingstein et al., 2026</a>). Together they show the carbon cycle's pulse: a steady push from our emissions, and a large, fast, climate-driven response from land and ocean.</p>
  </section>
 
  <!-- ===================== 8 ===================== -->
@@ -439,6 +444,11 @@ details.further-reading .dd-body>h3:first-child{margin-top:.6rem}
    <span class="gd-title">Get the data →</span>
    <span class="gd-sub">Monthly and annual growth rates with uncertainty and status flags, latitude bands and the 16-day series. Release v2026.10.</span>
   </a>
+  <div class="cite" id="cite">
+   <h3>How to cite</h3>
+   <p>Pandey, S., &amp; O&#x27;Dell, C. W. (2026). GRESO OCO-2 whole-atmosphere CO₂ growth rates, release v2026.10. OCO Science Application Center, Caltech. <span class="todo">[dashboard base URL]</span>. <span class="todo">[data DOI]</span>.</p>
+   <p>Method: Pandey, S., et al. (2024). Toward low-latency estimation of atmospheric CO2 growth rates using satellite observations: Evaluating sampling errors of satellite and in situ observing approaches. AGU Advances, 5, e2023AV001145. <a href="https://doi.org/10.1029/2023AV001145">doi.org/10.1029/2023AV001145</a></p>
+  </div>
  </section>
 
  <!-- ===================== 9 ===================== -->
