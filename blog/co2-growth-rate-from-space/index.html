@@ -316,7 +316,7 @@ details.further-reading .dd-body>h3:first-child{margin-top:.6rem}
     <p class="chart-hint needs-js">Hover or tap the chart, or focus it and use the arrow keys, to read monthly values.</p>
     <div class="visually-hidden" aria-live="polite" id="hero-live"></div>
     <div class="fallback-static fig-card">
-     <img src="figures/B1_hero_static.png" width="1440" height="1110" loading="lazy"
+     <img src="figures/B1_hero_static.png" width="1440" height="1154" loading="lazy"
           alt="Line chart of the monthly CO₂ growth rate measured by OCO-2 from 2015 to mid-2026, swinging between about 1.3 and 3.9 ppm per year with peaks in January 2016 and October 2023 after El Niño events, while fossil and land-use emissions stay nearly flat at about 11.5 PgC per year above it. The gap between the two lines is the carbon taken up by land and ocean, and an ENSO index strip below shows El Niño and La Niña periods.">
     </div>
     <noscript><p class="chart-sub">Interactive version needs JavaScript; the static figure is shown.</p></noscript>
@@ -485,7 +485,7 @@ details.further-reading .dd-body>h3:first-child{margin-top:.6rem}
     <h3>Satellite data</h3>
     <ul>
      <li id="ref-oco2-v11-2r">OCO-2 Lite XCO₂ v11.2r, NASA GES DISC. <a href="https://doi.org/10.5067/70K2B2W8MNGY">doi:10.5067/70K2B2W8MNGY</a></li>
-     <li id="ref-oco2-v11-3r">OCO-2 Lite XCO₂ v11.3r, NASA GES DISC. <span class="todo">[OCO-2 v11.3r DOI: candidate 10.5067/C4OENLFCYVSA, verify]</span></li>
+     <li id="ref-oco2-v11-3r">OCO-2 Lite XCO₂ v11.3r, NASA GES DISC. <a href="https://doi.org/10.5067/C4OENLFCYVSA">doi:10.5067/C4OENLFCYVSA</a></li>
      <li id="ref-acos-gosat-v11">ACOS GOSAT Lite XCO₂ v11, NASA GES DISC. <a href="https://doi.org/10.5067/UAY6VJYTS8OD">doi:10.5067/UAY6VJYTS8OD</a></li>
     </ul>
     <h3>El Niño and the carbon cycle</h3>
@@ -615,7 +615,8 @@ function renderHero(){
  if(!heroBox)return;heroBox.textContent='';
  var W=Math.round(heroBox.getBoundingClientRect().width)||700;var narrow=W<560;
  var mL=narrow?30:40,mR=narrow?6:12,mT=10;
- var H1=Math.round(clamp(W*0.46,230,380)),gapY=16,H2=narrow?40:50,axH=24;
+ // gapY holds the years written just under the growth chart (user, 2026-11-04, after a review comment) and the ONI label
+ var H1=Math.round(clamp(W*0.46,230,380)),gapY=40,H2=narrow?40:50,axH=24;
  var Ht=mT+H1+gapY+H2+axH;
  var x0=mL,x1=W-mR,yTop=mT,yBot=mT+H1,sTop=yBot+gapY,sBot=sTop+H2;
  var tMin=2015.0,tMax=decYear(2026,9,1);
@@ -673,10 +674,11 @@ function renderHero(){
  S('text',{x:x0-6,y:YS(0)+3.5,'text-anchor':'end','class':'tick'},svg,'0');
  if(!narrow){S('text',{x:x0-6,y:YS(2)+3.5,'text-anchor':'end','class':'tick'},svg,'+2');S('text',{x:x0-6,y:YS(-2)+3.5,'text-anchor':'end','class':'tick'},svg,'−2');}
  S('text',{x:x0+4,y:sTop-3,'class':'lbl-m'},svg,narrow?'ONI (°C)':'Oceanic Niño Index (°C): red El Niño, blue La Niña');
- // x axis
+ // x axis: years under the ONI strip and again just under the growth chart
  var every=W<640?2:1;
- for(var yv=2015;yv<=2026;yv++){var xx=Math.round(X(yv))+0.5;S('line',{x1:xx,x2:xx,y1:sBot,y2:sBot+4,'class':'base'},svg);
-  if((yv-2015)%every===0){var mid=Math.min(X(yv+0.5),x1-14);S('text',{x:mid,y:sBot+16,'text-anchor':'middle','class':'tick'},svg,String(yv));}}
+ for(var yv=2015;yv<=2026;yv++){var xx=Math.round(X(yv))+0.5;
+  [yBot,sBot].forEach(function(yA){S('line',{x1:xx,x2:xx,y1:yA,y2:yA+4,'class':'base'},svg);
+   if((yv-2015)%every===0){var mid=Math.min(X(yv+0.5),x1-14);S('text',{x:mid,y:yA+16,'text-anchor':'middle','class':'tick'},svg,String(yv));}});}
  // crosshair layer
  var xh=S('g',{style:'display:none'},svg);
  var xl=S('line',{y1:yTop,y2:sBot,'class':'xhair'},xh);

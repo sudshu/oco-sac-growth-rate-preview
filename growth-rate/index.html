@@ -523,7 +523,7 @@ html.js .anntbl-wrap:not(.open){display:none}
         <summary>Revisions and data gaps</summary>
         <div class="body">
           <p id="statusRule">Each month&#x27;s value is smoothed with data from the months around it, so the newest months are early estimates that change as later data arrive. A month becomes provisional after three more months of data and final after six. Provisional values can still shift, by about 0.7 ppm a year after 3 months and 0.24 ppm a year after 5 months <span class="todo">[revision sizes from an earlier pipeline run; recompute on this release]</span>. In this release, December 2025 and earlier are final, January–March 2026 provisional and April–June 2026 early. A year&#x27;s value is final once data through February of the next year are in, usually by April.</p>
-          <ul id="gapList"><li>OCO-2 had no data from 31 July to 19 September 2017. A straight line bridges the gap, so the August and September 2017 values are less reliable. The files flag them.</li><li>OCO-2 stopped measuring from 28 July to 13 August 2026 after an instrument problem. The public data end on 28 July 2026 for now (checked 8 October 2026).</li></ul>
+          <ul id="gapList"><li>OCO-2 had no data from 31 July to 19 September 2017. A straight line bridges the gap, so the August and September 2017 values are less reliable. The files flag them.</li><li>OCO-2 stopped measuring from 28 July to 13 August 2026 after an instrument problem.</li></ul>
         </div>
       </details>
       <details>
@@ -539,7 +539,7 @@ html.js .anntbl-wrap:not(.open){display:none}
       </details>
       <details>
         <summary>Data sources and units</summary>
-        <div class="body"><ul id="productList"><li><strong>OCO-2:</strong> Lite XCO₂ (column-average CO₂) data from NASA GES DISC, <a href="https://doi.org/10.5067/70K2B2W8MNGY">version 11.2r</a> through 2023 and <a href="https://doi.org/10.5067/C4OENLFCYVSA">version 11.3r</a> <span class="todo">[OCO-2 v11.3r DOI: candidate, verify]</span> from 2024, up to 28 July 2026.</li><li><strong>GOSAT:</strong> <a href="https://doi.org/10.5067/UAY6VJYTS8OD">ACOS GOSAT v11 Lite data</a> from NASA GES DISC, April 2009 to July 2026.</li><li><strong>NOAA:</strong> the global surface average from NOAA's Global Monitoring Laboratory (<a href="https://doi.org/10.15138/9N0H-ZH07">Lan, Tans and Thoning</a>), files of 5 September 2026. We calculate the monthly NOAA line ourselves, from NOAA's trend.</li><li><strong>Emissions:</strong> fossil fuels and land use. The yearly totals through 2024 are from the Global Carbon Budget 2025 (<a href="https://doi.org/10.5194/essd-18-3211-2026">Friedlingstein et al. 2026</a>). For the monthly line, each year is spread over the months with Carbon Monitor data (<a href="https://arxiv.org/abs/2004.13614">Liu et al. 2020</a>), and the seasonal cycle is removed. From 2025 the values are a first estimate: Carbon Monitor's fossil emissions scaled to match the Global Carbon Budget, plus land-use emissions continuing their recent trend. The files call it low-latency.</li><li><strong>Climate stripes:</strong> differences from the 1991–2020 average, leaving out 2011, for sea-surface temperature in the Niño-3.4 region of the Pacific, where El Niño is measured, and for temperature, air dryness and rainfall over tropical land. Hatched months are NOAA forecasts. The Niño-3.4 row uses this average rather than NOAA&#x27;s official Oceanic Niño Index, so it can read higher.</li><li><strong>Latitude bands:</strong> from a separate, closely related run of GRESO. Colours stop changing at ±1.75 ppm a year from the median of all months and bands. For a wider band, average the 10° bands weighted by their area, which is proportional to sin(north edge) − sin(south edge).</li><li><strong>Units:</strong> 1 part per million (ppm) of CO₂ in the whole atmosphere is 2.124 petagrams of carbon (PgC, Global Carbon Budget convention). A petagram is a billion tonnes, and with the oxygen included 1 PgC is 3.664 billion tonnes of CO₂. So 1 ppm a year is about 2.12 PgC, or 7.8 billion tonnes of CO₂, a year.</li></ul></div>
+        <div class="body"><ul id="productList"><li><strong>OCO-2:</strong> Lite XCO₂ (column-average CO₂) data from NASA GES DISC, <a href="https://doi.org/10.5067/70K2B2W8MNGY">version 11.2r</a> through 2023 and <a href="https://doi.org/10.5067/C4OENLFCYVSA">version 11.3r</a> from 2024, up to 28 July 2026.</li><li><strong>GOSAT:</strong> <a href="https://doi.org/10.5067/UAY6VJYTS8OD">ACOS GOSAT v11 Lite data</a> from NASA GES DISC, April 2009 to July 2026.</li><li><strong>NOAA:</strong> the global surface average from NOAA's Global Monitoring Laboratory (<a href="https://doi.org/10.15138/9N0H-ZH07">Lan, Tans and Thoning</a>), files of 5 September 2026. We calculate the monthly NOAA line ourselves, from NOAA's trend.</li><li><strong>Emissions:</strong> fossil fuels and land use. The yearly totals through 2024 are from the Global Carbon Budget 2025 (<a href="https://doi.org/10.5194/essd-18-3211-2026">Friedlingstein et al. 2026</a>). For the monthly line, each year is spread over the months with Carbon Monitor data (<a href="https://arxiv.org/abs/2004.13614">Liu et al. 2020</a>), and the seasonal cycle is removed. From 2025 the values are a first estimate: Carbon Monitor's fossil emissions scaled to match the Global Carbon Budget, plus land-use emissions continuing their recent trend. The files call it low-latency.</li><li><strong>Climate stripes:</strong> differences from the 1991–2020 average, leaving out 2011, for sea-surface temperature in the Niño-3.4 region of the Pacific, where El Niño is measured, and for temperature, air dryness and rainfall over tropical land. Hatched months are NOAA forecasts. The Niño-3.4 row uses this average rather than NOAA&#x27;s official Oceanic Niño Index, so it can read higher.</li><li><strong>Latitude bands:</strong> from a separate, closely related run of GRESO. Colours stop changing at ±1.75 ppm a year from the median of all months and bands. For a wider band, average the 10° bands weighted by their area, which is proportional to sin(north edge) − sin(south edge).</li><li><strong>Units:</strong> 1 part per million (ppm) of CO₂ in the whole atmosphere is 2.124 petagrams of carbon (PgC, Global Carbon Budget convention). A petagram is a billion tonnes, and with the oxygen included 1 PgC is 3.664 billion tonnes of CO₂. So 1 ppm a year is about 2.12 PgC, or 7.8 billion tonnes of CO₂, a year.</li></ul></div>
       </details>
     </section>
   </div>
@@ -936,7 +936,10 @@ function mainLayout(W) {
   return L;
 }
 function mainVertical(L) {
-  var sy0 = L.m.t + L.ph + 18;
+  // with the stripes, the years are also written just under the growth-rate panel (L.axY0), so the stripes start lower
+  // (review comment, 2026-11-04: readers had a hard time finding the years below the stripes)
+  L.axY0 = L.hasDr ? L.m.t + L.ph + 16 : null;
+  var sy0 = L.m.t + L.ph + (L.hasDr ? 30 : 18);
   if (!L.hasDr) { L.rows = []; L.sBot = L.m.t + L.ph; }
   else if (L.narrow) {
     L.rowH = 13; L.pitch = 31;
@@ -1093,8 +1096,14 @@ function renderMain() {
       S("line", { x1: P.xa, x2: P.xb, y1: y(t), y2: y(t), class: Math.abs(t) < 1e-9 ? "zero" : "grid" }, gAx);
       if (pi === 0) S("text", { x: P.xa - 7, y: y(t) + 4, "text-anchor": "end", class: "axl" }, gAx, num(t, sc.dec));
     });
-    // x axis: year ticks (full) or quarter ticks (recent), labels under the stripes
+    // x axis: year ticks (full) or quarter ticks (recent), labels under the stripes; with the stripes, the years again
+    // just under the growth-rate panel (years only, also in the recent panel)
     var pxYear = x(P.x0 + 1) - x(P.x0);
+    if (L.axY0) for (var yu = Math.ceil(P.x0 - 1e-6); yu <= Math.floor(P.x1 + 1e-6); yu++) {
+      S("line", { x1: x(yu), x2: x(yu), y1: m.t + ph, y2: m.t + ph + 4, class: "zero" }, gAx);
+      if (pxYear < 22 && (yu % 2)) continue;
+      S("text", { x: x(yu), y: L.axY0, "text-anchor": "middle", class: "axl" }, gAx, pxYear < 36 ? "’" + String(yu).slice(2) : String(yu));
+    }
     if (P.id === "full") {
       for (var yy = Math.ceil(P.x0); yy <= Math.floor(P.x1); yy++) {
         if (yy > P.x0) S("line", { x1: x(yy), x2: x(yy), y1: m.t, y2: m.t + ph, class: "gridv" }, gAx);
