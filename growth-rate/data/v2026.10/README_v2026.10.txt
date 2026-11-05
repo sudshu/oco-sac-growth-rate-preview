@@ -1,8 +1,8 @@
 GRESO WHOLE-ATMOSPHERE (COLUMN) CO2 GROWTH RATE FROM OCO-2 -- RELEASE v2026.10
 ==============================================================================
 OCO Science Application Center (OCO-SAC), Caltech
-Author: Sudhanshu Pandey.  Contact: [contact e-mail]
-Built: 2026-11-04T21:41:16Z   Data end (OCO-2): 2026-07-28
+Authors: Sudhanshu Pandey (Caltech) and Christopher W. O'Dell (CIRA, Colorado State University).  Contact: [contact e-mail]
+Built: 2026-11-05T00:09:47Z   Data end (OCO-2): 2026-07-28
 
 DRAFT -- placeholders are in [brackets].
 
@@ -13,7 +13,7 @@ Licence: [Licence: CC BY 4.0 proposed — confirm]
   (applies to the GRESO values; third-party values keep their own terms, see
   THIRD-PARTY VALUES INCLUDED below)
 Please cite:
-  Pandey, S. (2026). GRESO OCO-2 whole-atmosphere CO₂ growth rates, release v2026.10. OCO Science Application Center, Caltech. [dashboard base URL]. [data DOI].
+  Pandey, S., & O'Dell, C. W. (2026). GRESO OCO-2 whole-atmosphere CO₂ growth rates, release v2026.10. OCO Science Application Center, Caltech. [dashboard base URL]. [data DOI].
 and the method:
   Pandey, S., et al. (2024). Toward low-latency estimation of atmospheric CO2 growth rates using satellite observations: Evaluating sampling errors of satellite and in situ observing approaches. AGU Advances, 5, e2023AV001145. https://doi.org/10.1029/2023AV001145
 Please also acknowledge the input data:
@@ -96,7 +96,7 @@ OCO-2:     OCO-2 Lite 10-s XCO₂: v11.2r (doi:10.5067/70K2B2W8MNGY) through 202
            commit 6b2a7785 (baseline 2026-01-12), handoff 2026-09-11.
 GOSAT:     ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset acosGOSATv11_lite_20090418-20260731_filtered_tiny.h5, 2009-04-18 → 2026-07-31; same GRESO chain as OCO-2. An optional layer, off by default on the charts. Uncertainty = smoothing spread + 0.08 ppm/yr floor (no retrieval term). Same status rule as OCO-2.
 NOAA:      NOAA GML global marine boundary layer (MBL); Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07. Annual: co2_gr_gl.txt (file created 2026-09-05). Monthly ‘derived from NOAA trend’ is our derivative, not a NOAA product: 12 × the change of the co2_mm_gl.txt trend column (file created 2026-09-05) from the 1st of each month to the 1st of the next (the trend linearly interpolated to 00:00 UTC on those days, as for the annual and 12-month values), then the same 5-month running mean as the OCO-2 values (last two months unsmoothed). It covers the same dates as the OCO-2 monthly values and ends with May 2026, because NOAA’s trend ends in mid-June 2026. Redistributed with this citation and file date; NOAA revises its values, so take the current files from https://gml.noaa.gov/ccgg/trends/global.html for new work.
-Emissions: Friedlingstein et al. (2026), Global Carbon Budget 2025, Earth Syst. Sci. Data 18, 3211-3288, doi:10.5194/essd-18-3211-2026; data doi:10.18160/GCP-2025 (CC BY 4.0): fossil CO₂ excluding the cement-carbonation sink, plus land-use change, through 2024. 2025 onward: low-latency estimate = Carbon Monitor, carbonmonitor.org (Liu et al. 2020, arXiv:2004.13614) × 1.020 (mean GCB/Carbon Monitor ratio 2022–24) plus linearly extrapolated land-use change (provisional; not a budget number). Monthly series deseasonalized.
+Emissions: Friedlingstein et al. (2026), Global Carbon Budget 2025, Earth Syst. Sci. Data 18, 3211-3288, doi:10.5194/essd-18-3211-2026; data doi:10.18160/GCP-2025 (CC BY 4.0): fossil CO₂ excluding the cement-carbonation sink, plus land-use change, through 2024. 2025 onward: low-latency estimate = Carbon Monitor, carbonmonitor.org (Liu et al. 2020, arXiv:2004.13614) × 1.020 (mean GCB/Carbon Monitor ratio 2022–24) plus linearly extrapolated land-use change (provisional; not a budget number). Monthly series: each GCB year spread over the months with Carbon Monitor's monthly pattern (2015–2018 its average pattern, 2019–2024 that year's Carbon Monitor months scaled to the GCB total), land-use change flat within each year, then a fixed seasonal cycle removed.
 
 --------------------------------------------------------------------------------
 DATA GAPS
@@ -152,7 +152,7 @@ KNOWN ISSUES AND CAVEATS
 --------------------------------------------------------------------------------
 THIRD-PARTY VALUES INCLUDED (with source, file date or version, and citation)
 --------------------------------------------------------------------------------
-Third-party values are included with their source, file date or version, and citation: NOAA GML marine-boundary-layer growth (annual and our monthly derivative) and NOAA-based airborne fractions (Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07; files created 2026-09-05); Global Carbon Budget 2025 emissions and atmospheric growth term (Friedlingstein et al. (2026), Global Carbon Budget 2025, Earth Syst. Sci. Data 18, 3211-3288, doi:10.5194/essd-18-3211-2026; data doi:10.18160/GCP-2025 (CC BY 4.0)); and 2025 low-latency emissions derived from Carbon Monitor, carbonmonitor.org (Liu et al. 2020, arXiv:2004.13614). The experimental outlook (a model forecast) shown on the web page is not part of these files; it has its own download on the ENSO watch page, with 'experimental' in the file names.
+Third-party values are included with their source, file date or version, and citation: NOAA GML marine-boundary-layer growth (annual and our monthly derivative) and NOAA-based airborne fractions (Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07; files created 2026-09-05); Global Carbon Budget 2025 emissions and atmospheric growth term (Friedlingstein et al. (2026), Global Carbon Budget 2025, Earth Syst. Sci. Data 18, 3211-3288, doi:10.5194/essd-18-3211-2026; data doi:10.18160/GCP-2025 (CC BY 4.0)); and 2025 low-latency emissions derived from Carbon Monitor, carbonmonitor.org (Liu et al. 2020, arXiv:2004.13614). The experimental outlook (a model forecast) shown on the web page is not part of these files.
 NOAA GML global MBL CO2 trends and growth rates: https://gml.noaa.gov/ccgg/trends/global.html
   annual growth: https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_gr_gl.txt (file created 2026-09-05)
   monthly trend: co2_mm_gl.txt (file created 2026-09-05)

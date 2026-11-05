@@ -1,6 +1,6 @@
 # GRESO OCO-2 growth-rate data: CHANGELOG
 
-## v2026.10 (built 2026-11-04T21:41:16Z) -- first release (DRAFT)
+## v2026.10 (built 2026-11-05T00:09:47Z) -- first release (DRAFT)
 
 - First versioned release on the OCO-SAC dashboard [dashboard base URL].
 - OCO-2 series: method GRESO 1.x (baseline 2026-01-12); input v11.2r through 2023, v11.3r from 2024.
