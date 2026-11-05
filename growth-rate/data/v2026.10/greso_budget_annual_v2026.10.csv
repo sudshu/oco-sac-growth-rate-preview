@@ -1,9 +1,7 @@
 # GRESO OCO-2 atmospheric growth in mass units, emissions and airborne fraction (annual)
-# Release: v2026.10    Built: 2026-11-05T18:58:39Z    Data end (OCO-2): 2026-07-28
+# Release: v2026.10    Built: 2026-11-05T20:38:12Z    Data end (OCO-2): 2026-07-28
 # Producer: OCO Science Application Center (OCO-SAC), Caltech.
-# Authors: Sudhanshu Pandey (Caltech), Christopher W. O'Dell (CIRA, Colorado State University), Junjie Liu (Jet
-#   Propulsion Laboratory, Caltech), Christian Frankenberg (Caltech), Paul O. Wennberg (Caltech) and Vivienne H.
-#   Payne (Jet Propulsion Laboratory, Caltech).
+# Author: Sudhanshu Pandey.
 # DRAFT: placeholders are in [brackets].
 #
 # Input versions:
@@ -39,9 +37,8 @@
 #     provisional, not a budget number.
 #   Emissions uncertainty (about +/-7.5%, dominated by LUC) gives about +/-0.04 in the airborne fraction (our estimate).
 #
-# Citation: Pandey, S., O'Dell, C. W., Liu, J., Frankenberg, C., Wennberg, P. O., & Payne, V. H. (2026). GRESO
-#   OCO-2 whole-atmosphere CO2 growth rates, release v2026.10. OCO Science Application Center, Caltech.
-#   [dashboard base URL]. [data DOI].
+# Citation: Pandey, S. (2026). GRESO OCO-2 whole-atmosphere CO2 growth rates, release v2026.10. OCO Science
+#   Application Center, Caltech. [dashboard base URL]. [data DOI].
 # Method: Pandey et al. (2024), AGU Advances 5, e2023AV001145, doi:10.1029/2023AV001145.
 # Licence: [Licence: CC BY 4.0 proposed — confirm] (applies to the GRESO columns; third-party columns keep their own terms, cited above).
 # See README_v2026.10.txt for full definitions, caveats and input versions.

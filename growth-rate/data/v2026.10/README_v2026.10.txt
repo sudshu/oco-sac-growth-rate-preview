@@ -1,12 +1,9 @@
 GRESO WHOLE-ATMOSPHERE (COLUMN) CO2 GROWTH RATE FROM OCO-2 -- RELEASE v2026.10
 ==============================================================================
 OCO Science Application Center (OCO-SAC), Caltech
-Authors: Sudhanshu Pandey (Caltech), Christopher W. O'Dell (CIRA, Colorado State
-  University), Junjie Liu (Jet Propulsion Laboratory, Caltech), Christian
-  Frankenberg (Caltech), Paul O. Wennberg (Caltech) and Vivienne H. Payne (Jet
-  Propulsion Laboratory, Caltech).
+Author: Sudhanshu Pandey.
 Contact: [contact e-mail]
-Built: 2026-11-05T18:58:39Z   Data end (OCO-2): 2026-07-28
+Built: 2026-11-05T20:38:12Z   Data end (OCO-2): 2026-07-28
 
 DRAFT -- placeholders are in [brackets].
 
@@ -17,7 +14,7 @@ Licence: [Licence: CC BY 4.0 proposed — confirm]
   (applies to the GRESO values; third-party values keep their own terms, see
   THIRD-PARTY VALUES INCLUDED below)
 Please cite:
-  Pandey, S., O'Dell, C. W., Liu, J., Frankenberg, C., Wennberg, P. O., & Payne, V. H. (2026). GRESO OCO-2 whole-atmosphere CO₂ growth rates, release v2026.10. OCO Science Application Center, Caltech. [dashboard base URL]. [data DOI].
+  Pandey, S. (2026). GRESO OCO-2 whole-atmosphere CO₂ growth rates, release v2026.10. OCO Science Application Center, Caltech. [dashboard base URL]. [data DOI].
 and the method:
   Pandey, S., et al. (2024). Toward low-latency estimation of atmospheric CO2 growth rates using satellite observations: Evaluating sampling errors of satellite and in situ observing approaches. AGU Advances, 5, e2023AV001145. https://doi.org/10.1029/2023AV001145
 Please also acknowledge the input data:

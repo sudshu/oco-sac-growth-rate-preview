@@ -1,7 +1,7 @@
 {
  "meta": {
   "release": "v2026.10",
-  "built_utc": "2026-11-05T18:58:39Z",
+  "built_utc": "2026-11-05T20:38:12Z",
   "data_end": "2026-07-28",
   "ref_month": "2026-06",
   "conv": {
@@ -56,7 +56,7 @@
    "Data end differs by product in this release: global monthly 2026-06, 10° bands 2026-04."
   ],
   "method_summary": "GRESO (Pandey et al. 2024, doi:10.1029/2023AV001145), method version GRESO 1.x (baseline 2026-01-12). Input: OCO-2 v11 10-s XCO₂ (v11.2r through 2023, v11.3r from 2024), land + ocean (target mode excluded), retrieval uncertainty < 2 ppm. Each 16-day repeat cycle is binned to 5°×5° cells (median), averaged along each latitude row and area-weighted across rows. Seasonal cycle: least-squares fit of a cubic polynomial plus four annual harmonics over the whole record; the harmonics are subtracted. The deseasonalized series is gap-filled linearly and smoothed with a 7-window (7×16-day ≈ 112-day) running mean. Monthly growth = trend(1st of next month) − trend(1st of month), ×12 for ppm/yr, displayed with a 5-month running mean. Annual growth = trend(1 Jan Y+1) − trend(1 Jan Y), not the mean of the displayed monthly values. Annual 1σ = √(retrieval² + smoothing² + 0.04²): retrieval = spread over 40 decile subsets of four retrieval parameters, smoothing = spread over 6 smoothing widths, 0.04 ppm/yr = OSSE sampling error.",
-  "citation": "Pandey, S., O'Dell, C. W., Liu, J., Frankenberg, C., Wennberg, P. O., & Payne, V. H. (2026). GRESO OCO-2 whole-atmosphere CO₂ growth rates, release v2026.10. OCO Science Application Center, Caltech. [dashboard base URL]. [data DOI].",
+  "citation": "Pandey, S. (2026). GRESO OCO-2 whole-atmosphere CO₂ growth rates, release v2026.10. OCO Science Application Center, Caltech. [dashboard base URL]. [data DOI].",
   "method_citation": "Pandey, S., et al. (2024). Toward low-latency estimation of atmospheric CO2 growth rates using satellite observations: Evaluating sampling errors of satellite and in situ observing approaches. AGU Advances, 5, e2023AV001145. https://doi.org/10.1029/2023AV001145",
   "license": "[Licence: CC BY 4.0 proposed — confirm]",
   "downloads": [
@@ -67,8 +67,8 @@
     "path": "data/v2026.10/greso_monthly_v2026.10.csv",
     "latest_path": "data/latest/greso_monthly_latest.csv",
     "desc": "One value per month, January 2015 to June 2026, in ppm/yr and PgC/yr, with status flags; GOSAT and a series derived from NOAA alongside.",
-    "bytes": 15021,
-    "sha256": "aea72bd4fefa3840fe4db8af37ce8bef3315ebc8723f68919ad71f5a74721866"
+    "bytes": 14698,
+    "sha256": "7ab00d6dda6448680f8000e8a8085731a9319c3b2f2de944cc5a9d800cd6352a"
    },
    {
     "file": "greso_annual_v2026.10.csv",
@@ -77,8 +77,8 @@
     "path": "data/v2026.10/greso_annual_v2026.10.csv",
     "latest_path": "data/latest/greso_annual_latest.csv",
     "desc": "Growth from 1 January to 1 January with its 1σ uncertainty, OCO-2 2015–2025; GOSAT 2010–2025 and NOAA surface values 2010–2025 alongside.",
-    "bytes": 6126,
-    "sha256": "28e1add266f0f07e0e45dfb91d4c411a7a00fc337802cdeafc6a6d597d52f543"
+    "bytes": 5803,
+    "sha256": "6a75cc4fb4a871e5f985a0f5e9a8a953f0f21030c54eb565fdbc31018107b3cc"
    },
    {
     "file": "greso_zonal_monthly_v2026.10.csv",
@@ -87,8 +87,8 @@
     "path": "data/v2026.10/greso_zonal_monthly_v2026.10.csv",
     "latest_path": "data/latest/greso_zonal_monthly_latest.csv",
     "desc": "Monthly growth in ten 10° latitude bands, OCO-2 and GOSAT, one row per month and band.",
-    "bytes": 156445,
-    "sha256": "9d938dd6224501daaad6e023bde6fba6692c7ece81f04cba7fa37db446c45dce"
+    "bytes": 156122,
+    "sha256": "f80d95b253ce7192fb599693196b7c3892d2eef040f70ea742a2208df8a60738"
    },
    {
     "file": "greso_xco2_16day_v2026.10.csv",
@@ -97,8 +97,8 @@
     "path": "data/v2026.10/greso_xco2_16day_v2026.10.csv",
     "latest_path": "data/latest/greso_xco2_16day_latest.csv",
     "desc": "Global-mean column XCO₂ every 16 days and its deseasonalized, smoothed trend (ppm), from which the growth rates are computed.",
-    "bytes": 14847,
-    "sha256": "dfa0044a0d989182602d8bbbae053758d182f2ac425a50f16c27deb0ad8f71b0"
+    "bytes": 14524,
+    "sha256": "b74f29622c1b05271b7e81699f6ca712260ff9860ee68303ca5b3e2a9ca374ed"
    },
    {
     "file": "greso_budget_annual_v2026.10.csv",
@@ -107,8 +107,8 @@
     "path": "data/v2026.10/greso_budget_annual_v2026.10.csv",
     "latest_path": "data/latest/greso_budget_annual_latest.csv",
     "desc": "Annual growth in PgC/yr next to fossil and land-use emissions, the airborne fraction and the implied land and ocean uptake.",
-    "bytes": 5580,
-    "sha256": "dd5a68fc16569316d8dd8226c1e5d8a29d863a793a6d28b710dcc24c02fffecc"
+    "bytes": 5257,
+    "sha256": "1eb31b6ded4df9f6e14f43586af5ec6c3e4d8b87d126c51ccb7950fdbdfcf6f0"
    },
    {
     "file": "README_v2026.10.txt",
@@ -117,8 +117,8 @@
     "path": "data/v2026.10/README_v2026.10.txt",
     "latest_path": "data/latest/README_latest.txt",
     "desc": "Definitions, units, status rules, input versions, data gaps, citation and licence.",
-    "bytes": 16508,
-    "sha256": "b1ba973410712d9ecb53d6ffa296ee1c705855f89aa60e96801de5d37fc1b079"
+    "bytes": 16191,
+    "sha256": "c1d480b2a0c2df257d675a45a5d29b2221a3826017dd2bad838ecab322476843"
    },
    {
     "file": "CHANGELOG.md",
@@ -128,7 +128,7 @@
     "latest_path": "data/latest/CHANGELOG.md",
     "desc": "What changed in each release, and the list of releases.",
     "bytes": 1068,
-    "sha256": "b67374558189bf02a6ad908d2cf844e1d8d9caba635b8bc745a2915f1d15056a"
+    "sha256": "97719410d09e59a5597706efd21b0976d65a7f60eb47473b22300aff2b041ad1"
    },
    {
     "file": "greso_v2026.10.json",
