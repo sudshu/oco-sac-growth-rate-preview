@@ -1,8 +1,12 @@
 GRESO WHOLE-ATMOSPHERE (COLUMN) CO2 GROWTH RATE FROM OCO-2 -- RELEASE v2026.10
 ==============================================================================
 OCO Science Application Center (OCO-SAC), Caltech
-Authors: Sudhanshu Pandey (Caltech) and Christopher W. O'Dell (CIRA, Colorado State University).  Contact: [contact e-mail]
-Built: 2026-11-05T00:09:47Z   Data end (OCO-2): 2026-07-28
+Authors: Sudhanshu Pandey (Caltech), Christopher W. O'Dell (CIRA, Colorado State
+  University), Junjie Liu (Jet Propulsion Laboratory, Caltech), Christian
+  Frankenberg (Caltech), Paul O. Wennberg (Caltech) and Vivienne H. Payne (Jet
+  Propulsion Laboratory, Caltech).
+Contact: [contact e-mail]
+Built: 2026-11-05T18:58:39Z   Data end (OCO-2): 2026-07-28
 
 DRAFT -- placeholders are in [brackets].
 
@@ -13,11 +17,11 @@ Licence: [Licence: CC BY 4.0 proposed — confirm]
   (applies to the GRESO values; third-party values keep their own terms, see
   THIRD-PARTY VALUES INCLUDED below)
 Please cite:
-  Pandey, S., & O'Dell, C. W. (2026). GRESO OCO-2 whole-atmosphere CO₂ growth rates, release v2026.10. OCO Science Application Center, Caltech. [dashboard base URL]. [data DOI].
+  Pandey, S., O'Dell, C. W., Liu, J., Frankenberg, C., Wennberg, P. O., & Payne, V. H. (2026). GRESO OCO-2 whole-atmosphere CO₂ growth rates, release v2026.10. OCO Science Application Center, Caltech. [dashboard base URL]. [data DOI].
 and the method:
   Pandey, S., et al. (2024). Toward low-latency estimation of atmospheric CO2 growth rates using satellite observations: Evaluating sampling errors of satellite and in situ observing approaches. AGU Advances, 5, e2023AV001145. https://doi.org/10.1029/2023AV001145
 Please also acknowledge the input data:
-  OCO-2 Lite v11.2r, doi:10.5067/70K2B2W8MNGY; OCO-2 Lite v11.3r, doi:10.5067/C4OENLFCYVSA [OCO-2 v11.3r DOI: candidate, verify];
+  OCO-2 Lite v11.2r, doi:10.5067/70K2B2W8MNGY; OCO-2 Lite v11.3r, doi:10.5067/C4OENLFCYVSA;
   ACOS GOSAT v11, doi:10.5067/UAY6VJYTS8OD (NASA GES DISC).
 Disclaimer: [OCO-SAC disclaimer wording — from Kim]
 
@@ -91,7 +95,7 @@ Headline "last 12 months" value: Change of the deseasonalized OCO-2 XCO₂ trend
 INPUT VERSIONS
 --------------------------------------------------------------------------------
 Provenance: OCO-2 Lite v11.2r through 2023, v11.3r from 2024.
-OCO-2:     OCO-2 Lite 10-s XCO₂: v11.2r (doi:10.5067/70K2B2W8MNGY) through 2023-12-31 and v11.3r (doi:10.5067/C4OENLFCYVSA [OCO-2 v11.3r DOI: candidate, verify]) from 2024-01-01, through 2026-07-28. Method GRESO 1.x (baseline 2026-01-12) (Pandey et al. 2024).
+OCO-2:     OCO-2 Lite 10-s XCO₂: v11.2r (doi:10.5067/70K2B2W8MNGY) through 2023-12-31 and v11.3r (doi:10.5067/C4OENLFCYVSA) from 2024-01-01, through 2026-07-28. Method GRESO 1.x (baseline 2026-01-12) (Pandey et al. 2024).
            Input file OCO2_b11.3-lite_10sec_GOOD_20140906-20260728.h5; GRESO code
            commit 6b2a7785 (baseline 2026-01-12), handoff 2026-09-11.
 GOSAT:     ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset acosGOSATv11_lite_20090418-20260731_filtered_tiny.h5, 2009-04-18 → 2026-07-31; same GRESO chain as OCO-2. An optional layer, off by default on the charts. Uncertainty = smoothing spread + 0.08 ppm/yr floor (no retrieval term). Same status rule as OCO-2.
@@ -102,7 +106,7 @@ Emissions: Friedlingstein et al. (2026), Global Carbon Budget 2025, Earth Syst. 
 DATA GAPS
 --------------------------------------------------------------------------------
   2017-07-31 to 2017-09-19: OCO-2 safe mode: no data. The 16-day trend is linearly interpolated across the gap, so the Aug and Sep 2017 monthly values rest on the interpolation (flagged in the downloads)
-  2026-07-28 to 2026-08-13: OCO-2 paused science observations 28 Jul–13 Aug 2026 (safe mode after an instrument anomaly); those days stay missing, and data quality was reduced until 17 Sep 2026. The public OCO-2 v11.3r Lite record at NASA GES DISC ends 28 Jul 2026 (checked 8 Oct 2026); later data are not yet released
+  2026-07-28 to 2026-08-13: OCO-2 paused science observations 28 Jul–13 Aug 2026 (safe mode after an instrument anomaly); those days stay missing, and data quality was reduced until 17 Sep 2026. This release uses OCO-2 data up to 28 Jul 2026
 
 --------------------------------------------------------------------------------
 FILES IN THIS RELEASE
