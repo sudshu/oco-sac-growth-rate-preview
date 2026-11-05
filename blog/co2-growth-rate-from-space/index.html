@@ -93,7 +93,6 @@ h1.title{font-size:clamp(2.05rem,4.6vw,3rem);line-height:1.08;margin:0 0 1.1rem;
 .dek{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.2rem,2.3vw,1.4rem);line-height:1.45;color:var(--ink);margin:0 0 1.4rem}
 .byline{font-size:.9375rem;color:var(--muted);margin:0}
 .byline strong{color:var(--ink);font-weight:600}
-.reading-guide{font-size:.9375rem;color:var(--muted);margin:.9rem 0 0;padding-top:.9rem;border-top:1px solid var(--rule)}
 
 article p{margin:0 0 1.05rem}
 article h2{font-size:clamp(1.55rem,3vw,1.9rem);line-height:1.18;margin:3.4rem 0 .9rem;text-wrap:balance}
@@ -102,13 +101,6 @@ article ul,article ol{padding-left:1.25rem;margin:0 0 1.1rem}
 article li{margin:0 0 .45rem}
 article li::marker{color:var(--muted)}
 p.lead-public{font-size:1.15rem;line-height:1.55;font-weight:600;margin-bottom:1.15rem}
-
-/* The short version: the public layer that must stand alone */
-.short-version{margin:2.4rem 0 0;border-top:3px solid var(--ink);border-bottom:1px solid var(--rule);padding:1.1rem 0 .6rem}
-.short-version h2{margin:0 0 .7rem;font-size:1.45rem}
-.short-version ul{list-style:none;padding:0;margin:0}
-.short-version li{position:relative;padding-left:1.6rem;margin:0 0 .8rem;font-size:1.0938rem;line-height:1.55}
-.short-version li::before{content:"";position:absolute;left:.15rem;top:.62em;width:.62rem;height:.62rem;border-radius:50%;background:var(--oco2)}
 
 /* Deeper dive boxes: the graduate layer */
 details.deep-dive,details.further-reading{margin:1.6rem 0;border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;background:var(--panel)}
@@ -247,7 +239,6 @@ details.further-reading .dd-body>h3:first-child{margin-top:.6rem}
  .post-head{padding-top:2rem}
  .chart-card{padding:.75rem .6rem .6rem;border-radius:6px}
  .breakout{padding:0 .75rem}
- .short-version li{font-size:1.05rem}
 }
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 @media print{.site-header,.needs-js,.theme-btn{display:none!important} details.deep-dive,details.further-reading{border:1px solid #999} details.deep-dive .dd-body,details.further-reading .dd-body{display:block}}
@@ -271,21 +262,8 @@ details.further-reading .dd-body>h3:first-child{margin-top:.6rem}
 <article>
  <div class="col post-head">
   <h1 class="title">Taking Earth's carbon pulse from space: what OCO-2 says about how fast CO<sub>2</sub> is building up</h1>
-  <p class="dek">Fossil-fuel emissions rose only about 1% from 2024 to 2025 (Global Carbon Budget 2025 projection), yet the pace at which CO<sub>2</sub> piled up in the air nearly halved, from 3.47 to 1.96 parts per million a year. NASA's OCO-2 satellite lets us watch these swings month by month, and a strong El Niño is now building.</p>
+  <p class="dek">Fossil-fuel emissions rose only about 1% from 2024 to 2025 (Global Carbon Budget 2025 projection), yet the pace at which CO<sub>2</sub> piled up in the air nearly halved, from 3.47 to 1.96 parts per million a year. NASA's OCO-2 satellite lets us watch these swings month by month.</p>
   <p class="byline"><strong>Sudhanshu Pandey</strong>, Caltech, OCO Science Application Center. <span class="todo">[publication date]</span></p>
-  <p class="reading-guide">Reading guide: skim the bold leads for the story; open the Deeper dive boxes for the physics and the math.</p>
-
-  <section class="short-version" id="short-version" aria-labelledby="sv-h">
-   <h2 id="sv-h">The short version</h2>
-   <ul>
-    <li>Every year people put about 11.5 billion tonnes of carbon into the air as CO₂, mostly by burning coal, oil and gas. Only about half of it stays in the air. Forests, soils and the ocean take up the rest.</li>
-    <li>How fast CO₂ builds up in the air (the "growth rate") swings a lot from year to year, even though our emissions hardly change. The swings come from nature: in hot, dry years plants and soils take up less carbon, and fires release more.</li>
-    <li>NASA's OCO-2 satellite measures CO₂ through the whole depth of the air, around the globe. From its data we work out the growth rate for each month: a first look about two months after the month ends, firm after about six. It complements NOAA's network of ground stations, which remains the long-term reference. The two can give somewhat different numbers for a single year but agree over several years.</li>
-    <li>In 2024 CO₂ built up faster than in any other year of the OCO-2 record (since 2015): 3.47 parts per million (ppm), with an uncertainty of about ±0.1 (1σ), or about 7.4 billion tonnes of carbon. In 2025 the pace nearly halved, to 1.96 ppm, even though fossil-fuel emissions rose by about 1% (Global Carbon Budget projection); over the 12 months to <span data-fill="l12-end">June 2026</span> it was <span data-fill="l12-ppm">1.72</span> ppm (an early estimate).</li>
-    <li>A strong El Niño, a periodic warming of the tropical Pacific that brings heat and drought to tropical forests, is now building. In past El Niño years CO₂ built up faster, so the coming months are worth watching. We will update the numbers as new satellite data arrive.</li>
-   </ul>
-   <p>A while ago I wrote a short poem, <a href="https://sudshu.github.io/2026/09/30/tale-of-the-traveling-co2.html">"The Tale of the Traveling CO₂"</a>, about a quick, cloud-dodging satellite and the steady Mauna Loa record. It ends on a question. This post is my longer answer: we need both.</p>
-  </section>
  </div>
 
  <!-- Figure 1 (B1): interactive hero chart, static PNG fallback -->
@@ -720,17 +698,6 @@ if(heroBox){
   Array.prototype.forEach.call(btns,function(o){o.setAttribute('aria-pressed',o===b?'true':'false');});
   var at=doc.getElementById('hero-axis-title');if(at)at.textContent=(heroUnit==='pgc'?'Petagrams of carbon per year (PgC/yr)':'ppm per year')+', seasonal cycle removed';
   renderHero();});});})();
-
-/* ===================================================================
-   Text that must match the payload (last-12-months value)
-   =================================================================== */
-(function(){
- var FULL=['January','February','March','April','May','June','July','August','September','October','November','December'];
- function ml(ym){var p=ym.split('-');return FULL[+p[1]-1]+' '+p[0];}
- function fill(sel,txt){Array.prototype.forEach.call(doc.querySelectorAll(sel),function(e){e.textContent=txt;});}
- var k=G.kpis&&G.kpis.last12;
- if(k&&k.ppm!=null&&k.last_month){fill('[data-fill="l12-ppm"]',k.ppm.toFixed(2));fill('[data-fill="l12-end"]',ml(k.last_month));}
-})();
 
 /* ---------------- first render ---------------- */
 renderHero();
