@@ -3,7 +3,7 @@ GRESO WHOLE-ATMOSPHERE (COLUMN) CO2 GROWTH RATE FROM OCO-2 -- RELEASE v2026.10
 OCO Science Application Center (OCO-SAC), Caltech
 Author: Sudhanshu Pandey.
 Contact: [contact e-mail]
-Built: 2026-11-05T20:38:12Z   Data end (OCO-2): 2026-07-28
+Built: 2026-11-06T00:51:57Z   Data end (OCO-2): 2026-07-28
 
 DRAFT -- placeholders are in [brackets].
 
@@ -73,7 +73,7 @@ Constant retrieval biases cancel in the differencing; only biases that drift in
 time matter. Adjacent-year errors are anticorrelated (shared 1 Jan anchor).
 GOSAT: smoothing spread + 0.08 ppm/yr floor only (no retrieval term).
 OCO-2 + GOSAT (columns oco2_gosat_mean_*, years with both): the satellite series
-the annual chart shows with GOSAT switched on (GOSAT alone before 2015) is the
+the annual chart shows by default (GOSAT on; GOSAT alone before 2015) is the
 mean of the two, with 1-sigma = sqrt((s_OCO2^2 + s_GOSAT^2)/2 + ((OCO2 - GOSAT)/2)^2):
 the products' own errors plus half their difference. Headline numbers stay OCO-2.
 Monthly values: no per-month uncertainty is published; the error is of order
@@ -95,7 +95,7 @@ Provenance: OCO-2 Lite v11.2r through 2023, v11.3r from 2024.
 OCO-2:     OCO-2 Lite 10-s XCO₂: v11.2r (doi:10.5067/70K2B2W8MNGY) through 2023-12-31 and v11.3r (doi:10.5067/C4OENLFCYVSA) from 2024-01-01, through 2026-07-28. Method GRESO 1.x (baseline 2026-01-12) (Pandey et al. 2024).
            Input file OCO2_b11.3-lite_10sec_GOOD_20140906-20260728.h5; GRESO code
            commit 6b2a7785 (baseline 2026-01-12), handoff 2026-09-11.
-GOSAT:     ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset acosGOSATv11_lite_20090418-20260731_filtered_tiny.h5, 2009-04-18 → 2026-07-31; same GRESO chain as OCO-2. An optional layer, off by default on the charts. Uncertainty = smoothing spread + 0.08 ppm/yr floor (no retrieval term). Same status rule as OCO-2.
+GOSAT:     ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset acosGOSATv11_lite_20090418-20260731_filtered_tiny.h5, 2009-04-18 → 2026-07-31; same GRESO chain as OCO-2. On the main page, the annual chart and table open with GOSAT on (GOSAT alone for 2010–2014, the mean of OCO-2 and GOSAT from 2015); on the monthly chart it is off until switched on. Uncertainty = smoothing spread + 0.08 ppm/yr floor (no retrieval term). Same status rule as OCO-2.
 NOAA:      NOAA GML global marine boundary layer (MBL); Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07. Annual: co2_gr_gl.txt (file created 2026-09-05). Monthly ‘derived from NOAA trend’ is our derivative, not a NOAA product: 12 × the change of the co2_mm_gl.txt trend column (file created 2026-09-05) from the 1st of each month to the 1st of the next (the trend linearly interpolated to 00:00 UTC on those days, as for the annual and 12-month values), then the same 5-month running mean as the OCO-2 values (last two months unsmoothed). It covers the same dates as the OCO-2 monthly values and ends with May 2026, because NOAA’s trend ends in mid-June 2026. Redistributed with this citation and file date; NOAA revises its values, so take the current files from https://gml.noaa.gov/ccgg/trends/global.html for new work.
 Emissions: Friedlingstein et al. (2026), Global Carbon Budget 2025, Earth Syst. Sci. Data 18, 3211-3288, doi:10.5194/essd-18-3211-2026; data doi:10.18160/GCP-2025 (CC BY 4.0): fossil CO₂ excluding the cement-carbonation sink, plus land-use change, through 2024. 2025 onward: low-latency estimate = Carbon Monitor, carbonmonitor.org (Liu et al. 2020, arXiv:2004.13614) × 1.020 (mean GCB/Carbon Monitor ratio 2022–24) plus linearly extrapolated land-use change (provisional; not a budget number). Monthly series: each GCB year spread over the months with Carbon Monitor's monthly pattern (2015–2018 its average pattern, 2019–2024 that year's Carbon Monitor months scaled to the GCB total), land-use change flat within each year, then a fixed seasonal cycle removed.
 

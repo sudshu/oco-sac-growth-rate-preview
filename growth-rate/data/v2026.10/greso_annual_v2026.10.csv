@@ -1,5 +1,5 @@
 # GRESO annual whole-atmosphere (column) CO2 growth rates from OCO-2 (2015-2025), with GOSAT (2010-2025) and NOAA MBL
-# Release: v2026.10    Built: 2026-11-05T20:38:12Z    Data end (OCO-2): 2026-07-28
+# Release: v2026.10    Built: 2026-11-06T00:51:57Z    Data end (OCO-2): 2026-07-28
 # Producer: OCO Science Application Center (OCO-SAC), Caltech.
 # Author: Sudhanshu Pandey.
 # DRAFT: placeholders are in [brackets].
@@ -31,7 +31,7 @@
 #   oco2_PgC_yr, oco2_unc1s_PgC_yr = x 2.124. oco2_land/ocean = same chain on land (nadir+glint) / ocean glint only
 #   (no uncertainty). gosat_* = GOSAT v11, same chain, unc = smoothing + 0.08 floor (no retrieval term).
 #   oco2_gosat_mean_ppm_yr, oco2_gosat_mean_unc1s_ppm_yr (years with both) = the satellite series the web page's
-#   annual chart shows with GOSAT on (GOSAT alone before 2015): mean of OCO-2 and GOSAT, 1-sigma =
+#   annual chart shows by default (GOSAT on; GOSAT alone before 2015): mean of OCO-2 and GOSAT, 1-sigma =
 #   sqrt((oco2_unc1s^2 + gosat_unc1s^2)/2 + ((oco2 - gosat)/2)^2), the products' own errors plus half their
 #   difference. Headline numbers stay OCO-2 alone.
 #   Adjacent-year errors are anticorrelated (shared 1 Jan anchor): do not treat years as independent for multi-year means.
