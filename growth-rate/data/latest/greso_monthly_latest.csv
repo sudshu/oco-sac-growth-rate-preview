@@ -1,9 +1,9 @@
 # GRESO monthly whole-atmosphere (column) CO2 growth rate from OCO-2, with GOSAT and a NOAA-derived series
-# Release: v2026.10    Built: 2026-11-07T22:13:24Z    Data end (OCO-2): 2026-07-28
+# Release: v2026.10    Built: 2026-11-07T22:22:59Z    Data end (OCO-2): 2026-07-28
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
 # Authors: Sudhanshu Pandey (Caltech), Christopher W. O'Dell (CIRA, Colorado State University), Christian
-#   Frankenberg (Caltech), Paul O. Wennberg (Caltech) and Vivienne H. Payne (Jet Propulsion Laboratory,
-#   Caltech).
+#   Frankenberg (Caltech), Junjie Liu (Jet Propulsion Laboratory, Caltech), Vivienne H. Payne (Jet Propulsion
+#   Laboratory, Caltech) and Paul O. Wennberg (Caltech).
 # DRAFT: placeholders are in [brackets].
 #
 # Input versions:
@@ -42,8 +42,8 @@
 #   flag = trend_interpolated_data_gap where the month rests on the trend interpolated across the 2017 data gap.
 #   Monthly uncertainty is not quantified per month; order 0.7 ppm/yr (0.06 ppm/month), larger for recent months.
 #
-# Citation: Pandey, S., O'Dell, C. W., Frankenberg, C., Wennberg, P. O., & Payne, V. H. (2026). GRESO OCO-2
-#   whole-atmosphere CO2 growth rates, release v2026.10. OCO Science Applications and Partnerships Center,
+# Citation: Pandey, S., O'Dell, C. W., Frankenberg, C., Liu, J., Payne, V. H., & Wennberg, P. O. (2026). GRESO
+#   OCO-2 whole-atmosphere CO2 growth rates, release v2026.10. OCO Science Applications and Partnerships Center,
 #   Caltech. [dashboard base URL]. [data DOI].
 # Method: Pandey et al. (2024), AGU Advances 5, e2023AV001145, doi:10.1029/2023AV001145.
 # Licence: [Licence: CC BY 4.0 proposed — confirm] (applies to the GRESO columns; third-party columns keep their own terms, cited above).
