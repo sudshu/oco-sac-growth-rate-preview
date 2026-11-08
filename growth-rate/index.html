@@ -466,7 +466,7 @@ html.js .anntbl-wrap:not(.open){display:none}
           <div class="tools" id="tools-z10"></div>
         </div>
         <div class="chart" id="chart-z10" tabindex="0" role="group" aria-roledescription="chart" aria-describedby="cap-z10 sum-z10"><noscript><p class="caption">This chart needs JavaScript. Its values are in the latitude-band data file on CaltechDATA.</p></noscript></div>
-        <p class="caption" id="cap-z10">The seasonal cycle is removed. Hatched months may still change: single lines mark provisional months and crossed lines early estimates. Data through Apr 2026.</p>
+        <p class="caption" id="cap-z10">Hatched months may still change: single lines mark provisional months and crossed lines early estimates. Data through Apr 2026.</p>
         <p class="sr" id="sum-z10"></p>
         <div id="tbl-z10"></div>
       </div>
@@ -475,26 +475,27 @@ html.js .anntbl-wrap:not(.open){display:none}
     <!-- Download: only the link to the CaltechDATA record (user, 2026-11-04: "I want the user to go to the Caltech data
          page ... I don't want to have direct download from this page", then "Remove all except for ... Get the data on
          CaltechDATA"). The record gives the files, the README, the citation and the licence; the heading is for screen
-         readers only. Under the link, "How to cite" (user, 2026-11-05): this page's own citation, not the files'
-         citation (user, 2026-11-07: "I only want the web page citation, not the data page citation. On this web
-         page."), and the method paper, filled in by the build. The PNG pictures carry the first paragraph, the
-         page's citation, in their Comment text field; their visible source line is the short PNG_SOURCE. -->
+         readers only. Under the link, "How to cite" (user, 2026-11-05): this page's own citation only, filled in by
+         the build, not the files' citation (user, 2026-11-07: "I only want the web page citation, not the data page
+         citation. On this web page."); the method paper is in Methods (user, 2026-11-07). The PNG pictures carry
+         the page's citation in their Comment text field; their visible source line is the short PNG_SOURCE. -->
     <section class="block" id="download" aria-labelledby="dl-h">
       <h2 id="dl-h" class="sr">Download</h2>
       <p class="dl-go"><a class="primary" href="https://doi.org/10.82941/ocosac.greso.co2.data">Get the data on CaltechDATA</a> <span class="todo">[record not public yet]</span></p>
       <div class="cite" id="cite">
         <h3>How to cite</h3>
-        <p>Pandey, S., O&#x27;Dell, C. W., Frankenberg, C., Taylor, T. E., Liu, J., Payne, V. H., &amp; Wennberg, P. O. (2026). Whole-atmosphere CO₂ growth rate from satellite observations, release v2026.10 [web page]. OCO Science Applications and Partnerships Center, Caltech. <span class="todo">[page DOI]</span>.</p>
-        <p>Method: Pandey, S., Miller, J. B., Basu, S., Liu, J., Weir, B., Byrne, B., Chevallier, F., Bowman, K. W., Liu, Z., Deng, F., O&#x27;Dell, C. W., &amp; Chatterjee, A. (2024). Toward low-latency estimation of atmospheric CO2 growth rates using satellite observations: Evaluating sampling errors of satellite and in situ observing approaches. AGU Advances, 5, e2023AV001145. <a href="https://doi.org/10.1029/2023AV001145">doi.org/10.1029/2023AV001145</a></p>
+        <p>Pandey, S., O&#x27;Dell, C. W., Frankenberg, C., &amp; Wennberg, P. O. (2026). Whole-atmosphere CO₂ growth rate from satellite observations, release v2026.10 [web page]. OCO Science Applications and Partnerships Center, Caltech. <span class="todo">[page DOI]</span>.</p>
       </div>
     </section>
 
     <!-- Methods: every box closed. Plain text written for this page (user, 2026-11-04, after a review comment), under
          plain headings (user, same evening); the README keeps the full technical text. Dates and
-         numbers come from simple_methods_slots(). -->
+         numbers come from simple_methods_slots(). Headed "Methods" (user, 2026-11-07: 'instead of "Methods and
+         Caveat," make the title only "Methods."'); the method paper closes the first box (user, 2026-11-07: "Push
+         the method citation into the method under Methods ... it belongs better there"). -->
     <section class="block methods" id="methods" aria-labelledby="methods-h">
       <header>
-        <h2 id="methods-h">Methods and caveats</h2>
+        <h2 id="methods-h">Methods</h2>
       </header>
       <details>
         <summary>How we calculate the growth rate</summary>
@@ -508,6 +509,7 @@ html.js .anntbl-wrap:not(.open){display:none}
           </ol>
           <p id="l12Def">The 12-month value in the annual table is worked out the same way, over the latest 12 months of data.</p>
           <p id="gosatDef">With GOSAT on (the default), the annual chart and table show GOSAT alone for 2010–2014 and the average of OCO-2 and GOSAT from 2015.</p>
+          <p id="methodPaper">Method paper: Pandey, S., Miller, J. B., Basu, S., Liu, J., Weir, B., Byrne, B., Chevallier, F., Bowman, K. W., Liu, Z., Deng, F., O&#x27;Dell, C. W., &amp; Chatterjee, A. (2024). <a href="https://doi.org/10.1029/2023AV001145">Toward low-latency estimation of atmospheric CO₂ growth rates using satellite observations: Evaluating sampling errors of satellite and in situ observing approaches</a>. <em>AGU Advances</em>, 5, e2023AV001145.</p>
         </div>
       </details>
       <details>
@@ -1673,7 +1675,7 @@ function renderZ10() {
   var lats = Z.lat_center, R = lats.length, hw = (Z.band_width || 10) / 2, n = Z.date.length;
   var zt = Z.date.map(ym2t), zst = Z.status || Z.provisional.map(function (p) { return p ? "provisional" : "final"; });
   var x0 = Math.floor(zt[0]), x1 = zt[n - 1] + 1 / 24, latTop = lats[R - 1] + hw, latBot = lats[0] - hw;
-  var m = { l: narrow ? 38 : 46, r: narrow ? 12 : 92, t: 30, b: narrow ? 64 : 30 };
+  var m = { l: narrow ? 38 : 46, r: narrow ? 12 : 92, t: narrow ? 44 : 30, b: narrow ? 64 : 30 };   // phones: a line for "seasonal cycle removed"
   var rowH = narrow ? 20 : Math.round(Math.max(24, Math.min(32, W * 0.033))), ph = rowH * R, Ht = m.t + ph + m.b;
   var x = lin(x0, x1, m.l, W - m.r), yl = lin(latTop, latBot, m.t, m.t + ph);
   var cen = Z.colour_centre, ramp = isDark() ? RAMP_D : RAMP_L;
@@ -1708,12 +1710,19 @@ function renderZ10() {
     if (pxYear < 22 && (yy % 2)) continue;
     S("text", { x: x(yy), y: m.t + ph + 17, "text-anchor": "middle", class: "axl" }, gAx, pxYear < 36 ? "’" + String(yy).slice(2) : String(yy));
   }
+  // "seasonal cycle removed" at the top left, as on the top chart (user, 2026-11-07: "the seasonal cycle removed is
+  // showing up at different places in different plots. Can we make them consistent?"); on phones on a line of its own
+  // above the labels over the plot, which need the room there
+  var sR = 2 + textW(S("text", { x: 2, y: m.t - (narrow ? 28 : 12), class: "axl" }, gAx, "seasonal cycle removed"), 12);
   // above the plot: the 2017 data gap (those months rest on interpolation; on the page only, not in the PNG picture:
-  // user, 2026-11-05, "the downloaded plot should not say data gap") and the months that are not final yet
+  // user, 2026-11-05, "the downloaded plot should not say data gap") and the months that are not final yet; on wide
+  // screens a label that would touch "seasonal cycle removed" starts just right of it
   var gT = S("g", null, svg), gG = S("g", { "data-png": "skip" }, svg);
   function bracket(g, a, b, txt, anc) {
     S("rect", { x: a, y: m.t - 7, width: Math.max(3, b - a), height: 3, class: "brk" }, g);
-    S("text", { x: anc === "end" ? b : (a + b) / 2, y: m.t - 12, "text-anchor": anc || "middle", class: "ann2" }, g, txt);
+    var t = S("text", { x: anc === "end" ? b : (a + b) / 2, y: m.t - 12, "text-anchor": anc || "middle", class: "ann2" }, g, txt);
+    var w = textW(t, 11.5), x0t = anc === "end" ? b - w : (a + b) / 2 - w / 2;
+    if (!narrow && x0t < sR + 8) { t.setAttribute("x", sR + 8); t.setAttribute("text-anchor", "start"); }
   }
   (M.gaps || []).forEach(function (gp) { var a = ymd2t(gp.start), b = ymd2t(gp.end); if (a < x1 && b > x0) bracket(gG, x(a), x(b), "data gap"); });
   var nf = -1; for (var j = 0; j < n; j++) if (zst[j] !== "final") { nf = j; break; }
@@ -1825,11 +1834,11 @@ function renderZ10() {
   // the typical rate); the events follow Pandey (2025, AGU Advances, Fig. 1b), credited with a link (no DOI as text)
   // when they are labelled; numbered boxes get no key here (user, 2026-11-04 evening; the tooltip names them);
   // the colour bar spans the colour range and marks the median (Methods no longer explains them, 2026-11-04).
-  // The PNG picture keeps only the seasonal cycle and the data end (user, 2026-11-07: essentials for slides; the
-  // events' credit is a link, which a picture can't follow): the other sentences are data-png="skip"
+  // The chart itself says "seasonal cycle removed", as the top chart does (user, 2026-11-07). The PNG picture keeps
+  // only the data end (user, 2026-11-07: essentials for slides; the events' credit is a link, which a picture can't
+  // follow): the other sentences are data-png="skip"
   var zc = clear($("#cap-z10"));
-  zc.appendChild(doc.createTextNode("The seasonal cycle is removed."));
-  H("span", { "data-png": "skip" }, zc, " Hatched months may still change: single lines mark provisional months and crossed lines early estimates.");
+  H("span", { "data-png": "skip" }, zc, "Hatched months may still change: single lines mark provisional months and crossed lines early estimates.");
   zc.appendChild(doc.createTextNode(" Data through " + fmtYM(Z.date[n - 1]) + "."));
   if (ev && labs) {
     var zs = H("span", { "data-png": "skip" }, zc, " The boxed events are from ");
@@ -1868,8 +1877,8 @@ function setupZ10() {
    charts" now covers data exports only. The chart is drawn again at a fixed width (PNG_W) in the light theme, with the
    reader's units and switches, and put back before the screen repaints. The picture holds the title, the legend's
    active entries, the chart, one line of small text (the emissions credit, the forecast note, the latitude chart's
-   seasonal cycle and data end), a short source line (PNG_SOURCE), the page address with a small QR code that opens
-   the page at the chart (user, 2026-11-07), the date and the Caltech and JPL logos, at 3x and 300 dpi; the PNG's text
+   data end), a short source line (PNG_SOURCE), the page address and the date, and at the bottom right the Caltech and
+   JPL logos with a small QR code that opens the page at the chart (user, 2026-11-07), at 3x and 300 dpi; the PNG's text
    fields carry the title, that text, the page's full citation and the view link. Only the essentials, for people's own
    slides (user, 2026-11-07: "not too much superfluous information"). It leaves out the layer switches (GOSAT, Events)
    and the latitude chart's "data gap" mark (user's review of the first pictures, 2026-11-05). It is made in the
@@ -2143,29 +2152,29 @@ function pngDraw(c, s, im, draw) {
   y += pngLegendDraw(c, s.legend, X, y, cw, draw) + 6;
   if (draw) c.drawImage(im.chart, X, y, cw, s.svg.h);
   y += s.svg.h + 10;
-  // the explanation and the footer in small type, below the chart's axis labels (user, 2026-11-05: "needs to be smaller")
-  if (s.text) { para(s.text, "11px " + SANS, s.muted, 15); y += 4; }
-  y += 10;
-  if (draw) { c.fillStyle = s.rule; c.fillRect(X, y, cw, 1); }
-  y += 12;
-  // footer: a small QR code for the page at left (user, 2026-11-07), the source and the page address beside it; the logos
-  // in the bottom-right corner, Caltech at the right and JPL a little smaller beside it (user, 2026-11-05). The code, the
-  // last text line's baseline and the logos share one bottom line.
-  var hC = 22, hJ = 18, wC = im.caltech.width / im.caltech.height * hC, wJ = im.jpl.width / im.jpl.height * hJ, logos = wJ + 25 + wC;
+  // the footer in small type, below the chart's axis labels (user, 2026-11-05: "needs to be smaller"), with no rule and
+  // only the essentials (user, 2026-11-07: "less space consumed at the bottom", "keep the text reduced"): the chart's
+  // note, the source and the page address with the date at left. At right the logos, Caltech with JPL a little smaller
+  // beyond a thin rule (user, 2026-11-05), now a third smaller (user, 2026-11-07: "make the JPL and Caltech logos
+  // smaller"), and the QR code for the page beside them in the corner (user, 2026-11-07: "revert back to where we had
+  // Caltech and JPL at the bottom ... just put the QR code next to them on the bottom right"). The code, the logos and
+  // the last text line's baseline share one bottom line.
+  var hC = 15, hJ = 12, wC = im.caltech.width / im.caltech.height * hC, wJ = im.jpl.width / im.jpl.height * hJ;
   var q = s.qr, qm = q ? PNG_QR_PX / PNG_SCALE : 0, qs = qm * (q ? q.length : 0);   // whole device pixels per module
-  var tx = q ? X + qs + 14 : X, tw = cw - (tx - X) - logos - 28, src = "Source: " + PNG_SOURCE;
-  function count(str, font) { c.font = font; return pngWrap(str, tw, function (t) { return c.measureText(t).width; }).length; }
-  var th = 14 * (count(src, "10.5px " + SANS) + count(s.where, "10px " + SANS)) - 3.5;          // the text's top to its last baseline
-  var base = Math.round((y + Math.max(qs, th, hC)) * PNG_SCALE) / PNG_SCALE, lx = X + cw - wC;
+  var tw = cw - (wJ + 22 + wC + (q ? 16 + qs : 0)) - 28, src = "Source: " + PNG_SOURCE;
+  function lines(str, font, lh) { c.font = font; return str ? lh * pngWrap(str, tw, function (t) { return c.measureText(t).width; }).length : 0; }
+  var th = (s.text ? lines(s.text, "11px " + SANS, 15) + 3 : 0) + lines(src, "10.5px " + SANS, 14) + lines(s.where, "10px " + SANS, 14) - 3.5;   // the text's top to its last baseline
+  var base = Math.round((y + Math.max(qs, th, hC)) * PNG_SCALE) / PNG_SCALE, qx = X + cw - qs, lx = (q ? qx - 16 : X + cw) - wC;
   y = base - th;
-  para(src, "10.5px " + SANS, s.ink, 14, tw, tx);
-  para(s.where, "10px " + SANS, s.muted, 14, tw, tx);
+  if (s.text) { para(s.text, "11px " + SANS, s.muted, 15, tw); y += 3; }
+  para(src, "10.5px " + SANS, s.ink, 14, tw);
+  para(s.where, "10px " + SANS, s.muted, 14, tw);
   if (draw) {
     c.fillStyle = s.ink;
-    if (q) q.forEach(function (row, r) { row.forEach(function (dk, k) { if (dk) c.fillRect(X + k * qm, base - qs + r * qm, qm, qm); }); });
+    if (q) q.forEach(function (row, r) { row.forEach(function (dk, k) { if (dk) c.fillRect(qx + k * qm, base - qs + r * qm, qm, qm); }); });
     c.drawImage(im.caltech, lx, base - hC, wC, hC);
-    c.fillStyle = s.rule; c.fillRect(lx - 13, base - hC - 3, 1, hC + 6);
-    c.drawImage(im.jpl, lx - 25 - wJ, base - hJ, wJ, hJ);
+    c.fillStyle = s.rule; c.fillRect(lx - 11, base - hC - 2, 1, hC + 4);
+    c.drawImage(im.jpl, lx - 22 - wJ, base - hJ, wJ, hJ);
   }
   return Math.max(y, base + 3) + PNG_PAD;
 }
