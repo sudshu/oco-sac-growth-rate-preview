@@ -1,5 +1,5 @@
 # GRESO OCO-2 atmospheric growth in mass units, emissions and airborne fraction (annual)
-# Release: v2026.10    Built: 2026-11-07T22:22:59Z    Data end (OCO-2): 2026-07-28
+# Release: v2026.11    Built: 2026-11-09T18:12:39Z    Data end (OCO-2): 2026-10-31
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
 # Authors: Sudhanshu Pandey (Caltech), Christopher W. O'Dell (CIRA, Colorado State University), Christian
 #   Frankenberg (Caltech), Junjie Liu (Jet Propulsion Laboratory, Caltech), Vivienne H. Payne (Jet Propulsion
@@ -9,8 +9,8 @@
 # Input versions:
 #   OCO-2 Lite 10-s XCO2: v11.2r through 2023-12-31 (doi:10.5067/70K2B2W8MNGY), v11.3r from 2024-01-01
 #     (doi:10.5067/C4OENLFCYVSA).
-#   GOSAT (optional layer): ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset acosGOSATv11_lite_20090418-20260731_filtered_tiny.h5, 2009-04-18 → 2026-07-31.
-#   Method: GRESO 1.x (baseline 2026-01-12) (Pandey et al. 2024).
+#   GOSAT (optional layer): ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset acosGOSATv11_lite_20090418-20261031_filtered_tiny.h5, 2009-04-18 → 2026-10-31.
+#   Method: GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time) (Pandey et al. 2024).
 # Definitions:
 #   Growth rate = whole-atmosphere (column) CO2 growth rate from OCO-2 (GRESO): rate of change of the
 #     deseasonalized, area-weighted mean column XCO2 over 50S-50N, where coverage is good all year; CO2 added or
@@ -19,12 +19,12 @@
 #   Monthly = trend(1st of next month) - trend(1st of month); displayed series = 5-month running mean, x12 -> ppm/yr.
 #   Trend = cubic polynomial + 4 harmonics fit, harmonics removed, then 7 x 16-day running mean.
 # Units: ppm = micromol/mol dry air (column average). 1 ppm = 2.124 PgC; 1 PgC = 3.664 GtCO2.
-# Status: age = whole months from the end of the month to the data end (2026-07-28); early <= 2,
+# Status: age = whole months from the end of the month to the data end (2026-10-31); early <= 2,
 #   provisional 3-5, final >= 6. Calendar year: provisional until data
 #   through the end of February of the following year are in (normally released about April), then final.
 # Data gaps:
 #   2017-07-31 to 2017-09-19: OCO-2 safe mode: no data. The 16-day trend is linearly interpolated across the gap, so the Aug and Sep 2017 monthly values rest on the interpolation (flagged in the downloads)
-#   2026-07-28 to 2026-08-13: OCO-2 paused science observations 28 Jul–13 Aug 2026 (safe mode after an instrument anomaly); those days stay missing, and data quality was reduced until 17 Sep 2026. This release uses OCO-2 data up to 28 Jul 2026
+#   2026-07-28 to 2026-08-13: OCO-2 paused science observations 28 Jul–13 Aug 2026 (safe mode after an instrument anomaly); those days stay missing. The 16-day trend is interpolated across the gap, so the Aug 2026 monthly value rests partly on the interpolation (flagged in the downloads). This release uses OCO-2 data up to 30 Sep 2026 from the retrospective stream, which NASA expects to be of nominal quality after the gap (forward-stream data were of reduced quality until 17 Sep 2026), then preliminary forward-processing data for 1–31 Oct 2026
 #
 # Columns:
 #   growth_PgC_yr = OCO-2 annual growth x 2.124; growth_unc1s_PgC_yr = 1-sigma x 2.124.
@@ -33,28 +33,28 @@
 #     + budget imbalance).
 #   gcb2025_atm_growth_PgC_yr = the Global Carbon Budget 2025 atmospheric growth term (NOAA-based); af_gcb2025 =
 #     gcb2025_atm_growth_PgC_yr / E_total. af_noaa_mbl = 2.124 x NOAA MBL annual increase (co2_gr_gl.txt, file
-#     created 2026-09-05) / E_total; NOAA citation: Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07.
+#     created 2026-10-09) / E_total; NOAA citation: Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07.
 #   Emissions 2015-2024 and the GCB atmospheric term: Friedlingstein et al. (2026), Global Carbon Budget 2025, Earth Syst. Sci. Data 18, 3211-3288, doi:10.5194/essd-18-3211-2026; data doi:10.18160/GCP-2025 (CC BY 4.0); redistributed with attribution.
 #   Emissions 2025: low-latency estimate = Carbon Monitor, carbonmonitor.org (Liu et al. 2020, arXiv:2004.13614) x 1.020 + linearly extrapolated LUC;
 #     provisional, not a budget number.
 #   Emissions uncertainty (about +/-7.5%, dominated by LUC) gives about +/-0.04 in the airborne fraction (our estimate).
 #
 # Citation: Pandey, S., O'Dell, C. W., Frankenberg, C., Liu, J., Payne, V. H., & Wennberg, P. O. (2026). GRESO
-#   OCO-2 whole-atmosphere CO2 growth rates, release v2026.10. OCO Science Applications and Partnerships Center,
+#   OCO-2 whole-atmosphere CO2 growth rates, release v2026.11. OCO Science Applications and Partnerships Center,
 #   Caltech. [dashboard base URL]. [data DOI].
 # Method: Pandey et al. (2024), AGU Advances 5, e2023AV001145, doi:10.1029/2023AV001145.
 # Licence: [Licence: CC BY 4.0 proposed — confirm] (applies to the GRESO columns; third-party columns keep their own terms, cited above).
-# See README_v2026.10.txt for full definitions, caveats and input versions.
+# See README_v2026.11.txt for full definitions, caveats and input versions.
 #
 year,growth_ppm_yr,growth_PgC_yr,growth_unc1s_PgC_yr,E_FF_PgC_yr,E_LUC_PgC_yr,E_total_PgC_yr,airborne_fraction,implied_sink_PgC_yr,gcb2025_atm_growth_PgC_yr,af_gcb2025,af_noaa_mbl,emissions_source,growth_status,af_status
-2015,3.00,6.37,0.18,9.66,1.78,11.44,0.557,5.07,6.27,0.548,0.548,GCB2025_v1.0,final,final
+2015,2.99,6.35,0.18,9.66,1.78,11.44,0.555,5.09,6.27,0.548,0.548,GCB2025_v1.0,final,final
 2016,2.71,5.76,0.18,9.66,1.47,11.13,0.517,5.37,6.03,0.542,0.540,GCB2025_v1.0,final,final
-2017,2.05,4.35,0.19,9.82,1.45,11.27,0.387,6.91,4.55,0.403,0.403,GCB2025_v1.0,final,final
-2018,2.47,5.25,0.23,10.03,1.33,11.36,0.462,6.11,5.08,0.447,0.447,GCB2025_v1.0,final,final
-2019,2.75,5.84,0.23,10.12,1.33,11.46,0.510,5.61,5.31,0.464,0.464,GCB2025_v1.0,final,final
-2020,2.31,4.91,0.24,9.60,1.23,10.83,0.453,5.92,4.95,0.457,0.457,GCB2025_v1.0,final,final
-2021,2.29,4.86,0.20,10.06,1.27,11.33,0.429,6.47,5.03,0.444,0.446,GCB2025_v1.0,final,final
+2017,2.05,4.35,0.18,9.82,1.45,11.27,0.387,6.91,4.55,0.403,0.403,GCB2025_v1.0,final,final
+2018,2.48,5.27,0.23,10.03,1.33,11.36,0.464,6.09,5.08,0.447,0.447,GCB2025_v1.0,final,final
+2019,2.74,5.82,0.22,10.12,1.33,11.46,0.508,5.64,5.31,0.464,0.464,GCB2025_v1.0,final,final
+2020,2.32,4.93,0.24,9.60,1.23,10.83,0.455,5.90,4.95,0.457,0.455,GCB2025_v1.0,final,final
+2021,2.28,4.84,0.20,10.06,1.27,11.33,0.427,6.49,5.03,0.444,0.446,GCB2025_v1.0,final,final
 2022,1.92,4.08,0.14,10.24,1.31,11.55,0.353,7.47,4.86,0.421,0.412,GCB2025_v1.0,final,final
-2023,3.11,6.61,0.15,10.40,1.29,11.69,0.565,5.09,5.73,0.490,0.490,GCB2025_v1.0,final,final
-2024,3.47,7.37,0.17,10.54,1.25,11.79,0.625,4.42,7.92,0.672,0.678,GCB2025_v1.0,final,final
-2025,1.96,4.16,0.17,10.55,1.14,11.69,0.356,7.52,,,0.374,low_latency_CMx1.020_plus_extrapolated_LUC,final,provisional
+2023,3.10,6.58,0.15,10.40,1.29,11.69,0.563,5.11,5.73,0.490,0.489,GCB2025_v1.0,final,final
+2024,3.48,7.39,0.17,10.54,1.25,11.79,0.627,4.39,7.92,0.672,0.678,GCB2025_v1.0,final,final
+2025,1.97,4.18,0.18,10.55,1.14,11.69,0.358,7.50,,,0.374,low_latency_CMx1.020_plus_extrapolated_LUC,final,provisional

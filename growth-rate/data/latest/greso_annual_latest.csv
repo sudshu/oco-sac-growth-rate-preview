@@ -1,5 +1,5 @@
 # GRESO annual whole-atmosphere (column) CO2 growth rates from OCO-2 (2015-2025), with GOSAT (2010-2025) and NOAA MBL
-# Release: v2026.10    Built: 2026-11-07T22:22:59Z    Data end (OCO-2): 2026-07-28
+# Release: v2026.11    Built: 2026-11-09T18:12:39Z    Data end (OCO-2): 2026-10-31
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
 # Authors: Sudhanshu Pandey (Caltech), Christopher W. O'Dell (CIRA, Colorado State University), Christian
 #   Frankenberg (Caltech), Junjie Liu (Jet Propulsion Laboratory, Caltech), Vivienne H. Payne (Jet Propulsion
@@ -9,8 +9,8 @@
 # Input versions:
 #   OCO-2 Lite 10-s XCO2: v11.2r through 2023-12-31 (doi:10.5067/70K2B2W8MNGY), v11.3r from 2024-01-01
 #     (doi:10.5067/C4OENLFCYVSA).
-#   GOSAT (optional layer): ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset acosGOSATv11_lite_20090418-20260731_filtered_tiny.h5, 2009-04-18 → 2026-07-31.
-#   Method: GRESO 1.x (baseline 2026-01-12) (Pandey et al. 2024).
+#   GOSAT (optional layer): ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset acosGOSATv11_lite_20090418-20261031_filtered_tiny.h5, 2009-04-18 → 2026-10-31.
+#   Method: GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time) (Pandey et al. 2024).
 # Definitions:
 #   Growth rate = whole-atmosphere (column) CO2 growth rate from OCO-2 (GRESO): rate of change of the
 #     deseasonalized, area-weighted mean column XCO2 over 50S-50N, where coverage is good all year; CO2 added or
@@ -19,12 +19,12 @@
 #   Monthly = trend(1st of next month) - trend(1st of month); displayed series = 5-month running mean, x12 -> ppm/yr.
 #   Trend = cubic polynomial + 4 harmonics fit, harmonics removed, then 7 x 16-day running mean.
 # Units: ppm = micromol/mol dry air (column average). 1 ppm = 2.124 PgC; 1 PgC = 3.664 GtCO2.
-# Status: age = whole months from the end of the month to the data end (2026-07-28); early <= 2,
+# Status: age = whole months from the end of the month to the data end (2026-10-31); early <= 2,
 #   provisional 3-5, final >= 6. Calendar year: provisional until data
 #   through the end of February of the following year are in (normally released about April), then final.
 # Data gaps:
 #   2017-07-31 to 2017-09-19: OCO-2 safe mode: no data. The 16-day trend is linearly interpolated across the gap, so the Aug and Sep 2017 monthly values rest on the interpolation (flagged in the downloads)
-#   2026-07-28 to 2026-08-13: OCO-2 paused science observations 28 Jul–13 Aug 2026 (safe mode after an instrument anomaly); those days stay missing, and data quality was reduced until 17 Sep 2026. This release uses OCO-2 data up to 28 Jul 2026
+#   2026-07-28 to 2026-08-13: OCO-2 paused science observations 28 Jul–13 Aug 2026 (safe mode after an instrument anomaly); those days stay missing. The 16-day trend is interpolated across the gap, so the Aug 2026 monthly value rests partly on the interpolation (flagged in the downloads). This release uses OCO-2 data up to 30 Sep 2026 from the retrospective stream, which NASA expects to be of nominal quality after the gap (forward-stream data were of reduced quality until 17 Sep 2026), then preliminary forward-processing data for 1–31 Oct 2026
 #
 # Columns:
 #   year; oco2_ppm_yr = OCO-2 annual growth (1 Jan -> 1 Jan); oco2_unc1s_ppm_yr = total 1-sigma
@@ -38,31 +38,31 @@
 #   difference. Headline numbers stay OCO-2 alone.
 #   Adjacent-year errors are anticorrelated (shared 1 Jan anchor): do not treat years as independent for multi-year means.
 #   noaa_mbl_ppm_yr, noaa_mbl_unc1s_ppm_yr = NOAA GML global marine boundary layer annual increase and its
-#     uncertainty, from co2_gr_gl.txt (file created 2026-09-05; https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_gr_gl.txt). Third-party values,
+#     uncertainty, from co2_gr_gl.txt (file created 2026-10-09; https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_gr_gl.txt). Third-party values,
 #     redistributed for comparison; cite Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07.
 #     NOAA revises its values; take the current file from NOAA for new work.
 #
 # Citation: Pandey, S., O'Dell, C. W., Frankenberg, C., Liu, J., Payne, V. H., & Wennberg, P. O. (2026). GRESO
-#   OCO-2 whole-atmosphere CO2 growth rates, release v2026.10. OCO Science Applications and Partnerships Center,
+#   OCO-2 whole-atmosphere CO2 growth rates, release v2026.11. OCO Science Applications and Partnerships Center,
 #   Caltech. [dashboard base URL]. [data DOI].
 # Method: Pandey et al. (2024), AGU Advances 5, e2023AV001145, doi:10.1029/2023AV001145.
 # Licence: [Licence: CC BY 4.0 proposed — confirm] (applies to the GRESO columns; third-party columns keep their own terms, cited above).
-# See README_v2026.10.txt for full definitions, caveats and input versions.
+# See README_v2026.11.txt for full definitions, caveats and input versions.
 #
 year,oco2_ppm_yr,oco2_unc1s_ppm_yr,oco2_unc_retrieval_ppm_yr,oco2_unc_smoothing_ppm_yr,oco2_unc_random_ppm_yr,oco2_PgC_yr,oco2_unc1s_PgC_yr,oco2_land_ppm_yr,oco2_ocean_ppm_yr,gosat_ppm_yr,gosat_unc1s_ppm_yr,oco2_gosat_mean_ppm_yr,oco2_gosat_mean_unc1s_ppm_yr,noaa_mbl_ppm_yr,noaa_mbl_unc1s_ppm_yr,status
 2010,,,,,,,,,,2.38,0.086,,,2.36,0.07,final
-2011,,,,,,,,,,1.78,0.109,,,1.73,0.07,final
-2012,,,,,,,,,,2.47,0.096,,,2.42,0.07,final
+2011,,,,,,,,,,1.77,0.110,,,1.74,0.07,final
+2012,,,,,,,,,,2.47,0.097,,,2.41,0.07,final
 2013,,,,,,,,,,2.39,0.099,,,2.45,0.07,final
-2014,,,,,,,,,,2.11,0.092,,,2.03,0.08,final
-2015,3.00,0.083,0.062,0.039,0.040,6.37,0.18,3.06,3.03,2.81,0.103,2.905,0.133,2.95,0.07,final
-2016,2.71,0.085,0.073,0.016,0.040,5.76,0.18,2.65,2.71,2.72,0.083,2.715,0.084,2.83,0.08,final
-2017,2.05,0.088,0.054,0.058,0.040,4.35,0.19,2.07,2.05,2.18,0.083,2.115,0.107,2.14,0.10,final
-2018,2.47,0.109,0.075,0.068,0.040,5.25,0.23,2.39,2.52,2.44,0.109,2.455,0.110,2.39,0.09,final
-2019,2.75,0.110,0.082,0.061,0.040,5.84,0.23,2.61,2.80,2.76,0.101,2.755,0.106,2.50,0.06,final
-2020,2.31,0.113,0.088,0.059,0.040,4.91,0.24,2.32,2.32,2.33,0.083,2.320,0.100,2.33,0.07,final
-2021,2.29,0.096,0.070,0.051,0.040,4.86,0.20,2.43,2.18,2.29,0.089,2.290,0.093,2.38,0.08,final
-2022,1.92,0.066,0.044,0.028,0.040,4.08,0.14,1.87,1.95,1.89,0.086,1.905,0.078,2.24,0.11,final
-2023,3.11,0.071,0.046,0.035,0.040,6.61,0.15,3.15,3.11,3.13,0.083,3.120,0.078,2.70,0.13,final
-2024,3.47,0.079,0.068,0.009,0.040,7.37,0.17,3.48,3.47,3.36,0.093,3.415,0.102,3.76,0.11,final
-2025,1.96,0.081,0.069,0.014,0.040,4.16,0.17,1.90,1.97,1.96,0.091,1.960,0.086,2.06,0.08,final
+2014,,,,,,,,,,2.15,0.103,,,2.03,0.08,final
+2015,2.99,0.083,0.062,0.039,0.040,6.35,0.18,3.05,3.01,2.77,0.119,2.880,0.150,2.95,0.07,final
+2016,2.71,0.084,0.073,0.013,0.040,5.76,0.18,2.65,2.71,2.72,0.083,2.715,0.084,2.83,0.08,final
+2017,2.05,0.086,0.054,0.054,0.040,4.35,0.18,2.07,2.05,2.18,0.083,2.115,0.107,2.14,0.10,final
+2018,2.48,0.107,0.076,0.063,0.040,5.27,0.23,2.40,2.53,2.44,0.095,2.460,0.103,2.39,0.09,final
+2019,2.74,0.105,0.080,0.056,0.040,5.82,0.22,2.61,2.80,2.76,0.089,2.750,0.098,2.50,0.06,final
+2020,2.32,0.111,0.087,0.055,0.040,4.93,0.24,2.31,2.33,2.33,0.083,2.325,0.098,2.32,0.07,final
+2021,2.28,0.096,0.071,0.051,0.040,4.84,0.20,2.43,2.18,2.29,0.089,2.285,0.093,2.38,0.08,final
+2022,1.92,0.066,0.043,0.029,0.040,4.08,0.14,1.86,1.96,1.89,0.086,1.905,0.078,2.24,0.11,final
+2023,3.10,0.069,0.046,0.033,0.040,6.58,0.15,3.15,3.10,3.13,0.084,3.115,0.078,2.69,0.13,final
+2024,3.48,0.079,0.068,0.008,0.040,7.39,0.17,3.48,3.47,3.36,0.093,3.420,0.105,3.76,0.11,final
+2025,1.97,0.083,0.072,0.011,0.040,4.18,0.18,1.92,1.99,1.98,0.100,1.975,0.092,2.06,0.08,final
