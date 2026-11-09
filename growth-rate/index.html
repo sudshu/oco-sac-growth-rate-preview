@@ -1667,6 +1667,9 @@ var Z10_EVENTS = [      // box (t0-t1, lat0-lat1); label anchor (at, anc); leade
 // the latitude heat map shows one satellite at a time (user, 2026-11-09: "switch the heat map between OCO-2 and GOSAT";
 // decision 93), on one colour scale: centred on the OCO-2 median of all band-months, as before
 var Z10_SAT = { oco2: "OCO-2", gosat: "GOSAT" };
+// GOSAT's data gaps for its view, as OCO-2's come from M.gaps (user, 2026-11-09: "yes, mark the GOSAT gaps too";
+// decision 94): filled in by the build (GOSAT_GAPS), page only
+var Z10_GOSAT_GAPS = [{"start": "2014-12-15", "end": "2015-01-31"}, {"start": "2018-11-25", "end": "2018-12-27"}, {"start": "2023-04-07", "end": "2023-05-11"}, {"start": "2025-03-27", "end": "2025-04-24"}, {"start": "2025-12-19", "end": "2026-02-03"}];
 function latName(l) { return l === 0 ? "EQ" : Math.abs(l) + "°" + (l < 0 ? "S" : "N"); }
 function z10Band(lc, hw) {
   var a = lc - hw, b = lc + hw;
@@ -1727,31 +1730,28 @@ function renderZ10() {
   // user, 2026-11-05, "the downloaded plot should not say data gap") and the months that are not final yet; on wide
   // screens a label that would touch "seasonal cycle removed" starts just right of it
   var gT = S("g", null, svg), gG = S("g", { "data-png": "skip" }, svg);
-  function bracket(g, a, b, txt, anc) {
+  function bracket(g, a, b, txt, anc, busy) {
     S("rect", { x: a, y: m.t - 7, width: Math.max(3, b - a), height: 3, class: "brk" }, g);
     var t = S("text", { x: anc === "end" ? b : (a + b) / 2, y: m.t - 12, "text-anchor": anc || "middle", class: "ann2" }, g, txt);
     var w = textW(t, 11.5), x0t = anc === "end" ? b - w : (a + b) / 2 - w / 2;
+    if (busy) {   // a gap's label is left out where it would run into another label; its bar stays
+      if (busy.some(function (s) { return x0t < s[1] + 6 && x0t + w > s[0] - 6; })) { g.removeChild(t); return null; }
+      busy.push([x0t, x0t + w]); return [x0t, x0t + w];
+    }
     if (!narrow && x0t < sR + 8) { t.setAttribute("x", sR + 8); t.setAttribute("text-anchor", "start"); x0t = sR + 8; }
     return [x0t, x0t + w];                                // the label's left and right ends
   }
   var nf = -1; for (var j = 0; j < n; j++) if (zst[j] !== "final") { nf = j; break; }
   var nfT = nf >= 0 ? zt[nf] - 1 / 24 : Infinity;      // start of the first month that is not final
   // a gap inside the months that are not final yet (the 2026 gap, from v2026.11) gets no mark of its own: the hatching
-  // already marks those months, and its label would run into "provisional / early". Nor does a gap whose label would
-  // run into that label (GOSAT's blank January 2026 in v2026.11): the blank month, the caption and the tooltip say it.
-  // GOSAT view: its months with no value (the band run leaves GOSAT's January 2026 gap blank), not OCO-2's gaps
+  // already marks those months, and its label would run into "provisional / early". Each other gap of the satellite
+  // shown gets a bar; its "data gap" label only where it runs into no other label ("seasonal cycle removed" shares the
+  // row on wide screens). GOSAT's view: GOSAT's gaps (decision 94), its caption explains the bars
   var pl = nf >= 0 ? bracket(gT, x(nfT), x(x1), "provisional / early", "end") : null;
-  var gapsZ = [];
-  if (sat === "oco2") (M.gaps || []).forEach(function (gp) { gapsZ.push([ymd2t(gp.start), ymd2t(gp.end)]); });
-  else ZV.forEach(function (row, i) {
-    if (!row.every(function (v) { return v == null; })) return;
-    var L = gapsZ[gapsZ.length - 1], a = zt[i] - 1 / 24;
-    if (L && Math.abs(L[1] - a) < 1e-6) L[1] = zt[i] + 1 / 24; else gapsZ.push([a, zt[i] + 1 / 24]);
-  });
-  gapsZ.forEach(function (g) {
-    var a = g[0], b = g[1]; if (!(a < x1 && b > x0 && a < nfT)) return;
-    var k0 = gG.childNodes.length, lab = bracket(gG, x(a), x(b), "data gap");
-    if (pl && lab[1] > pl[0] - 6) while (gG.childNodes.length > k0) gG.removeChild(gG.lastChild);
+  var busy = (narrow ? [] : [[0, sR]]).concat(pl ? [pl] : []);
+  (sat === "oco2" ? M.gaps || [] : Z10_GOSAT_GAPS).forEach(function (gp) {
+    var a = Math.max(ymd2t(gp.start), x0), b = Math.min(ymd2t(gp.end), x1);
+    if (a < b && a < nfT) bracket(gG, x(a), x(b), "data gap", null, busy);
   });
   // events: outlined boxes; labels with leaders on wide screens, numbered markers otherwise
   var gE = S("g", null, svg);
@@ -1876,6 +1876,7 @@ function renderZ10() {
   if (zf.length) zc.appendChild(doc.createTextNode(" " + (zf.length > 1 ? MON[+zf[0].slice(5, 7) - 1] + "–" : "") + fmtYM(zf[zf.length - 1]) + " use preliminary OCO-2 data for " + fmtYM(M.fp.start.slice(0, 7)) + " (forward processing)."));
   var zb = Z.date.filter(function (d0, i0) { return ZV[i0].every(function (v0) { return v0 == null; }); });
   if (sat === "gosat" && zb.length) zc.appendChild(doc.createTextNode(" GOSAT has no value for " + zb.map(fmtYM).join(", ") + " (data gap)."));
+  if (sat === "gosat" && Z10_GOSAT_GAPS.length) H("span", { "data-png": "skip" }, zc, " Bars above the chart mark gaps in the GOSAT data; values there rest on interpolation.");
   if (ev && labs) {
     var zs = H("span", { "data-png": "skip" }, zc, " The boxed events are from ");
     H("a", { href: "https://doi.org/10.1029/2025AV002085" }, zs, "Pandey (2025)");
