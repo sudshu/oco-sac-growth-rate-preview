@@ -606,7 +606,7 @@ var state = {
   main: { oco2: true, gosat: false, noaa: false },          // NOAA's derived line starts off (user, 2026-11-03)
   outlook: false, emis: true, panel: null,
   annual: { gosat: true, noaa: false },                    // the OCO-2 + GOSAT mean by default (user, 2026-11-05); NOAA's dots start off (2026-11-04)
-  z10: { events: true },
+  z10: { events: true, sat: "oco2" },                     // latitude heat map: Events on, OCO-2 (switch: decision 93)
   open: {}
 };
 var MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -1664,6 +1664,9 @@ var Z10_EVENTS = [      // box (t0-t1, lat0-lat1); label anchor (at, anc); leade
   { n: 3, name: "2023 Canada fires", lines: ["2023 Canada fires"], t0: 2023 + 5 / 12, t1: 2023.75, lat0: 40, lat1: 50, at: [2022.95, 45], anc: "end", from: [2023 + 5 / 12, 45], to: "right" },
   { n: 4, name: "2023–24 Amazon drought and fires", lines: ["2023–24 Amazon", "drought and fires"], t0: 2023 + 8 / 12, t1: 2024 + 10 / 12, lat0: -20, lat1: 0, at: [2024.05, -33], anc: "start", from: [2024.4, -20], to: "top" }
 ];
+// the latitude heat map shows one satellite at a time (user, 2026-11-09: "switch the heat map between OCO-2 and GOSAT";
+// decision 93), on one colour scale: centred on the OCO-2 median of all band-months, as before
+var Z10_SAT = { oco2: "OCO-2", gosat: "GOSAT" };
 function latName(l) { return l === 0 ? "EQ" : Math.abs(l) + "°" + (l < 0 ? "S" : "N"); }
 function z10Band(lc, hw) {
   var a = lc - hw, b = lc + hw;
@@ -1673,6 +1676,7 @@ function z10Band(lc, hw) {
 function renderZ10() {
   writeHash();
   var Z = G.zonal10, host = $("#chart-z10"); if (!Z || !host) return;
+  var sat = state.z10.sat === "gosat" ? "gosat" : "oco2", SN = Z10_SAT[sat], ZV = Z[sat];
   // ppm/yr only, whatever the Units switch says (user, 2026-11-04): the whole-atmosphere factor (PgC per ppm)
   // does not convert one band's rate, so these local conv/fu shadow the page-wide unit helpers
   var u = UNITS.ppm, conv = function (v) { return v; }, fu = function (v, d) { return num(v, d == null ? u.d : d); };
@@ -1685,7 +1689,7 @@ function renderZ10() {
   var x = lin(x0, x1, m.l, W - m.r), yl = lin(latTop, latBot, m.t, m.t + ph);
   var cen = Z.colour_centre, ramp = isDark() ? RAMP_D : RAMP_L;
   function col(v) { return rampColor(0.5 + (v - cen) / (2 * Z10_HALF), ramp); }
-  var svg = newSvg(host, W, Ht, "Monthly CO2 growth rate in ten 10-degree latitude bands from OCO-2 (GRESO), " + fmtYM(Z.date[0]) + " to " + fmtYM(Z.date[n - 1]) + ", seasonal cycle removed, coloured against the median of all band-months (" + fu(cen) + " " + u.label + "): red faster than usual, blue slower.");
+  var svg = newSvg(host, W, Ht, "Monthly CO2 growth rate in ten 10-degree latitude bands from " + SN + " (GRESO), " + fmtYM(Z.date[0]) + " to " + fmtYM(Z.date[n - 1]) + ", seasonal cycle removed, coloured against the " + (sat === "oco2" ? "" : "OCO-2 ") + "median of all band-months (" + fu(cen) + " " + u.label + "): red faster than usual, blue slower.");
   var defs = svg.querySelector("defs") || S("defs", null, svg);
   function hatch(id, cross) {
     var p = S("pattern", { id: id, patternUnits: "userSpaceOnUse", width: 5, height: 5, patternTransform: "rotate(45)" }, defs);
@@ -1698,7 +1702,7 @@ function renderZ10() {
   var gC = S("g", null, svg), cw = function (i) { return x(zt[i] + 1 / 24) - x(zt[i] - 1 / 24); };
   for (var i = 0; i < n; i++) {
     var xx = x(zt[i] - 1 / 24), w = cw(i) + (i < n - 1 ? 0.5 : 0);
-    for (var r = 0; r < R; r++) { var v = Z.oco2[i][R - 1 - r]; if (v != null) S("rect", { x: xx, y: m.t + r * rowH, width: w, height: rowH, fill: col(v) }, gC); }
+    for (var r = 0; r < R; r++) { var v = ZV[i][R - 1 - r]; if (v != null) S("rect", { x: xx, y: m.t + r * rowH, width: w, height: rowH, fill: col(v) }, gC); }
     if (zst[i] !== "final") S("rect", { x: xx, y: m.t, width: w, height: ph, fill: zst[i] === "early" ? hE : hP }, gC);
   }
   for (var r2 = 1; r2 < R; r2++) S("line", { x1: m.l, x2: W - m.r, y1: m.t + r2 * rowH, y2: m.t + r2 * rowH, class: "z10sep" }, svg);
@@ -1727,14 +1731,28 @@ function renderZ10() {
     S("rect", { x: a, y: m.t - 7, width: Math.max(3, b - a), height: 3, class: "brk" }, g);
     var t = S("text", { x: anc === "end" ? b : (a + b) / 2, y: m.t - 12, "text-anchor": anc || "middle", class: "ann2" }, g, txt);
     var w = textW(t, 11.5), x0t = anc === "end" ? b - w : (a + b) / 2 - w / 2;
-    if (!narrow && x0t < sR + 8) { t.setAttribute("x", sR + 8); t.setAttribute("text-anchor", "start"); }
+    if (!narrow && x0t < sR + 8) { t.setAttribute("x", sR + 8); t.setAttribute("text-anchor", "start"); x0t = sR + 8; }
+    return [x0t, x0t + w];                                // the label's left and right ends
   }
   var nf = -1; for (var j = 0; j < n; j++) if (zst[j] !== "final") { nf = j; break; }
   var nfT = nf >= 0 ? zt[nf] - 1 / 24 : Infinity;      // start of the first month that is not final
   // a gap inside the months that are not final yet (the 2026 gap, from v2026.11) gets no mark of its own: the hatching
-  // already marks those months, and its label would run into "provisional / early"
-  (M.gaps || []).forEach(function (gp) { var a = ymd2t(gp.start), b = ymd2t(gp.end); if (a < x1 && b > x0 && a < nfT) bracket(gG, x(a), x(b), "data gap"); });
-  if (nf >= 0) bracket(gT, x(nfT), x(x1), "provisional / early", "end");
+  // already marks those months, and its label would run into "provisional / early". Nor does a gap whose label would
+  // run into that label (GOSAT's blank January 2026 in v2026.11): the blank month, the caption and the tooltip say it.
+  // GOSAT view: its months with no value (the band run leaves GOSAT's January 2026 gap blank), not OCO-2's gaps
+  var pl = nf >= 0 ? bracket(gT, x(nfT), x(x1), "provisional / early", "end") : null;
+  var gapsZ = [];
+  if (sat === "oco2") (M.gaps || []).forEach(function (gp) { gapsZ.push([ymd2t(gp.start), ymd2t(gp.end)]); });
+  else ZV.forEach(function (row, i) {
+    if (!row.every(function (v) { return v == null; })) return;
+    var L = gapsZ[gapsZ.length - 1], a = zt[i] - 1 / 24;
+    if (L && Math.abs(L[1] - a) < 1e-6) L[1] = zt[i] + 1 / 24; else gapsZ.push([a, zt[i] + 1 / 24]);
+  });
+  gapsZ.forEach(function (g) {
+    var a = g[0], b = g[1]; if (!(a < x1 && b > x0 && a < nfT)) return;
+    var k0 = gG.childNodes.length, lab = bracket(gG, x(a), x(b), "data gap");
+    if (pl && lab[1] > pl[0] - 6) while (gG.childNodes.length > k0) gG.removeChild(gG.lastChild);
+  });
   // events: outlined boxes; labels with leaders on wide screens, numbered markers otherwise
   var gE = S("g", null, svg);
   if (ev) Z10_EVENTS.forEach(function (E) {
@@ -1821,22 +1839,27 @@ function renderZ10() {
     anchor: function (k) { var c = Math.floor(k / R), r3 = k % R; return [x(zt[c]), m.t + r3 * rowH + rowH / 2]; },
     clear: function () { while (gH.firstChild) gH.removeChild(gH.firstChild); },
     show: function (k, cX, cY, key) {
-      var c = Math.floor(k / R), r3 = k % R, li = R - 1 - r3, v = Z.oco2[c][li]; this.clear();
-      if (v == null) { tipHide(); return; }
+      var c = Math.floor(k / R), r3 = k % R, li = R - 1 - r3, v = ZV[c][li]; this.clear();
       S("rect", { x: x(zt[c] - 1 / 24) - 1, y: m.t + r3 * rowH - 1, width: cw(c) + 2, height: rowH + 2, class: "cellhi" }, gH);
+      var band = SN + ", " + z10Band(lats[li], hw), E = evAt(zt[c], lats[li]);
+      if (v == null) {   // a blank month (GOSAT's data gap): the tooltip and the read-out say so
+        tipShow(fmtYM(Z.date[c]), zst[c], [{ v: "no value", l: band }], "A gap in the " + SN + " data.", cX, cY);
+        if (key) announce(fmtYM(Z.date[c]) + ", " + band + ": no value (data gap).");
+        return;
+      }
       mark(v);
-      var band = z10Band(lats[li], hw), d = v - cen, E = evAt(zt[c], lats[li]);
+      var d = v - cen, md = (sat === "oco2" ? "" : "OCO-2 ") + "median";
       tipShow(fmtYM(Z.date[c]), zst[c], [
         { rgb: col(v), box: true, v: num(conv(v), u.d) + " " + u.label, l: band },
-        { v: signed(conv(d), u.d), l: (d >= 0 ? "faster" : "slower") + " than the median of all months and bands, " + fu(cen) }
+        { v: signed(conv(d), u.d), l: (d >= 0 ? "faster" : "slower") + " than the " + md + " of all months and bands, " + fu(cen) }
       ], E ? "Box " + E.n + ": " + E.name + "." : null, cX, cY);
-      if (key) announce(fmtYM(Z.date[c]) + ", " + band + ": " + num(conv(v), u.d) + " " + u.label + ", " + signed(conv(d), u.d) + " against the median" + (E ? "; " + E.name : "") + ".");
+      if (key) announce(fmtYM(Z.date[c]) + ", " + band + ": " + num(conv(v), u.d) + " " + u.label + ", " + signed(conv(d), u.d) + " against the " + md + (E ? "; " + E.name : "") + ".");
     }
   };
   bindNav(host);
   host.setAttribute("aria-label", "Latitude heat map. Arrow keys move between months (left, right) and bands (up, down).");
   var hiC = null, loC = null;
-  Z.oco2.forEach(function (row, i2) { row.forEach(function (v2, l) { if (v2 == null) return; if (!hiC || v2 > hiC.v) hiC = { v: v2, i: i2, l: l }; if (!loC || v2 < loC.v) loC = { v: v2, i: i2, l: l }; }); });
+  ZV.forEach(function (row, i2) { row.forEach(function (v2, l) { if (v2 == null) return; if (!hiC || v2 > hiC.v) hiC = { v: v2, i: i2, l: l }; if (!loC || v2 < loC.v) loC = { v: v2, i: i2, l: l }; }); });
   var evList = Z10_EVENTS.map(function (E) { return E.n + " " + E.name; }).join("; ");
   // caption (user, 2026-11-04): only what the text above the chart does not say (it explains the colours and gives
   // the typical rate); the events follow Pandey (2025, AGU Advances, Fig. 1b), credited with a link (no DOI as text)
@@ -1849,33 +1872,47 @@ function renderZ10() {
   H("span", { "data-png": "skip" }, zc, "Hatched months may still change: single lines mark provisional months and crossed lines early estimates.");
   zc.appendChild(doc.createTextNode(" Data through " + fmtYM(Z.date[n - 1]) + "."));
   // the band months that rest on the preliminary OCO-2 data (decision 92; kept in the PNG picture)
-  var zf = M.fp ? M.fp.zonal_months : [];
+  var zf = sat === "oco2" && M.fp ? M.fp.zonal_months : [];
   if (zf.length) zc.appendChild(doc.createTextNode(" " + (zf.length > 1 ? MON[+zf[0].slice(5, 7) - 1] + "–" : "") + fmtYM(zf[zf.length - 1]) + " use preliminary OCO-2 data for " + fmtYM(M.fp.start.slice(0, 7)) + " (forward processing)."));
+  var zb = Z.date.filter(function (d0, i0) { return ZV[i0].every(function (v0) { return v0 == null; }); });
+  if (sat === "gosat" && zb.length) zc.appendChild(doc.createTextNode(" GOSAT has no value for " + zb.map(fmtYM).join(", ") + " (data gap)."));
   if (ev && labs) {
     var zs = H("span", { "data-png": "skip" }, zc, " The boxed events are from ");
     H("a", { href: "https://doi.org/10.1029/2025AV002085" }, zs, "Pandey (2025)");
     zs.appendChild(doc.createTextNode("."));
   }
-  $("#sum-z10").textContent = "Monthly growth rate in ten 10° latitude bands from OCO-2 (GRESO), " + fmtYM(Z.date[0]) + " to " + fmtYM(Z.date[n - 1]) + ", in " + u.label + ", from a closely related run of the method. Red is faster than the median of all band-months (" + fu(cen) + "), blue slower; blue does not mean the band took up more CO₂ than it emitted. The fastest band-month was " + z10Band(lats[hiC.l], hw) + " in " + fmtYM(Z.date[hiC.i]) + " (" + fu(hiC.v) + "), the slowest " + z10Band(lats[loC.l], hw) + " in " + fmtYM(Z.date[loC.i]) + " (" + fu(loC.v) + ")." + (ev ? " Outlined boxes mark four events: " + evList + "." : "") + " The Table button lists every value.";
+  $("#sum-z10").textContent = "Monthly growth rate in ten 10° latitude bands from " + SN + " (GRESO), " + fmtYM(Z.date[0]) + " to " + fmtYM(Z.date[n - 1]) + ", in " + u.label + ", from a closely related run of the method. Red is faster than the " + (sat === "oco2" ? "" : "OCO-2 ") + "median of all band-months (" + fu(cen) + "), blue slower; blue does not mean the band took up more CO₂ than it emitted. The fastest band-month was " + z10Band(lats[hiC.l], hw) + " in " + fmtYM(Z.date[hiC.i]) + " (" + fu(hiC.v) + "), the slowest " + z10Band(lats[loC.l], hw) + " in " + fmtYM(Z.date[loC.i]) + " (" + fu(loC.v) + ")." + (ev ? " Outlined boxes mark four events: " + evList + "." : "") + " The Table button lists every value.";
 }
 function setupZ10() {
   var box = $("#lg-z10");
   function rebuild() {
     clear(box);
+    // which satellite (decision 93): a view switch, so the PNG picture leaves it out (its title names the satellite)
+    var seg = H("div", { class: "seg", role: "group", "aria-label": "Satellite", "data-png": "skip" }, box), opts = H("span", { class: "opts" }, seg);
+    ["oco2", "gosat"].forEach(function (s) {
+      var b = H("button", { type: "button", "aria-pressed": String(state.z10.sat === s) }, opts, Z10_SAT[s]);
+      b.addEventListener("click", function () {
+        if (state.z10.sat === s) return;
+        state.z10.sat = s;
+        Array.prototype.forEach.call(opts.children, function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+        renderZ10(); renderTable("z10");
+      });
+    });
     // a layer switch, so the PNG picture leaves it out (user, 2026-11-05: no "event logo" in the downloaded pictures)
     legendToggle(box, { on: state.z10.events, c: "--ink", key: "evt", label: "Events", toggle: function () { state.z10.events = !state.z10.events; rebuild(); renderZ10(); } }).setAttribute("data-png", "skip");
   }
   rebuild();
   VIEWS.z10 = function () {
     var Z = G.zonal10, u = UNITS.ppm, hw = (Z.band_width || 10) / 2, lats = Z.lat_center.slice().reverse();   // ppm/yr only
+    var sat = state.z10.sat === "gosat" ? "gosat" : "oco2";
     var cols = [{ label: "Month", txt: true }, { label: "Status", txt: true }];
     lats.forEach(function (l) { cols.push({ label: z10Band(l, hw) }); });
     var rows = Z.date.map(function (d, i) {
-      var r = [d, { st: Z.status ? Z.status[i] : (Z.provisional[i] ? "provisional" : "final"), fp: !!(M.fp && M.fp.zonal_months.indexOf(d) >= 0) }];
-      Z.oco2[i].slice().reverse().forEach(function (v) { r.push(fmtCell(v, u.d)); });
+      var r = [d, { st: Z.status ? Z.status[i] : (Z.provisional[i] ? "provisional" : "final"), fp: !!(sat === "oco2" && M.fp && M.fp.zonal_months.indexOf(d) >= 0) }];
+      Z[sat][i].slice().reverse().forEach(function (v) { r.push(fmtCell(v, u.d)); });
       return r;
     });
-    return { title: "Monthly growth rate in 10° latitude bands, north to south, " + u.label, cols: cols, rows: rows };
+    return { title: "Monthly growth rate in 10° latitude bands from " + Z10_SAT[sat] + " (GRESO), north to south, " + u.label, cols: cols, rows: rows };
   };
   tools("z10", "latitude heat map");
   pngButton("z10", "latitude heat map");
@@ -1912,7 +1949,7 @@ var PNG_CHARTS = {
   annual: { host: "#chart-annual", draw: function () { renderAnnual(); }, legends: ["#lg-annual"], text: ["#cap-em"], file: "annual", anchor: "annual",
     title: function () { return "Satellite-observed annual growth rate of CO₂ in the whole atmosphere"; } },
   z10: { host: "#chart-z10", draw: function () { renderZ10(); }, legends: ["#lg-z10"], text: ["#cap-z10"], file: "latitude", anchor: "latitude",
-    title: function () { return "Satellite-observed monthly growth rate of CO₂ in 10° latitude bands"; } }
+    title: function () { return "Satellite-observed monthly growth rate of CO₂ in 10° latitude bands, from " + Z10_SAT[state.z10.sat]; } }
 };
 function pngButton(name, label) {
   if (!LOGOS || !window.Promise || !window.TextEncoder || !HTMLCanvasElement.prototype.toBlob) return;   // old browsers: no button
@@ -2225,7 +2262,7 @@ function savePng(name, btn) {
   function done(msg) { btn.disabled = false; btn.textContent = lab; announce(msg); }
   btn.disabled = true; btn.textContent = "Preparing…"; tipHide();
   try { s = pngSnapshot(spec); } catch (e) { done("Sorry, the picture could not be made."); return; }
-  var file = "greso_" + spec.file + "_chart" + (name !== "z10" && state.unit !== "ppm" ? "_" + state.unit : "") + "_" + M.release + ".png";
+  var file = "greso_" + spec.file + "_chart" + (name !== "z10" && state.unit !== "ppm" ? "_" + state.unit : "") + (name === "z10" && state.z10.sat === "gosat" ? "_gosat" : "") + "_" + M.release + ".png";
   s.where = (location.host + location.pathname).replace(/index\.html$/, "") + "  ·  Downloaded " + now.getDate() + " " + MON[now.getMonth()] + " " + now.getFullYear();
   // the QR code opens the page at this chart (user, 2026-11-07: "Somebody can go back to the actual page"); none for a
   // page opened from a file
@@ -2249,7 +2286,7 @@ function savePng(name, btn) {
 }
 
 
-/* ============ view permalink: #units=PgC&show=gosat,noaa&forecast=on&emissions=off&panel=recent&annual=nogosat,noaa&latitude=noevents&table=main,z10 */
+/* ============ view permalink: #units=PgC&show=gosat,noaa&forecast=on&emissions=off&panel=recent&annual=nogosat,noaa&latitude=gosat,noevents&table=main,z10 */
 var TABLES = ["main", "z10"];
 function isStateHash(h) { return /(^|&)(units|show|forecast|outlook|emissions|panel|annual|latitude|z4|table)=/.test(h); }   // z4 = older links
 function readHash() {
@@ -2258,7 +2295,7 @@ function readHash() {
   // reset to defaults, then apply the link
   state.unit = "ppm";
   state.main = { oco2: true, gosat: false, noaa: false }; state.outlook = false; state.emis = true; state.panel = null;
-  state.annual = { gosat: true, noaa: false }; state.z10 = { events: true }; state.open = {};
+  state.annual = { gosat: true, noaa: false }; state.z10 = { events: true, sat: "oco2" }; state.open = {};
   h.split("&").forEach(function (kv) {
     var p = kv.split("="), k = p[0], v = p[1] || "";
     try { v = decodeURIComponent(v); } catch (e) { v = ""; }            // a damaged link falls back to the defaults
@@ -2272,7 +2309,7 @@ function readHash() {
     else if (k === "emissions") state.emis = v !== "off";
     else if (k === "panel") state.panel = v === "recent" ? "recent" : "full";
     else if (k === "annual") { state.annual.gosat = set.indexOf("nogosat") < 0; state.annual.noaa = set.indexOf("noaa") >= 0; }   // GOSAT on unless switched off (2026-11-05)
-    else if (k === "latitude") state.z10.events = set.indexOf("noevents") < 0;
+    else if (k === "latitude") { state.z10.events = set.indexOf("noevents") < 0; state.z10.sat = set.indexOf("gosat") >= 0 ? "gosat" : "oco2"; }
     else if (k === "table") set.forEach(function (n) { if (TABLES.indexOf(n) >= 0 || n === "annual") state.open[n] = true; });
   });
   return true;
@@ -2291,7 +2328,10 @@ function writeHash() {
   if (state.panel) parts.push("panel=" + state.panel);
   if (!state.annual.gosat) an.push("nogosat"); if (state.annual.noaa) an.push("noaa");
   if (an.length) parts.push("annual=" + an.join(","));
-  if (!state.z10.events) parts.push("latitude=noevents");
+  var lt = [];
+  if (state.z10.sat === "gosat") lt.push("gosat");
+  if (!state.z10.events) lt.push("noevents");
+  if (lt.length) parts.push("latitude=" + lt.join(","));
   var tb = TABLES.filter(function (n) { return state.open[n]; }).concat(state.open.annual ? ["annual"] : []);
   if (tb.length) parts.push("table=" + tb.join(","));
   var h = parts.join("&");
