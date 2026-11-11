@@ -1,5 +1,5 @@
 # GRESO annual whole-atmosphere (column) CO2 growth rates from OCO-2 (2015-2025), with GOSAT (2010-2025) and NOAA MBL
-# Release: v2026.11    Built: 2026-11-10T23:32:03Z    Data end (OCO-2): 2026-10-31
+# Release: v2026.11    Built: 2026-11-11T03:57:16Z    Data end (OCO-2): 2026-10-31
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
 # Authors: Sudhanshu Pandey (Caltech), Christopher W. O'Dell (CIRA, Colorado State University), Christian
 #   Frankenberg (Caltech), Junjie Liu (Jet Propulsion Laboratory, Caltech), Vivienne H. Payne (Jet Propulsion
@@ -10,14 +10,14 @@
 #   OCO-2 Lite 10-s XCO2: v11.2r through 2023-12-31 (doi:10.5067/70K2B2W8MNGY), v11.3r from 2024-01-01
 #     (doi:10.5067/C4OENLFCYVSA).
 #   GOSAT (optional layer): ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset acosGOSATv11_lite_20090418-20261031_filtered_tiny.h5, 2009-04-18 → 2026-10-31.
-#   Method: GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time) (Pandey et al. 2024).
+#   Method: GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time, seasonal fit solved exactly) (Pandey et al. 2024).
 # Definitions:
 #   Growth rate = whole-atmosphere (column) CO2 growth rate from OCO-2 (GRESO): rate of change of the
 #     deseasonalized, area-weighted mean column XCO2 over 50S-50N, where coverage is good all year; CO2 added or
 #     removed further poleward mixes into this band within weeks to months, so it tracks the whole atmosphere.
 #   Annual = trend(1 Jan Y+1) - trend(1 Jan Y). It is NOT the mean of the monthly values.
 #   Monthly = trend(1st of next month) - trend(1st of month); displayed series = 5-month running mean, x12 -> ppm/yr.
-#   Trend = cubic polynomial + 4 harmonics fit, harmonics removed, then 7 x 16-day running mean.
+#   Trend = cubic polynomial + 4 harmonics fit (solved exactly), harmonics removed, then 7 x 16-day running mean.
 # Units: ppm = micromol/mol dry air (column average). 1 ppm = 2.124 PgC; 1 PgC = 3.664 GtCO2.
 # Status: age = whole months from the end of the month to the data end (2026-10-31); early <= 2,
 #   provisional 3-5, final >= 6. Calendar year: provisional until data
@@ -57,12 +57,12 @@ year,oco2_ppm_yr,oco2_unc1s_ppm_yr,oco2_unc_retrieval_ppm_yr,oco2_unc_smoothing_
 2014,,,,,,,,,,2.15,0.103,,,2.03,0.08,final
 2015,2.99,0.083,0.062,0.039,0.040,6.35,0.18,3.05,3.01,2.77,0.119,2.880,0.150,2.95,0.07,final
 2016,2.71,0.084,0.073,0.013,0.040,5.76,0.18,2.65,2.71,2.72,0.083,2.715,0.084,2.83,0.08,final
-2017,2.05,0.086,0.054,0.054,0.040,4.35,0.18,2.07,2.05,2.18,0.083,2.115,0.107,2.14,0.10,final
-2018,2.48,0.107,0.076,0.063,0.040,5.27,0.23,2.40,2.53,2.44,0.095,2.460,0.103,2.39,0.09,final
-2019,2.74,0.105,0.080,0.056,0.040,5.82,0.22,2.61,2.80,2.76,0.089,2.750,0.098,2.50,0.06,final
+2017,2.05,0.086,0.054,0.053,0.040,4.35,0.18,2.07,2.05,2.18,0.083,2.115,0.107,2.14,0.10,final
+2018,2.48,0.106,0.076,0.063,0.040,5.27,0.23,2.40,2.53,2.44,0.095,2.460,0.103,2.39,0.09,final
+2019,2.74,0.105,0.080,0.055,0.040,5.82,0.22,2.61,2.80,2.76,0.089,2.750,0.098,2.50,0.06,final
 2020,2.32,0.111,0.087,0.055,0.040,4.93,0.24,2.31,2.33,2.33,0.083,2.325,0.098,2.32,0.07,final
 2021,2.28,0.096,0.071,0.051,0.040,4.84,0.20,2.43,2.18,2.29,0.089,2.285,0.093,2.38,0.08,final
-2022,1.92,0.066,0.043,0.029,0.040,4.08,0.14,1.86,1.96,1.89,0.086,1.905,0.078,2.24,0.11,final
+2022,1.92,0.065,0.043,0.028,0.040,4.08,0.14,1.86,1.96,1.89,0.086,1.905,0.078,2.24,0.11,final
 2023,3.10,0.069,0.046,0.033,0.040,6.58,0.15,3.15,3.10,3.13,0.084,3.115,0.078,2.69,0.13,final
 2024,3.48,0.079,0.068,0.008,0.040,7.39,0.17,3.48,3.47,3.36,0.093,3.420,0.105,3.76,0.11,final
 2025,1.97,0.083,0.072,0.011,0.040,4.18,0.18,1.92,1.99,1.98,0.100,1.975,0.092,2.06,0.08,final

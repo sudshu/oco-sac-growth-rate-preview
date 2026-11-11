@@ -6,7 +6,7 @@ Authors: Sudhanshu Pandey (Caltech), Christopher W. O'Dell (CIRA, Colorado State
   Laboratory, Caltech), Vivienne H. Payne (Jet Propulsion Laboratory, Caltech)
   and Paul O. Wennberg (Caltech).
 Contact: [contact e-mail]
-Built: 2026-11-10T23:32:03Z   Data end (OCO-2): 2026-10-31
+Built: 2026-11-11T03:57:16Z   Data end (OCO-2): 2026-10-31
 
 DRAFT -- placeholders are in [brackets].
 
@@ -45,7 +45,7 @@ so the result tracks the whole atmosphere.
 --------------------------------------------------------------------------------
 METHOD (as the code runs)
 --------------------------------------------------------------------------------
-GRESO (Pandey et al. 2024, doi:10.1029/2023AV001145), method version GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time). Input: OCO-2 v11 10-s XCO₂ (v11.2r through 2023, v11.3r from 2024, preliminary forward-processing data for 1–31 Oct 2026), land + ocean (target mode excluded), retrieval uncertainty < 2 ppm. Each 16-day repeat cycle is binned to 5°×5° cells (median), averaged along each latitude row and area-weighted across rows. Each 16-day bin is dated at its effective time, the area-weighted mean time of the soundings it uses (the same weights as the XCO₂ mean), not at the window's midpoint. Seasonal cycle: least-squares fit of a cubic polynomial plus four annual harmonics over the whole record; the harmonics are subtracted. The deseasonalized series is gap-filled linearly and smoothed with a 7-window (7×16-day ≈ 112-day) running mean. Monthly growth = trend(1st of next month) − trend(1st of month), ×12 for ppm/yr, displayed with a 5-month running mean. Annual growth = trend(1 Jan Y+1) − trend(1 Jan Y), not the mean of the displayed monthly values. Annual 1σ = √(retrieval² + smoothing² + 0.04²): retrieval = spread over 40 decile subsets of four retrieval parameters, smoothing = spread over 6 smoothing widths, 0.04 ppm/yr = OSSE sampling error.
+GRESO (Pandey et al. 2024, doi:10.1029/2023AV001145), method version GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time, seasonal fit solved exactly). Input: OCO-2 v11 10-s XCO₂ (v11.2r through 2023, v11.3r from 2024, preliminary forward-processing data for 1–31 Oct 2026), land + ocean (target mode excluded), retrieval uncertainty < 2 ppm. Each 16-day repeat cycle is binned to 5°×5° cells (median), averaged along each latitude row and area-weighted across rows. Each 16-day bin is dated at its effective time, the area-weighted mean time of the soundings it uses (the same weights as the XCO₂ mean), not at the window's midpoint. Seasonal cycle: least-squares fit (solved exactly) of a cubic polynomial plus four annual harmonics over the whole record; the harmonics are subtracted. The deseasonalized series is gap-filled linearly and smoothed with a 7-window (7×16-day ≈ 112-day) running mean. Monthly growth = trend(1st of next month) − trend(1st of month), ×12 for ppm/yr, displayed with a 5-month running mean. Annual growth = trend(1 Jan Y+1) − trend(1 Jan Y), not the mean of the displayed monthly values. Annual 1σ = √(retrieval² + smoothing² + 0.04²): retrieval = spread over 40 decile subsets of four retrieval parameters, smoothing = spread over 6 smoothing widths, 0.04 ppm/yr = OSSE sampling error.
 
 --------------------------------------------------------------------------------
 DEFINITIONS AND UNITS
@@ -53,7 +53,7 @@ DEFINITIONS AND UNITS
 Annual growth rate G_Y = trend(00:00 1 Jan Y+1) - trend(00:00 1 Jan Y)   [ppm/yr]
   (the same calendar-year concept as NOAA's Dec/Jan-based annual increase).
   It is NOT the mean of the displayed monthly values (those are smoothed across
-  year boundaries; e.g. 2015 monthly mean 2.92 vs annual 2.99).
+  year boundaries; e.g. 2015 monthly mean 2.93 vs annual 2.99).
 Monthly increment g_m = trend(1st of month m+1) - trend(1st of month m) [ppm/month].
   Twelve increments sum to the annual value (exactly, before rounding).
 Displayed monthly growth = 5-month running mean of 12 x g_m             [ppm/yr].
@@ -97,7 +97,7 @@ Headline "last 12 months" value: Change of the deseasonalized OCO-2 XCO₂ trend
 INPUT VERSIONS
 --------------------------------------------------------------------------------
 Provenance: OCO-2 Lite v11.2r through 2023, v11.3r from 2024.
-OCO-2:     OCO-2 Lite 10-s XCO₂: v11.2r (doi:10.5067/70K2B2W8MNGY) through 2023-12-31 and v11.3r (doi:10.5067/C4OENLFCYVSA) from 2024-01-01, through 2026-09-30; then preliminary forward-processing (FP) data from the OCO-2 team (product FwDaily_B11301_r01), 2026-10-01 through 2026-10-31. Method GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time) (Pandey et al. 2024).
+OCO-2:     OCO-2 Lite 10-s XCO₂: v11.2r (doi:10.5067/70K2B2W8MNGY) through 2023-12-31 and v11.3r (doi:10.5067/C4OENLFCYVSA) from 2024-01-01, through 2026-09-30; then preliminary forward-processing (FP) data from the OCO-2 team (product FwDaily_B11301_r01), 2026-10-01 through 2026-10-31. Method GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time, seasonal fit solved exactly) (Pandey et al. 2024).
            Input file OCO2_b11.3-lite_10sec_GOOD_20140906-20261031_RP+FP_2611051636.h5;
            GRESO code commit 6b2a7785 (baseline 2026-01-12) with each 16-day bin
            dated at its effective time, handoff 2026-11-07.

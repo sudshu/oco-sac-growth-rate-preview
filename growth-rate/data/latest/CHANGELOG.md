@@ -1,6 +1,6 @@
 # GRESO OCO-2 growth-rate data: CHANGELOG
 
-## v2026.11 (built 2026-11-10T23:32:03Z) (DRAFT)
+## v2026.11 (built 2026-11-11T03:57:16Z) (DRAFT)
 
 - Data end 2026-10-31 (public v11.3r Lite data, retrospective stream, to 30 Sep 2026, then preliminary
   forward-processing data for 1–31 Oct 2026); was 2026-07-28. OCO-2 has no data 28 Jul-13 Aug 2026 (safe mode);
@@ -19,7 +19,15 @@
   and ocean subsets and the 10-degree bands. Bins with data spread over the window barely move (median shift of
   the global OCO-2 bins 0.1 days); bins cut by an outage or by the data end move to where their data are (up to
   5.9 days here).
-- Method label: GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time).
+- Method: GRESO's seasonal fit (a cubic polynomial plus four annual harmonics over the whole record) is now
+  solved exactly, as the linear least-squares problem it is. GRESO used scipy's iterative leastsq, which stopped
+  short of the optimum on this badly conditioned fit and could give slightly different answers on different
+  computers. On this release's data the change moves the OCO-2 monthly values by up to 0.09 ppm/yr (median 0.03)
+  and the 10-degree band values by up to 0.07 ppm/yr, and leaves the annual values unchanged at two decimals. It
+  applies to OCO-2 and GOSAT, the global series, the land and ocean subsets, the 10-degree bands and the
+  uncertainty ensembles.
+- Method label: GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time, seasonal fit solved
+  exactly).
 - GOSAT: ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset
   acosGOSATv11_lite_20090418-20261031_filtered_tiny.h5, 2009-04-18 → 2026-10-31. NOAA GML files created
   2026-10-09.
@@ -34,7 +42,7 @@
 - Headline 12-month value: 2025-10-01 -> 2026-10-01 (the newest 12 months with observations).
 - GOSAT 10-degree bands: 2026-01 now holds the value of the band run's own interpolation across GOSAT's data gap
   (19 Dec 2025 to 3 Feb 2026), which the run used to blank. Flag trend_interpolated_data_gap on the GOSAT months
-  without any GOSAT data (2015-01, 2026-01). Every other band value unchanged.
+  without any GOSAT data (2015-01, 2026-01).
 - Emissions extended to 2026-09 (was 2026-06); every earlier value unchanged. August–September 2026: the same
   months a year earlier times Carbon Monitor's growth over the year, from Carbon Monitor's data of 10 November
   2026.
@@ -46,15 +54,15 @@
   1.96 -> 1.98.
 - Annual NOAA MBL (ppm/yr): largest revision 0.01; 2011 1.73 -> 1.74, 2012 2.42 -> 2.41, 2020 2.33 -> 2.32, 2023
   2.70 -> 2.69.
-- Monthly OCO-2 (ppm/yr): largest revision of a month final in v2026.10 0.11 (2019-11); months provisional or
-  early in v2026.10: 2026-01 1.72 -> 1.62, 2026-02 1.47 -> 1.45, 2026-03 1.34 -> 1.31, 2026-04 1.28 -> 1.50,
-  2026-05 1.53 -> 1.92, 2026-06 1.53 -> 2.63; new months 2026-07 -> 2026-09.
+- Monthly OCO-2 (ppm/yr): largest revision of a month final in v2026.10 0.16 (2019-11); months provisional or
+  early in v2026.10: 2026-01 1.72 -> 1.62, 2026-02 1.47 -> 1.47, 2026-03 1.34 -> 1.35, 2026-04 1.28 -> 1.54,
+  2026-05 1.53 -> 1.95, 2026-06 1.53 -> 2.66; new months 2026-07 -> 2026-09.
 - Monthly GOSAT (ppm/yr): largest revision of a month final in v2026.10 0.12 (2019-02); of the months
   provisional or early in v2026.10, largest 1.23 (2026-06); new months 2026-07 -> 2026-09.
 - Monthly NOAA-derived (ppm/yr): largest revision of a month final in v2026.10 0.13 (2024-05); of the months
   provisional or early in v2026.10, largest 0.76 (2026-05); new month 2026-06.
-- 10-degree bands, OCO-2 (ppm/yr): largest revision of a month final in v2026.10 0.38 (2017-11, band centred at
-  45 degrees).
+- 10-degree bands, OCO-2 (ppm/yr): largest revision of a month final in v2026.10 0.35 (2017-10, band centred at
+  -45 degrees).
 - 10-degree bands, GOSAT (ppm/yr): largest revision of a month final in v2026.10 0.22 (2025-07, band centred at
   -45 degrees).
 
