@@ -7,8 +7,16 @@
 <title>Whole-atmosphere CO₂ growth rate from satellite observations | OCO Science Applications and Partnerships Center</title>
 <meta name="description" content="How fast CO₂ is building up in the whole atmosphere, from satellite observations (OCO-2 and GOSAT) with the GRESO method: the monthly and annual growth rate with uncertainties and versioned downloadable data (release v2026.11).">
 <script>
-  /* Apply a saved theme before first paint (no flash). */
-  (function () { var d = document.documentElement; d.className += " js"; try { var t = localStorage.getItem("greso-theme"); if (t === "light" || t === "dark") d.setAttribute("data-theme", t); } catch (e) {} })();
+  /* Apply a saved theme before first paint (no flash). Embed mode, ?embed=1 (Christian Frankenberg, 2026-11-11: "Keep
+     the standalone dashboard, but add an embed mode designed to sit inside the Caltech website"): the host page
+     supplies the logo, breadcrumbs, title and footer, so there is no theme button; the page opens in the light theme
+     unless the host asks for theme=dark, or theme=auto for the reader's system setting. */
+  (function () {
+    var d = document.documentElement, q = location.search, e = /[?&]embed=1(&|$)/.test(q), t = (q.match(/[?&]theme=(light|dark|auto)(&|$)/) || [])[1];
+    d.className += " js" + (e ? " embed" : "");
+    if (e) { if (t !== "auto") d.setAttribute("data-theme", t || "light"); return; }
+    try { t = localStorage.getItem("greso-theme"); if (t === "light" || t === "dark") d.setAttribute("data-theme", t); } catch (x) {}
+  })();
 </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "GRESO OCO-2 whole-atmosphere CO2 growth rates, release v2026.11", "description": "Monthly and annual whole-atmosphere (column) CO2 growth rates from OCO-2 using the GRESO method, with uncertainty, status flags, latitude bands and a carbon-budget view.", "temporalCoverage": "2015-01/2026-09", "spatialCoverage": "50°S–50°N (area-weighted)", "version": "v2026.11", "isAccessibleForFree": true, "variableMeasured": ["CO2 growth rate (ppm/yr)", "CO2 growth rate (PgC/yr)", "airborne fraction"], "creator": [{"@type": "Person", "name": "Sudhanshu Pandey", "affiliation": "Caltech, OCO Science Applications and Partnerships Center"}, {"@type": "Person", "name": "Christopher W. O'Dell", "affiliation": "CIRA, Colorado State University"}, {"@type": "Person", "name": "Christian Frankenberg", "affiliation": "Caltech"}, {"@type": "Person", "name": "Junjie Liu", "affiliation": "Jet Propulsion Laboratory, Caltech"}, {"@type": "Person", "name": "Vivienne H. Payne", "affiliation": "Jet Propulsion Laboratory, Caltech"}, {"@type": "Person", "name": "Paul O. Wennberg", "affiliation": "Caltech"}], "publisher": {"@type": "Organization", "name": "OCO Science Applications and Partnerships Center, Caltech"}, "citation": "https://doi.org/10.1029/2023AV001145", "sameAs": "https://doi.org/10.82941/ocosac.greso.co2.data"}</script>
 <style>
@@ -102,6 +110,7 @@ html.js #sum-main{position:absolute!important;width:1px;height:1px;overflow:hidd
 .controls .hint:empty{margin-left:-1.6rem}       /* an empty status line must not wrap onto a row of its own */
 @media (max-width:900px){.controls .wrap{gap:.5rem 1rem}.controls .hint:empty{margin-left:-1rem}}
 @media (min-width:641px) and (max-width:690px){#unitsLab{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}   /* still names the units group for screen readers */
+@media (max-width:299px){#unitsLab{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}   /* a frame under 300 px (decision 104): the units switch fits */
 .seg{display:inline-flex;align-items:center;gap:.6rem;font-size:.88rem}
 .seg>span{color:var(--muted)}
 .seg .opts{display:inline-flex;border:1px solid var(--rule);border-radius:7px;overflow:hidden}
@@ -324,6 +333,18 @@ footer.site p{margin:0 0 .6rem}
 footer.site dl{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;margin:0}
 footer.site dt{color:var(--muted)}
 footer.site dd{margin:0;color:var(--ink)}
+/* Embed mode (?embed=1): the page in an iframe on the Caltech website, which supplies the logo, breadcrumbs, title,
+   contact and disclaimer (Christian Frankenberg, 2026-11-11). The title stays for screen readers. The credits stay,
+   small, at the end: who prepared the page, and the data sources with the Copernicus notice that ERA5's licence asks
+   for wherever its data are shown (decision 85) */
+.embed header.site,.embed .skip,.embed footer.site .fdisc,.embed footer.site .fcontact{display:none}
+.embed #title{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.embed .intro{padding-top:.25rem}
+.embed .intro .dek{margin-top:0}
+.embed footer.site{margin-top:2.5rem;border-top:1px solid var(--rule);padding:1rem 0 .25rem;font-size:.85rem}
+.embed footer.site .cols{grid-template-columns:1fr}
+/* sized to the page by the outer page's script (embed.js): nothing scrolls inside the iframe */
+html.embed.hosted{overflow:hidden}
 .fatal{border:2px solid var(--warn);padding:1rem;margin:2rem 0}
 .nojs-note{font-size:.9rem;color:var(--muted);margin:.9rem 0 0;max-width:52rem}
 /* Without JavaScript: the headline text, two static charts (monthly with the forecast card, annual), the annual
@@ -624,17 +645,17 @@ html.js .anntbl-wrap:not(.open){display:none}
 <footer class="site">
   <div class="wrap cols">
     <div>
-      <p>Prepared by Sudhanshu Pandey, OCO Science Applications and Partnerships Center, Caltech.</p>
+      <p class="fprep">Prepared by Sudhanshu Pandey, OCO Science Applications and Partnerships Center, Caltech.</p>
       <!-- one credit line; versions and references are in Methods, "Data sources and units" (user, 2026-11-04: no
            repeated text). The climate stripes' data and the Copernicus notice and disclaimer that ERA5 asks for (user,
            2026-11-07: "add the data source for met fields as well. At the bottom of the page"); the page shows no
            CPC ENSO index, so that credit went -->
       <!-- the shorter "Data sources" line (the user, 2026-11-11, B9 of the review of 10 Nov); the Copernicus notice and
            disclaimer stay word for word -->
-      <p>Data sources: <a href="https://disc.gsfc.nasa.gov/">NASA GES DISC</a> (OCO-2 and GOSAT); <a href="https://gml.noaa.gov/ccgg/trends/global.html">NOAA GML</a> (surface CO₂); <a href="https://globalcarbonbudget.org/">Global Carbon Budget</a> and <a href="https://carbonmonitor.org/">Carbon Monitor</a> (emissions); Copernicus <a href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels-monthly-means">ERA5</a> and NOAA <a href="https://www.ncei.noaa.gov/products/extended-reconstructed-sst">ERSST v5</a> (climate). Contains modified Copernicus Climate Change Service information 2026. Neither the European Commission nor ECMWF is responsible for any use that may be made of the Copernicus information or data it contains.</p>
-      <p><span class="todo">[OCO-SAC disclaimer wording — from Kim]</span></p>
+      <p class="fsrc">Data sources: <a href="https://disc.gsfc.nasa.gov/">NASA GES DISC</a> (OCO-2 and GOSAT); <a href="https://gml.noaa.gov/ccgg/trends/global.html">NOAA GML</a> (surface CO₂); <a href="https://globalcarbonbudget.org/">Global Carbon Budget</a> and <a href="https://carbonmonitor.org/">Carbon Monitor</a> (emissions); Copernicus <a href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels-monthly-means">ERA5</a> and NOAA <a href="https://www.ncei.noaa.gov/products/extended-reconstructed-sst">ERSST v5</a> (climate). Contains modified Copernicus Climate Change Service information 2026. Neither the European Commission nor ECMWF is responsible for any use that may be made of the Copernicus information or data it contains.</p>
+      <p class="fdisc"><span class="todo">[OCO-SAC disclaimer wording — from Kim]</span></p>
     </div>
-    <div>
+    <div class="fcontact">
       <dl>
         <dt>Contact</dt><dd><span class="todo">[contact e-mail]</span></dd>
       </dl>
@@ -770,7 +791,11 @@ function newSvg(host, W, Ht, label) {
   Array.prototype.slice.call(host.childNodes).forEach(function (n) { host.removeChild(n); });
   return S("svg", { width: W, height: Ht, viewBox: "0 0 " + W + " " + Ht, role: "img", "aria-label": label }, host);
 }
-function hostWidth(host) { return Math.max(290, Math.floor(host.getBoundingClientRect().width)); }
+/* 266 px: the narrowest the charts draw without labels touching (a stripe's title meets its colour bar's numbers below
+   that). Was 290, wider than the page's column in a frame under 304 px, so the charts stuck out: a phone column of the
+   Caltech page, or an iframe left at the default 300 px (decision 104; Christian Frankenberg, 2026-11-11: "Charts
+   currently overflow horizontally") */
+function hostWidth(host) { return Math.max(266, Math.floor(host.getBoundingClientRect().width)); }
 
 /* Time axis: tick at 1 Jan (or quarter), label centred on the year. */
 function timeAxis(g, x, x0, x1, yTop, yBot, labY) {
@@ -826,16 +851,73 @@ function tipShow(title, status, rows, note, cx, cy) {
   });
   if (note) H("div", { class: "tn" }, tip, note);
   tip.classList.add("on");
-  var w = tip.offsetWidth, h = tip.offsetHeight, vw = window.innerWidth, vh = window.innerHeight;
+  var w = tip.offsetWidth, h = tip.offsetHeight, vw = window.innerWidth, vb = visBox();
   var x = cx + 16, y = cy + 14;
   if (x + w > vw - 8) x = cx - w - 16;
   if (x < 8) x = 8;
-  if (y + h > vh - 8) y = cy - h - 14;
-  if (y < 8) y = 8;
+  if (y + h > vb.bottom - 8) y = cy - h - 14;
+  if (y < vb.top + 8) y = vb.top + 8;
   tip.style.left = x + "px"; tip.style.top = y + "px";
 }
 function tipHide() { tip.classList.remove("on"); }
 function announce(text) { live.textContent = text; }
+
+/* ======================================================== embed mode */
+/* ?embed=1 (decision 104; Christian Frankenberg, 2026-11-11: "add an embed mode designed to sit inside the Caltech
+   website", with "automatic iframe height ... including when Methods or tables expand"). The page tells the page around
+   the iframe its height whenever it changes (charts drawn, fonts loaded, Methods or a table opened or closed, a new
+   width), and that page's script (growth-rate/embed.js) sizes the iframe to fit, so the page never scrolls inside it.
+   That script answers with the part of the iframe in its window ({top, height}), which keeps the PNG preview and the
+   tooltips in view and turns in-page links into scrolls of the outer page. Without that script the page scrolls inside
+   the iframe as usual. Links to other pages open in a new tab, not inside the iframe. Messages: {source:
+   "oco-sac-growth-rate", v: 1, type: "height" | "scroll", ...} out, {source: "oco-sac-growth-rate-host", type:
+   "viewport", top, height} in, only from the parent window; nothing in them is private. */
+var EMBED = doc.documentElement.classList.contains("embed"), INFRAME = window.parent !== window;
+var HOSTV = null;   // the outer page's last {top, height}, in the iframe's coordinates; null until its script answers
+function embPost(msg) { msg.source = "oco-sac-growth-rate"; msg.v = 1; try { window.parent.postMessage(msg, "*"); } catch (e) {} }
+/* The part of the page in view, in window coordinates: all of the window, unless the outer page has said which part of
+   the (page-tall) iframe it shows */
+function visBox() {
+  var h = window.innerHeight;
+  if (!HOSTV) return { top: 0, bottom: h };
+  var t = Math.max(0, HOSTV.top), b = Math.min(h, HOSTV.top + HOSTV.height);
+  return b - t < 120 ? { top: 0, bottom: h } : { top: t, bottom: b };
+}
+/* The page's address without the embed settings: the PNG's "Source" names the dashboard itself */
+function pageURL() {
+  var q = location.search.replace(/[?&](embed|theme)=[^&]*/g, "").replace(/^&/, "?");
+  return location.protocol + "//" + location.host + location.pathname + q + location.hash;
+}
+function setupEmbed() {
+  if (!EMBED) return;
+  function outward(a) { var h = a.getAttribute("href") || ""; return !a.hasAttribute("download") && h.charAt(0) !== "#" && !/^javascript:/i.test(h); }
+  Array.prototype.forEach.call(doc.querySelectorAll("a[href]"), function (a) { if (outward(a)) { a.target = "_blank"; a.rel = "noopener"; } });
+  doc.addEventListener("click", function (e) {   // links drawn later, too
+    var a = e.target.closest ? e.target.closest("a[href]") : null;
+    if (a && outward(a)) { a.target = "_blank"; a.rel = "noopener"; }
+  }, true);
+  if (!INFRAME) return;
+  var lastH = 0;
+  // the root's own height: scrollHeight never drops below the iframe's height, so the page could never shrink
+  function send() { var h = Math.ceil(doc.documentElement.getBoundingClientRect().height); if (h !== lastH) { lastH = h; embPost({ type: "height", height: h }); } }
+  if (window.ResizeObserver) new ResizeObserver(send).observe(doc.documentElement);
+  else setInterval(send, 500);
+  window.addEventListener("load", send);
+  if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(send);
+  window.addEventListener("message", function (e) {
+    var d = e.data;
+    if (e.source !== window.parent || !d || d.source !== "oco-sac-growth-rate-host" || d.type !== "viewport") return;
+    var t = +d.top, h = +d.height;
+    if (!isFinite(t) || !isFinite(h) || h <= 0) return;
+    var first = !HOSTV, moved = !first && Math.abs(HOSTV.top - t) > 1;
+    HOSTV = { top: t, height: h };
+    if (first) { doc.documentElement.classList.add("hosted"); lastH = 0; send(); }   // sized by the outer page from now on
+    if (moved) tipHide();   // the outer page scrolled
+  });
+  send();
+  // say it again each second until the outer page's script answers (it may start after this page), for 30 s at most
+  var tries = 0, again = setInterval(function () { if (HOSTV || ++tries > 30) clearInterval(again); else { lastH = 0; send(); } }, 1000);
+}
 
 /* One binding per chart host; each render installs host._nav = {n, pick, show, clear, anchor, step}. */
 function bindNav(host) {
@@ -1520,8 +1602,9 @@ function setupMainLegend() {
   legendKey(st, { c: "--ink", label: "final" });
   legendKey(st, { c: "--ink", key: "light", label: "provisional" });
   legendKey(st, { c: "--ink", key: "dash light", label: "early estimate" });
-  /* The chart's one Table view: one row per month, observed months then (forecast on) the outlook months, with the
-     climate-stripe values as plotted (CFSv2 forecast months only when the forecast is on). */
+  /* The chart's one Table view: one row per month, newest first (the user, 2026-11-11: "I want the latest monthly
+     growth rates to be shown on the top of the table, and the oldest one at the bottom"; with the forecast on, its
+     months come first), with the climate-stripe values as plotted (CFSv2 forecast months only when the forecast is on). */
   VIEWS.main = function () {
     var u = U(), on = olOn(), em = emOn(), tk = em && state.main.oco2, cols = [{ label: "Month", txt: true }, { label: "Status", txt: true }];
     if (state.main.oco2) cols.push({ label: "OCO-2 (" + u.label + ")" });
@@ -1554,6 +1637,7 @@ function setupMainLegend() {
       }
       rows.push(r);
     }
+    rows.reverse();   // newest month at the top, oldest at the bottom (user, 2026-11-11)
     return { title: "Monthly growth rate, " + u.label + (em ? ", with emissions and the land + ocean uptake" : "") + (on ? ", with the experimental outlook months (months only)" : "") + (DR ? ", and the climate-stripe values" : ""), cols: cols, rows: rows };
   };
   tools("main", "monthly growth chart and climate stripes");
@@ -2592,7 +2676,7 @@ function savePng(name, btn) {
     return new Promise(function (ok) { cv.toBlob(ok, "image/png"); });
   }).then(function (blob) { return blob.arrayBuffer(); }).then(function (buf) {
     var out = pngMeta(new Uint8Array(buf), { Title: s.title, Author: "OCO Science Applications and Partnerships Center, Caltech", Description: s.text,
-      Comment: "Cite as: " + s.cite, Source: location.href, "Creation Time": now.toISOString(), Software: "GRESO growth-rate page, release " + M.release });
+      Comment: "Cite as: " + s.cite, Source: pageURL(), "Creation Time": now.toISOString(), Software: "GRESO growth-rate page, release " + M.release });
     done(pngPreview(URL.createObjectURL(out), file, s.title, btn));   // shown first; its own button saves it (decision 99)
   }).catch(function () { done("Sorry, the picture could not be made."); }).then(function () { URL.revokeObjectURL(s.svg.url); });
 }
@@ -2636,8 +2720,14 @@ function pngPreview(url, file, title, btn) {
   pngDlg._url = url; pngDlg._file = file; pngDlg._btn = btn;
   var img = $("#pngImg"); img.src = url; img.alt = title;
   $("#pngName").textContent = file;
+  // embedded and sized to the page (decision 104): the iframe's window is the whole page, so the dialog goes in the part
+  // the outer page shows, not in the middle of the page
+  var vb = visBox(), st = pngDlg.style, room = vb.bottom - vb.top - 16;
+  st.position = HOSTV ? "fixed" : ""; st.top = HOSTV ? vb.top + 8 + "px" : ""; st.bottom = HOSTV ? "auto" : "";
+  st.margin = HOSTV ? "0 auto" : ""; st.maxHeight = HOSTV ? room + "px" : "";
+  pngDlg.firstChild.style.maxHeight = HOSTV ? room - 2 + "px" : "";
   pngDlg.showModal();
-  $("#pngGo").focus();
+  try { $("#pngGo").focus({ preventScroll: true }); } catch (e) { $("#pngGo").focus(); }
   return "";
 }
 
@@ -2730,7 +2820,8 @@ function setupAnchors() {
     var id = a.getAttribute("href").slice(1); if (!id || isStateHash(id)) return;
     var t = doc.getElementById(id); if (!t) return;
     e.preventDefault();
-    t.scrollIntoView({ block: "start" });
+    if (HOSTV) embPost({ type: "scroll", top: Math.round(t.getBoundingClientRect().top - 12) });   // embedded: the outer page scrolls
+    else t.scrollIntoView({ block: "start" });
     if (!t.hasAttribute("tabindex") && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(t.tagName)) t.setAttribute("tabindex", "-1");
     try { t.focus({ preventScroll: true }); } catch (err) { t.focus(); }
   });
@@ -2811,6 +2902,7 @@ setupMainLegend();
 setupAnnual(); setupZ10();
 setupControls();
 setUnit(state.unit);
+setupEmbed();   // last: the first height it sends is the drawn page's
 })();
 </script>
 </body>
