@@ -335,15 +335,13 @@ footer.site dl{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;margin
 footer.site dt{color:var(--muted)}
 footer.site dd{margin:0;color:var(--ink)}
 /* Embed mode (?embed=1): the page in an iframe on the Caltech website, which supplies the logo, breadcrumbs, title,
-   contact and disclaimer (Christian Frankenberg, 2026-11-11). The title stays for screen readers. The credits stay,
-   small, at the end: who prepared the page, and the data sources with the Copernicus notice that ERA5's licence asks
-   for wherever its data are shown (decision 85) */
-.embed header.site,.embed .skip,.embed footer.site .fdisc,.embed footer.site .fcontact{display:none}
+   contact and disclaimer (Christian Frankenberg, 2026-11-11). The title stays for screen readers. No footer either
+   (decision 107; user, 2026-11-11: "can you remove this form the embedding page: Prepared by ... Data sources: ..."): the
+   Caltech page carries the Copernicus notice that ERA5's licence asks for (decision 85; notes/embed_for_caltech.md) */
+.embed header.site,.embed .skip,.embed footer.site{display:none}
 .embed #title{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .embed .intro{padding-top:.25rem}
 .embed .intro .dek{margin-top:0}
-.embed footer.site{margin-top:2.5rem;border-top:1px solid var(--rule);padding:1rem 0 .25rem;font-size:.85rem}
-.embed footer.site .cols{grid-template-columns:1fr}
 /* sized to the page by the outer page's script (embed.js): nothing scrolls inside the iframe */
 html.embed.hosted{overflow:hidden}
 .fatal{border:2px solid var(--warn);padding:1rem;margin:2rem 0}
@@ -646,17 +644,17 @@ html.js .anntbl-wrap:not(.open){display:none}
 <footer class="site">
   <div class="wrap cols">
     <div>
-      <p class="fprep">Prepared by Sudhanshu Pandey, OCO Science Applications and Partnerships Center, Caltech.</p>
+      <p>Prepared by Sudhanshu Pandey, OCO Science Applications and Partnerships Center, Caltech.</p>
       <!-- one credit line; versions and references are in Methods, "Data sources and units" (user, 2026-11-04: no
            repeated text). The climate stripes' data and the Copernicus notice and disclaimer that ERA5 asks for (user,
            2026-11-07: "add the data source for met fields as well. At the bottom of the page"); the page shows no
            CPC ENSO index, so that credit went -->
       <!-- the shorter "Data sources" line (the user, 2026-11-11, B9 of the review of 10 Nov); the Copernicus notice and
            disclaimer stay word for word -->
-      <p class="fsrc">Data sources: <a href="https://disc.gsfc.nasa.gov/">NASA GES DISC</a> (OCO-2 and GOSAT); <a href="https://gml.noaa.gov/ccgg/trends/global.html">NOAA GML</a> (surface CO₂); <a href="https://globalcarbonbudget.org/">Global Carbon Budget</a> and <a href="https://carbonmonitor.org/">Carbon Monitor</a> (emissions); Copernicus <a href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels-monthly-means">ERA5</a> and NOAA <a href="https://www.ncei.noaa.gov/products/extended-reconstructed-sst">ERSST v5</a> (climate). Contains modified Copernicus Climate Change Service information 2026. Neither the European Commission nor ECMWF is responsible for any use that may be made of the Copernicus information or data it contains.</p>
-      <p class="fdisc"><span class="todo">[OCO-SAC disclaimer wording — from Kim]</span></p>
+      <p>Data sources: <a href="https://disc.gsfc.nasa.gov/">NASA GES DISC</a> (OCO-2 and GOSAT); <a href="https://gml.noaa.gov/ccgg/trends/global.html">NOAA GML</a> (surface CO₂); <a href="https://globalcarbonbudget.org/">Global Carbon Budget</a> and <a href="https://carbonmonitor.org/">Carbon Monitor</a> (emissions); Copernicus <a href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels-monthly-means">ERA5</a> and NOAA <a href="https://www.ncei.noaa.gov/products/extended-reconstructed-sst">ERSST v5</a> (climate). Contains modified Copernicus Climate Change Service information 2026. Neither the European Commission nor ECMWF is responsible for any use that may be made of the Copernicus information or data it contains.</p>
+      <p><span class="todo">[OCO-SAC disclaimer wording — from Kim]</span></p>
     </div>
-    <div class="fcontact">
+    <div>
       <dl>
         <dt>Contact</dt><dd><span class="todo">[contact e-mail]</span></dd>
       </dl>
