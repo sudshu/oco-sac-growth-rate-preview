@@ -6,7 +6,7 @@ Authors: Sudhanshu Pandey (Caltech), Christopher W. O'Dell (CIRA, Colorado State
   Laboratory, Caltech), Vivienne H. Payne (Jet Propulsion Laboratory, Caltech)
   and Paul O. Wennberg (Caltech).
 Contact: [contact e-mail]
-Built: 2026-11-09T18:12:39Z   Data end (OCO-2): 2026-10-31
+Built: 2026-11-10T23:32:03Z   Data end (OCO-2): 2026-10-31
 
 DRAFT -- placeholders are in [brackets].
 
@@ -103,7 +103,7 @@ OCO-2:     OCO-2 Lite 10-s XCO₂: v11.2r (doi:10.5067/70K2B2W8MNGY) through 202
            dated at its effective time, handoff 2026-11-07.
 GOSAT:     ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset acosGOSATv11_lite_20090418-20261031_filtered_tiny.h5, 2009-04-18 → 2026-10-31; same GRESO chain as OCO-2. On the main page, the annual chart and table open with GOSAT on (GOSAT alone for 2010–2014, the mean of OCO-2 and GOSAT from 2015); on the monthly chart it is off until switched on. Uncertainty = smoothing spread + 0.08 ppm/yr floor (no retrieval term). Same status rule as OCO-2.
 NOAA:      NOAA GML global marine boundary layer (MBL); Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07. Annual: co2_gr_gl.txt (file created 2026-10-09). Monthly ‘derived from NOAA trend’ is our derivative, not a NOAA product: 12 × the change of the co2_mm_gl.txt trend column (file created 2026-10-09) from the 1st of each month to the 1st of the next (the trend linearly interpolated to 00:00 UTC on those days, as for the annual and 12-month values), then the same 5-month running mean as the OCO-2 values (last two months unsmoothed). It covers the same dates as the OCO-2 monthly values and ends with June 2026, because NOAA’s trend ends in mid-July 2026. Redistributed with this citation and file date; NOAA revises its values, so take the current files from https://gml.noaa.gov/ccgg/trends/global.html for new work.
-Emissions: Friedlingstein et al. (2026), Global Carbon Budget 2025, Earth Syst. Sci. Data 18, 3211-3288, doi:10.5194/essd-18-3211-2026; data doi:10.18160/GCP-2025 (CC BY 4.0): fossil CO₂ excluding the cement-carbonation sink, plus land-use change, through 2024. 2025 onward: low-latency estimate = Carbon Monitor, carbonmonitor.org (Liu et al. 2020, arXiv:2004.13614) × 1.020 (mean GCB/Carbon Monitor ratio 2022–24) plus linearly extrapolated land-use change (provisional; not a budget number). Monthly series: each GCB year spread over the months with Carbon Monitor's monthly pattern (2015–2018 its average pattern, 2019–2024 that year's Carbon Monitor months scaled to the GCB total), land-use change flat within each year, then a fixed seasonal cycle removed.
+Emissions: Friedlingstein et al. (2026), Global Carbon Budget 2025, Earth Syst. Sci. Data 18, 3211-3288, doi:10.5194/essd-18-3211-2026; data doi:10.18160/GCP-2025 (CC BY 4.0): fossil CO₂ excluding the cement-carbonation sink, plus land-use change, through 2024. 2025 onward: low-latency estimate = Carbon Monitor, carbonmonitor.org (Liu et al. 2020, arXiv:2004.13614) × 1.020 (mean GCB/Carbon Monitor ratio 2022–24) plus linearly extrapolated land-use change (provisional; not a budget number). Monthly series: each GCB year spread over the months with Carbon Monitor's monthly pattern (2015–2018 its average pattern, 2019–2024 that year's Carbon Monitor months scaled to the GCB total), land-use change flat within each year, then a fixed seasonal cycle removed. August–September 2026: the same months a year earlier times Carbon Monitor's growth over the year, from Carbon Monitor's data of 10 November 2026 (its newer files have a different seasonal shape, so their monthly values are not joined on directly).
 
 --------------------------------------------------------------------------------
 DATA GAPS
@@ -151,6 +151,7 @@ KNOWN ISSUES AND CAVEATS
   - GOSAT uncertainty has no retrieval term (smoothing + 0.08 ppm/yr floor only); GOSAT is not fully independent of OCO-2 (shared ACOS algorithm heritage).
   - Monthly values carry a larger, unquantified error (order 0.7 ppm/yr); the newest months are revised.
   - Aug and Sep 2017 and Aug 2026 monthly values rest on the trend interpolated across OCO-2's data gaps (flagged in the monthly and latitude-band files).
+  - GOSAT's 10° band values for January 2015 and January 2026, months without any GOSAT data, come from the interpolation across GOSAT's data gaps alone (flagged in the latitude-band file).
   - Since 2024 the OCO-2 − GOSAT trend difference oscillates seasonally (0.1–0.17 ppm); do not over-read month-to-month differences between the sensors.
   - Latitude-band values are the rate of change of XCO₂ over a band, not regional fluxes. The 10° bands come from a separate, closely related run of the method.
   - The 2025–26 slowdown is not falling emissions: fossil emissions were flat or up about 1%.

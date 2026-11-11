@@ -1,5 +1,5 @@
 # GRESO monthly growth rate of column XCO2 in 10-degree latitude bands (OCO-2 and GOSAT)
-# Release: v2026.11    Built: 2026-11-09T18:12:39Z    Data end (OCO-2): 2026-10-31
+# Release: v2026.11    Built: 2026-11-10T23:32:03Z    Data end (OCO-2): 2026-10-31
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
 # Authors: Sudhanshu Pandey (Caltech), Christopher W. O'Dell (CIRA, Colorado State University), Christian
 #   Frankenberg (Caltech), Junjie Liu (Jet Propulsion Laboratory, Caltech), Vivienne H. Payne (Jet Propulsion
@@ -33,7 +33,9 @@
 #   Status recomputed with the release rule (source flags ignored). For a wider band, average the 10-degree
 #   bands weighted by area, sin(lat_max) - sin(lat_min).
 #   flag = trend_interpolated_data_gap where an OCO-2 month rests on the trend interpolated across one of
-#   OCO-2's data gaps (2017, 2026; OCO-2 rows only).
+#   OCO-2's data gaps (2017, 2026), and where a GOSAT month has no GOSAT data at all
+#   (2015-01, 2026-01, inside GOSAT's gaps of 15 Dec 2014 to 31 Jan 2015 and 19 Dec 2025 to 3 Feb 2026), so the
+#   value comes from the interpolation alone.
 #   flag = preliminary_fp_data where an OCO-2 month rests on the preliminary forward-processing data of 1–31 Oct 2026
 #   (May–Sep 2026; one month more than the global series, as the bands use complete
 #   16-day windows; OCO-2 rows only). Two flags are separated by ';'.
@@ -1457,7 +1459,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-07-16,2026.53836,oco2,40N-50N,40,50,3.1364,provisional,preliminary_fp_data
 2026-08-16,2026.62329,oco2,40N-50N,40,50,4.2511,early,trend_interpolated_data_gap;preliminary_fp_data
 2026-09-16,2026.70685,oco2,40N-50N,40,50,5.2249,early,preliminary_fp_data
-2015-01-16,2015.04247,gosat,50S-40S,-50,-40,1.7292,final,
+2015-01-16,2015.04247,gosat,50S-40S,-50,-40,1.7292,final,trend_interpolated_data_gap
 2015-02-15,2015.12329,gosat,50S-40S,-50,-40,1.3855,final,
 2015-03-16,2015.20411,gosat,50S-40S,-50,-40,1.3706,final,
 2015-04-16,2015.28767,gosat,50S-40S,-50,-40,1.2598,final,
@@ -1589,7 +1591,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2025-10-16,2025.79041,gosat,50S-40S,-50,-40,0.3007,final,
 2025-11-16,2025.87397,gosat,50S-40S,-50,-40,1.4706,final,
 2025-12-16,2025.95753,gosat,50S-40S,-50,-40,1.9334,final,
-2026-01-16,2026.04247,gosat,50S-40S,-50,-40,,final,
+2026-01-16,2026.04247,gosat,50S-40S,-50,-40,2.1147,final,trend_interpolated_data_gap
 2026-02-15,2026.12329,gosat,50S-40S,-50,-40,2.1786,final,
 2026-03-16,2026.20411,gosat,50S-40S,-50,-40,2.1659,final,
 2026-04-16,2026.28767,gosat,50S-40S,-50,-40,1.8165,final,
@@ -1598,7 +1600,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-07-16,2026.53836,gosat,50S-40S,-50,-40,2.4873,provisional,
 2026-08-16,2026.62329,gosat,50S-40S,-50,-40,0.8727,early,
 2026-09-16,2026.70685,gosat,50S-40S,-50,-40,5.6199,early,
-2015-01-16,2015.04247,gosat,40S-30S,-40,-30,2.1882,final,
+2015-01-16,2015.04247,gosat,40S-30S,-40,-30,2.1882,final,trend_interpolated_data_gap
 2015-02-15,2015.12329,gosat,40S-30S,-40,-30,2.1201,final,
 2015-03-16,2015.20411,gosat,40S-30S,-40,-30,1.9827,final,
 2015-04-16,2015.28767,gosat,40S-30S,-40,-30,2.0420,final,
@@ -1730,7 +1732,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2025-10-16,2025.79041,gosat,40S-30S,-40,-30,1.2418,final,
 2025-11-16,2025.87397,gosat,40S-30S,-40,-30,1.4137,final,
 2025-12-16,2025.95753,gosat,40S-30S,-40,-30,1.7390,final,
-2026-01-16,2026.04247,gosat,40S-30S,-40,-30,,final,
+2026-01-16,2026.04247,gosat,40S-30S,-40,-30,1.9500,final,trend_interpolated_data_gap
 2026-02-15,2026.12329,gosat,40S-30S,-40,-30,1.9738,final,
 2026-03-16,2026.20411,gosat,40S-30S,-40,-30,1.9078,final,
 2026-04-16,2026.28767,gosat,40S-30S,-40,-30,1.7210,final,
@@ -1739,7 +1741,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-07-16,2026.53836,gosat,40S-30S,-40,-30,2.2062,provisional,
 2026-08-16,2026.62329,gosat,40S-30S,-40,-30,2.8931,early,
 2026-09-16,2026.70685,gosat,40S-30S,-40,-30,3.8884,early,
-2015-01-16,2015.04247,gosat,30S-20S,-30,-20,2.5253,final,
+2015-01-16,2015.04247,gosat,30S-20S,-30,-20,2.5253,final,trend_interpolated_data_gap
 2015-02-15,2015.12329,gosat,30S-20S,-30,-20,2.6805,final,
 2015-03-16,2015.20411,gosat,30S-20S,-30,-20,2.6233,final,
 2015-04-16,2015.28767,gosat,30S-20S,-30,-20,2.7044,final,
@@ -1871,7 +1873,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2025-10-16,2025.79041,gosat,30S-20S,-30,-20,1.7054,final,
 2025-11-16,2025.87397,gosat,30S-20S,-30,-20,1.7861,final,
 2025-12-16,2025.95753,gosat,30S-20S,-30,-20,1.9113,final,
-2026-01-16,2026.04247,gosat,30S-20S,-30,-20,,final,
+2026-01-16,2026.04247,gosat,30S-20S,-30,-20,2.0418,final,trend_interpolated_data_gap
 2026-02-15,2026.12329,gosat,30S-20S,-30,-20,2.0580,final,
 2026-03-16,2026.20411,gosat,30S-20S,-30,-20,1.9502,final,
 2026-04-16,2026.28767,gosat,30S-20S,-30,-20,1.8512,final,
@@ -1880,7 +1882,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-07-16,2026.53836,gosat,30S-20S,-30,-20,2.8967,provisional,
 2026-08-16,2026.62329,gosat,30S-20S,-30,-20,3.7178,early,
 2026-09-16,2026.70685,gosat,30S-20S,-30,-20,4.9773,early,
-2015-01-16,2015.04247,gosat,20S-10S,-20,-10,2.3940,final,
+2015-01-16,2015.04247,gosat,20S-10S,-20,-10,2.3940,final,trend_interpolated_data_gap
 2015-02-15,2015.12329,gosat,20S-10S,-20,-10,2.3979,final,
 2015-03-16,2015.20411,gosat,20S-10S,-20,-10,2.4070,final,
 2015-04-16,2015.28767,gosat,20S-10S,-20,-10,2.3459,final,
@@ -2012,7 +2014,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2025-10-16,2025.79041,gosat,20S-10S,-20,-10,1.7340,final,
 2025-11-16,2025.87397,gosat,20S-10S,-20,-10,1.7516,final,
 2025-12-16,2025.95753,gosat,20S-10S,-20,-10,1.8901,final,
-2026-01-16,2026.04247,gosat,20S-10S,-20,-10,,final,
+2026-01-16,2026.04247,gosat,20S-10S,-20,-10,2.0814,final,trend_interpolated_data_gap
 2026-02-15,2026.12329,gosat,20S-10S,-20,-10,2.0946,final,
 2026-03-16,2026.20411,gosat,20S-10S,-20,-10,1.9877,final,
 2026-04-16,2026.28767,gosat,20S-10S,-20,-10,1.9969,final,
@@ -2021,7 +2023,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-07-16,2026.53836,gosat,20S-10S,-20,-10,2.5497,provisional,
 2026-08-16,2026.62329,gosat,20S-10S,-20,-10,3.4781,early,
 2026-09-16,2026.70685,gosat,20S-10S,-20,-10,2.6279,early,
-2015-01-16,2015.04247,gosat,10S-0,-10,0,2.1013,final,
+2015-01-16,2015.04247,gosat,10S-0,-10,0,2.1013,final,trend_interpolated_data_gap
 2015-02-15,2015.12329,gosat,10S-0,-10,0,2.4453,final,
 2015-03-16,2015.20411,gosat,10S-0,-10,0,2.7305,final,
 2015-04-16,2015.28767,gosat,10S-0,-10,0,2.7216,final,
@@ -2153,7 +2155,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2025-10-16,2025.79041,gosat,10S-0,-10,0,1.9967,final,
 2025-11-16,2025.87397,gosat,10S-0,-10,0,1.8620,final,
 2025-12-16,2025.95753,gosat,10S-0,-10,0,1.8338,final,
-2026-01-16,2026.04247,gosat,10S-0,-10,0,,final,
+2026-01-16,2026.04247,gosat,10S-0,-10,0,1.7091,final,trend_interpolated_data_gap
 2026-02-15,2026.12329,gosat,10S-0,-10,0,1.4946,final,
 2026-03-16,2026.20411,gosat,10S-0,-10,0,1.3875,final,
 2026-04-16,2026.28767,gosat,10S-0,-10,0,1.6848,final,
@@ -2162,7 +2164,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-07-16,2026.53836,gosat,10S-0,-10,0,3.0655,provisional,
 2026-08-16,2026.62329,gosat,10S-0,-10,0,3.9730,early,
 2026-09-16,2026.70685,gosat,10S-0,-10,0,3.9544,early,
-2015-01-16,2015.04247,gosat,0-10N,0,10,1.8879,final,
+2015-01-16,2015.04247,gosat,0-10N,0,10,1.8879,final,trend_interpolated_data_gap
 2015-02-15,2015.12329,gosat,0-10N,0,10,2.0053,final,
 2015-03-16,2015.20411,gosat,0-10N,0,10,2.1605,final,
 2015-04-16,2015.28767,gosat,0-10N,0,10,2.2758,final,
@@ -2294,7 +2296,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2025-10-16,2025.79041,gosat,0-10N,0,10,1.7031,final,
 2025-11-16,2025.87397,gosat,0-10N,0,10,1.6412,final,
 2025-12-16,2025.95753,gosat,0-10N,0,10,1.7440,final,
-2026-01-16,2026.04247,gosat,0-10N,0,10,,final,
+2026-01-16,2026.04247,gosat,0-10N,0,10,1.9014,final,trend_interpolated_data_gap
 2026-02-15,2026.12329,gosat,0-10N,0,10,1.8261,final,
 2026-03-16,2026.20411,gosat,0-10N,0,10,1.7495,final,
 2026-04-16,2026.28767,gosat,0-10N,0,10,1.6463,final,
@@ -2303,7 +2305,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-07-16,2026.53836,gosat,0-10N,0,10,2.6895,provisional,
 2026-08-16,2026.62329,gosat,0-10N,0,10,3.1933,early,
 2026-09-16,2026.70685,gosat,0-10N,0,10,3.5187,early,
-2015-01-16,2015.04247,gosat,10N-20N,10,20,1.6066,final,
+2015-01-16,2015.04247,gosat,10N-20N,10,20,1.6066,final,trend_interpolated_data_gap
 2015-02-15,2015.12329,gosat,10N-20N,10,20,1.5354,final,
 2015-03-16,2015.20411,gosat,10N-20N,10,20,1.6204,final,
 2015-04-16,2015.28767,gosat,10N-20N,10,20,1.8280,final,
@@ -2435,7 +2437,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2025-10-16,2025.79041,gosat,10N-20N,10,20,1.7246,final,
 2025-11-16,2025.87397,gosat,10N-20N,10,20,1.5818,final,
 2025-12-16,2025.95753,gosat,10N-20N,10,20,1.5897,final,
-2026-01-16,2026.04247,gosat,10N-20N,10,20,,final,
+2026-01-16,2026.04247,gosat,10N-20N,10,20,1.6827,final,trend_interpolated_data_gap
 2026-02-15,2026.12329,gosat,10N-20N,10,20,1.6837,final,
 2026-03-16,2026.20411,gosat,10N-20N,10,20,1.8944,final,
 2026-04-16,2026.28767,gosat,10N-20N,10,20,2.0340,final,
@@ -2444,7 +2446,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-07-16,2026.53836,gosat,10N-20N,10,20,3.4086,provisional,
 2026-08-16,2026.62329,gosat,10N-20N,10,20,4.0150,early,
 2026-09-16,2026.70685,gosat,10N-20N,10,20,4.5998,early,
-2015-01-16,2015.04247,gosat,20N-30N,20,30,1.5176,final,
+2015-01-16,2015.04247,gosat,20N-30N,20,30,1.5176,final,trend_interpolated_data_gap
 2015-02-15,2015.12329,gosat,20N-30N,20,30,1.4761,final,
 2015-03-16,2015.20411,gosat,20N-30N,20,30,1.5944,final,
 2015-04-16,2015.28767,gosat,20N-30N,20,30,1.8974,final,
@@ -2576,7 +2578,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2025-10-16,2025.79041,gosat,20N-30N,20,30,1.9198,final,
 2025-11-16,2025.87397,gosat,20N-30N,20,30,1.9596,final,
 2025-12-16,2025.95753,gosat,20N-30N,20,30,2.0509,final,
-2026-01-16,2026.04247,gosat,20N-30N,20,30,,final,
+2026-01-16,2026.04247,gosat,20N-30N,20,30,2.0694,final,trend_interpolated_data_gap
 2026-02-15,2026.12329,gosat,20N-30N,20,30,1.9801,final,
 2026-03-16,2026.20411,gosat,20N-30N,20,30,1.7699,final,
 2026-04-16,2026.28767,gosat,20N-30N,20,30,1.6910,final,
@@ -2585,7 +2587,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-07-16,2026.53836,gosat,20N-30N,20,30,3.1018,provisional,
 2026-08-16,2026.62329,gosat,20N-30N,20,30,3.6343,early,
 2026-09-16,2026.70685,gosat,20N-30N,20,30,5.2242,early,
-2015-01-16,2015.04247,gosat,30N-40N,30,40,1.6380,final,
+2015-01-16,2015.04247,gosat,30N-40N,30,40,1.6380,final,trend_interpolated_data_gap
 2015-02-15,2015.12329,gosat,30N-40N,30,40,1.8597,final,
 2015-03-16,2015.20411,gosat,30N-40N,30,40,2.0686,final,
 2015-04-16,2015.28767,gosat,30N-40N,30,40,2.2106,final,
@@ -2717,7 +2719,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2025-10-16,2025.79041,gosat,30N-40N,30,40,2.0549,final,
 2025-11-16,2025.87397,gosat,30N-40N,30,40,2.0054,final,
 2025-12-16,2025.95753,gosat,30N-40N,30,40,2.0944,final,
-2026-01-16,2026.04247,gosat,30N-40N,30,40,,final,
+2026-01-16,2026.04247,gosat,30N-40N,30,40,1.8260,final,trend_interpolated_data_gap
 2026-02-15,2026.12329,gosat,30N-40N,30,40,1.6062,final,
 2026-03-16,2026.20411,gosat,30N-40N,30,40,1.1321,final,
 2026-04-16,2026.28767,gosat,30N-40N,30,40,1.1606,final,
@@ -2726,7 +2728,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-07-16,2026.53836,gosat,30N-40N,30,40,3.3312,provisional,
 2026-08-16,2026.62329,gosat,30N-40N,30,40,4.8468,early,
 2026-09-16,2026.70685,gosat,30N-40N,30,40,5.8751,early,
-2015-01-16,2015.04247,gosat,40N-50N,40,50,2.1368,final,
+2015-01-16,2015.04247,gosat,40N-50N,40,50,2.1368,final,trend_interpolated_data_gap
 2015-02-15,2015.12329,gosat,40N-50N,40,50,2.3239,final,
 2015-03-16,2015.20411,gosat,40N-50N,40,50,2.6585,final,
 2015-04-16,2015.28767,gosat,40N-50N,40,50,3.1847,final,
@@ -2858,7 +2860,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2025-10-16,2025.79041,gosat,40N-50N,40,50,3.3291,final,
 2025-11-16,2025.87397,gosat,40N-50N,40,50,3.0433,final,
 2025-12-16,2025.95753,gosat,40N-50N,40,50,2.5662,final,
-2026-01-16,2026.04247,gosat,40N-50N,40,50,,final,
+2026-01-16,2026.04247,gosat,40N-50N,40,50,1.7416,final,trend_interpolated_data_gap
 2026-02-15,2026.12329,gosat,40N-50N,40,50,1.0227,final,
 2026-03-16,2026.20411,gosat,40N-50N,40,50,0.5637,final,
 2026-04-16,2026.28767,gosat,40N-50N,40,50,0.5816,final,

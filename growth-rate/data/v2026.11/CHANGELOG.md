@@ -1,6 +1,6 @@
 # GRESO OCO-2 growth-rate data: CHANGELOG
 
-## v2026.11 (built 2026-11-09T18:12:39Z) (DRAFT)
+## v2026.11 (built 2026-11-10T23:32:03Z) (DRAFT)
 
 - Data end 2026-10-31 (public v11.3r Lite data, retrospective stream, to 30 Sep 2026, then preliminary
   forward-processing data for 1–31 Oct 2026); was 2026-07-28. OCO-2 has no data 28 Jul-13 Aug 2026 (safe mode);
@@ -32,8 +32,12 @@
 - Months resting on the trend interpolated across a data gap (flag trend_interpolated_data_gap): 2017-08,
   2017-09, 2026-08.
 - Headline 12-month value: 2025-10-01 -> 2026-10-01 (the newest 12 months with observations).
-- Emissions unchanged: Global Carbon Budget 2025 through 2024, the low-latency estimate (Carbon Monitor-based)
-  from 2025, monthly to 2026-07.
+- GOSAT 10-degree bands: 2026-01 now holds the value of the band run's own interpolation across GOSAT's data gap
+  (19 Dec 2025 to 3 Feb 2026), which the run used to blank. Flag trend_interpolated_data_gap on the GOSAT months
+  without any GOSAT data (2015-01, 2026-01). Every other band value unchanged.
+- Emissions extended to 2026-09 (was 2026-06); every earlier value unchanged. August–September 2026: the same
+  months a year earlier times Carbon Monitor's growth over the year, from Carbon Monitor's data of 10 November
+  2026.
 
 ### Changes since the previous release (v2026.10)
 - Annual OCO-2 (ppm/yr): largest revision 0.01; 2015 3.00 -> 2.99, 2018 2.47 -> 2.48, 2019 2.75 -> 2.74, 2020
