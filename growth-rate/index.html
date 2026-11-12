@@ -651,7 +651,7 @@ html.js .anntbl-wrap:not(.open){display:none}
            CPC ENSO index, so that credit went -->
       <!-- the shorter "Data sources" line (the user, 2026-11-11, B9 of the review of 10 Nov); the Copernicus notice and
            disclaimer stay word for word -->
-      <p>Data sources: <a href="https://disc.gsfc.nasa.gov/">NASA GES DISC</a> (OCO-2 and GOSAT); <a href="https://gml.noaa.gov/ccgg/trends/global.html">NOAA GML</a> (surface CO₂); <a href="https://globalcarbonbudget.org/">Global Carbon Budget</a> and <a href="https://carbonmonitor.org/">Carbon Monitor</a> (emissions); Copernicus <a href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels-monthly-means">ERA5</a> and NOAA <a href="https://www.ncei.noaa.gov/products/extended-reconstructed-sst">ERSST v5</a> (climate). Contains modified Copernicus Climate Change Service information 2026. Neither the European Commission nor ECMWF is responsible for any use that may be made of the Copernicus information or data it contains.</p>
+      <p id="credits">Data sources: <a href="https://disc.gsfc.nasa.gov/">NASA GES DISC</a> (OCO-2 and GOSAT); <a href="https://gml.noaa.gov/ccgg/trends/global.html">NOAA GML</a> (surface CO₂); <a href="https://globalcarbonbudget.org/">Global Carbon Budget</a> and <a href="https://carbonmonitor.org/">Carbon Monitor</a> (emissions); Copernicus <a href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels-monthly-means">ERA5</a> and NOAA <a href="https://www.ncei.noaa.gov/products/extended-reconstructed-sst">ERSST v5</a> (climate). Contains modified Copernicus Climate Change Service information 2026. Neither the European Commission nor ECMWF is responsible for any use that may be made of the Copernicus information or data it contains.</p>
       <p><span class="todo">[OCO-SAC disclaimer wording — from Kim]</span></p>
     </div>
     <div>
@@ -889,6 +889,11 @@ function pageURL() {
 }
 function setupEmbed() {
   if (!EMBED) return;
+  // the footer is hidden here (decision 107), so its data-source line with the Copernicus notice that ERA5's licence asks
+  // for ends Methods' "Data sources and units" instead (decision 108; user, 2026-11-11: "put this in one of the drop
+  // downs at the bottom"); the standalone page keeps it in the footer only
+  var cr = $("#credits"), box = $("#productList");
+  if (cr && box) { var cc = cr.cloneNode(true); cc.id = "creditsEmb"; box.parentNode.appendChild(cc); }
   function outward(a) { var h = a.getAttribute("href") || ""; return !a.hasAttribute("download") && h.charAt(0) !== "#" && !/^javascript:/i.test(h); }
   Array.prototype.forEach.call(doc.querySelectorAll("a[href]"), function (a) { if (outward(a)) { a.target = "_blank"; a.rel = "noopener"; } });
   doc.addEventListener("click", function (e) {   // links drawn later, too
