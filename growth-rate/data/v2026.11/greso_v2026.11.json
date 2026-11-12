@@ -1,25 +1,25 @@
 {
  "meta": {
   "release": "v2026.11",
-  "built_utc": "2026-11-11T03:57:16Z",
+  "built_utc": "2026-11-12T17:25:05Z",
   "data_end": "2026-10-31",
   "ref_month": "2026-10",
   "conv": {
    "PgC_per_ppm": 2.124,
    "GtCO2_per_PgC": 3.664
   },
-  "notice": "OCO-2 paused science observations 28 Jul–13 Aug 2026 (safe mode); those days stay missing. This release uses OCO-2 data up to 31 Oct 2026 (the data for 1–31 Oct 2026 are preliminary forward-processing data), so monthly values run to September 2026. August–September 2026 are early estimates: dashed on the charts and still revised as data arrive.",
+  "notice": "OCO-2 paused science observations 28 Jul\u201313 Aug 2026 (safe mode); those days stay missing. This release uses OCO-2 data up to 31 Oct 2026 (the data for 1\u201331 Oct 2026 are preliminary forward-processing data), so monthly values run to September 2026. August\u2013September 2026 are early estimates: dashed on the charts and still revised as data arrive.",
   "products": {
-   "oco2": "OCO-2 Lite 10-s XCO₂: v11.2r (doi:10.5067/70K2B2W8MNGY) through 2023-12-31 and v11.3r (doi:10.5067/C4OENLFCYVSA) from 2024-01-01, through 2026-09-30; then preliminary forward-processing (FP) data from the OCO-2 team (product FwDaily_B11301_r01), 2026-10-01 through 2026-10-31. Method GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time, seasonal fit solved exactly) (Pandey et al. 2024).",
-   "gosat": "ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset acosGOSATv11_lite_20090418-20261031_filtered_tiny.h5, 2009-04-18 → 2026-10-31; same GRESO chain as OCO-2. On the main page, the annual chart and table open with GOSAT on (GOSAT alone for 2010–2014, the mean of OCO-2 and GOSAT from 2015); on the monthly chart it is off until switched on. Uncertainty = smoothing spread + 0.08 ppm/yr floor (no retrieval term). Same status rule as OCO-2.",
-   "noaa": "NOAA GML global marine boundary layer (MBL); Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07. Annual: co2_gr_gl.txt (file created 2026-10-09). Monthly ‘derived from NOAA trend’ is our derivative, not a NOAA product: 12 × the change of the co2_mm_gl.txt trend column (file created 2026-10-09) from the 1st of each month to the 1st of the next (the trend linearly interpolated to 00:00 UTC on those days, as for the annual and 12-month values), then the same 5-month running mean as the OCO-2 values (last two months unsmoothed). It covers the same dates as the OCO-2 monthly values and ends with June 2026, because NOAA’s trend ends in mid-July 2026. Redistributed with this citation and file date; NOAA revises its values, so take the current files from https://gml.noaa.gov/ccgg/trends/global.html for new work.",
-   "emissions": "Friedlingstein et al. (2026), Global Carbon Budget 2025, Earth Syst. Sci. Data 18, 3211-3288, doi:10.5194/essd-18-3211-2026; data doi:10.18160/GCP-2025 (CC BY 4.0): fossil CO₂ excluding the cement-carbonation sink, plus land-use change, through 2024. 2025 onward: low-latency estimate = Carbon Monitor, carbonmonitor.org (Liu et al. 2020, arXiv:2004.13614) × 1.020 (mean GCB/Carbon Monitor ratio 2022–24) plus linearly extrapolated land-use change (provisional; not a budget number). Monthly series: each GCB year spread over the months with Carbon Monitor's monthly pattern (2015–2018 its average pattern, 2019–2024 that year's Carbon Monitor months scaled to the GCB total), land-use change flat within each year, then a fixed seasonal cycle removed. August–September 2026: the same months a year earlier times Carbon Monitor's growth over the year, from Carbon Monitor's data of 10 November 2026 (its newer files have a different seasonal shape, so their monthly values are not joined on directly).",
-   "oni": "NOAA CPC Oceanic Niño Index (ERSST.v5), oni.ascii.txt through ASO 2026; date = centre month of the 3-month season."
+   "oco2": "OCO-2 Lite 10-s XCO\u2082: v11.2r (doi:10.5067/70K2B2W8MNGY) through 2023-12-31 and v11.3r (doi:10.5067/C4OENLFCYVSA) from 2024-01-01, through 2026-09-30; then preliminary forward-processing (FP) data from the OCO-2 team (product FwDaily_B11301_r01), 2026-10-01 through 2026-10-31. Method GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time, seasonal fit solved exactly) (Pandey et al. 2024).",
+   "gosat": "ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset acosGOSATv11_lite_20090418-20261031_filtered_tiny.h5, 2009-04-18 \u2192 2026-10-31; same GRESO chain as OCO-2. On the main page, the annual chart and table open with GOSAT on (GOSAT alone for 2010\u20132014, the mean of OCO-2 and GOSAT from 2015); on the monthly chart it is off until switched on. Uncertainty = smoothing spread + 0.08 ppm/yr floor (no retrieval term). Same status rule as OCO-2.",
+   "noaa": "NOAA GML global marine boundary layer (MBL); Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07. Annual: co2_gr_gl.txt (file created 2026-10-09). Monthly \u2018derived from NOAA trend\u2019 is our derivative, not a NOAA product: 12 \u00d7 the change of the co2_mm_gl.txt trend column (file created 2026-10-09) from the 1st of each month to the 1st of the next (the trend linearly interpolated to 00:00 UTC on those days, as for the annual and 12-month values), then the same 5-month running mean as the OCO-2 values (last two months unsmoothed). It covers the same dates as the OCO-2 monthly values and ends with June 2026, because NOAA\u2019s trend ends in mid-July 2026. Redistributed with this citation and file date; NOAA revises its values, so take the current files from https://gml.noaa.gov/ccgg/trends/global.html for new work.",
+   "emissions": "Friedlingstein et al. (2026), Global Carbon Budget 2025, Earth Syst. Sci. Data 18, 3211-3288, doi:10.5194/essd-18-3211-2026; data doi:10.18160/GCP-2025 (CC BY 4.0): fossil CO\u2082 excluding the cement-carbonation sink, plus land-use change, through 2024. 2025 onward: low-latency estimate = Carbon Monitor, carbonmonitor.org (Liu et al. 2020, arXiv:2004.13614) \u00d7 1.020 (mean GCB/Carbon Monitor ratio 2022\u201324) plus linearly extrapolated land-use change (provisional; not a budget number). Monthly series: each GCB year spread over the months with Carbon Monitor's monthly pattern (2015\u20132018 its average pattern, 2019\u20132024 that year's Carbon Monitor months scaled to the GCB total), land-use change flat within each year, then a fixed seasonal cycle removed. August\u2013September 2026: the same months a year earlier times Carbon Monitor's growth over the year, from Carbon Monitor's data of 10 November 2026 (its newer files have a different seasonal shape, so their monthly values are not joined on directly).",
+   "oni": "NOAA CPC Oceanic Ni\u00f1o Index (ERSST.v5), oni.ascii.txt through ASO 2026; date = centre month of the 3-month season."
   },
   "status_rules": {
    "early_max_age": 2,
    "provisional_max_age": 5,
-   "note": "Each monthly value gets a status from its age: the number of whole months between the end of that month and the data end (31 Oct 2026). Age 0–2 = early estimate (dashed; revised most as data arrive); 3–5 = provisional (still revised; about 0.7 ppm/yr RMS at 3 months, falling to 0.24 ppm/yr at 5 [revision sizes from an earlier pipeline run; recompute on this release]); 6 or more = final. In this release April 2026 and earlier are final, May–July 2026 provisional and August–September 2026 early. A calendar-year value is provisional until data through the end of February of the following year are in (normally released about April), then final. No partial-year annual values are published. The same rule applies to every chart and file."
+   "note": "Each monthly value gets a status from its age: the number of whole months between the end of that month and the data end (31 Oct 2026). Age 0\u20132 = early estimate (dashed; revised most as data arrive); 3\u20135 = provisional (still revised; about 0.7 ppm/yr RMS at 3 months, falling to 0.24 ppm/yr at 5 [revision sizes from an earlier pipeline run; recompute on this release]); 6 or more = final. In this release April 2026 and earlier are final, May\u2013July 2026 provisional and August\u2013September 2026 early. A calendar-year value is provisional until data through the end of February of the following year are in (normally released about April), then final. No partial-year annual values are published. The same rule applies to every chart and file."
   },
   "gaps": [
    {
@@ -30,37 +30,37 @@
    {
     "start": "2026-07-28",
     "end": "2026-08-13",
-    "label": "OCO-2 paused science observations 28 Jul–13 Aug 2026 (safe mode after an instrument anomaly); those days stay missing. The 16-day trend is interpolated across the gap, so the Aug 2026 monthly value rests partly on the interpolation (flagged in the downloads). This release uses OCO-2 data up to 30 Sep 2026 from the retrospective stream, which NASA expects to be of nominal quality after the gap (forward-stream data were of reduced quality until 17 Sep 2026), then preliminary forward-processing data for 1–31 Oct 2026"
+    "label": "OCO-2 paused science observations 28 Jul\u201313 Aug 2026 (safe mode after an instrument anomaly); those days stay missing. The 16-day trend is interpolated across the gap, so the Aug 2026 monthly value rests partly on the interpolation (flagged in the downloads). This release uses OCO-2 data up to 30 Sep 2026 from the retrospective stream, which NASA expects to be of nominal quality after the gap (forward-stream data were of reduced quality until 17 Sep 2026), then preliminary forward-processing data for 1\u201331 Oct 2026"
    }
   ],
   "coverage": {
-   "oco2_annual": "2015–2025",
-   "oco2_monthly": "2015-01 → 2026-09",
-   "xco2_16day": "2014-10-31 → 2026-10-26 (effective bin times)",
-   "zonal10": "2015-01 → 2026-09",
-   "gosat_annual": "2010–2025",
-   "noaa_annual": "2010–2025",
-   "oni": "2010-01 → 2026-09"
+   "oco2_annual": "2015\u20132025",
+   "oco2_monthly": "2015-01 \u2192 2026-09",
+   "xco2_16day": "2014-10-31 \u2192 2026-10-26 (effective bin times)",
+   "zonal10": "2015-01 \u2192 2026-09",
+   "gosat_annual": "2010\u20132025",
+   "noaa_annual": "2010\u20132025",
+   "oni": "2010-01 \u2192 2026-09"
   },
   "redistribution": "Third-party values are included with their source, file date or version, and citation: NOAA GML marine-boundary-layer growth (annual and our monthly derivative) and NOAA-based airborne fractions (Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07; files created 2026-10-09); Global Carbon Budget 2025 emissions and atmospheric growth term (Friedlingstein et al. (2026), Global Carbon Budget 2025, Earth Syst. Sci. Data 18, 3211-3288, doi:10.5194/essd-18-3211-2026; data doi:10.18160/GCP-2025 (CC BY 4.0)); and 2025 low-latency emissions derived from Carbon Monitor, carbonmonitor.org (Liu et al. 2020, arXiv:2004.13614).",
   "provenance": "OCO-2 Lite v11.2r through 2023, v11.3r from 2024.",
   "known_issues": [
-   "The v11.2r → v11.3r splice falls on 1 Jan 2024, the anchor shared by the 2023 and 2024 annual values.",
-   "‘All’ includes snapshot-area-map (SAM) soundings, so it is not exactly land ∪ ocean.",
+   "The v11.2r \u2192 v11.3r splice falls on 1 Jan 2024, the anchor shared by the 2023 and 2024 annual values.",
+   "\u2018All\u2019 includes snapshot-area-map (SAM) soundings, so it is not exactly land \u222a ocean.",
    "GOSAT uncertainty has no retrieval term (smoothing + 0.08 ppm/yr floor only); GOSAT is not fully independent of OCO-2 (shared ACOS algorithm heritage).",
    "Monthly values carry a larger, unquantified error (order 0.7 ppm/yr); the newest months are revised.",
    "Aug and Sep 2017 and Aug 2026 monthly values rest on the trend interpolated across OCO-2's data gaps (flagged in the monthly and latitude-band files).",
-   "GOSAT's 10° band values for January 2015 and January 2026, months without any GOSAT data, come from the interpolation across GOSAT's data gaps alone (flagged in the latitude-band file).",
-   "Since 2024 the OCO-2 − GOSAT trend difference oscillates seasonally (0.1–0.17 ppm); do not over-read month-to-month differences between the sensors.",
-   "Latitude-band values are the rate of change of XCO₂ over a band, not regional fluxes. The 10° bands come from a separate, closely related run of the method.",
-   "The 2025–26 slowdown is not falling emissions: fossil emissions were flat or up about 1%.",
-   "The 10° bands use complete 16-day windows only, so they use OCO-2 data to 20 Oct 2026 and GOSAT data to 25 Oct 2026, 11 and 6 days less than the global series.",
-   "The OCO-2 data for 1–31 Oct 2026 are preliminary forward-processing (FP) data from the OCO-2 team (product FwDaily_B11301_r01; no data on 6 Oct 2026), used before the public retrospective data for that period are released. The monthly values for Jun–Sep 2026 rest on them (flag preliminary_fp_data) and may change when the public data are used."
+   "GOSAT's 10\u00b0 band values for January 2015 and January 2026, months without any GOSAT data, come from the interpolation across GOSAT's data gaps alone (flagged in the latitude-band file).",
+   "Since 2024 the OCO-2 \u2212 GOSAT trend difference oscillates seasonally (0.1\u20130.17 ppm); do not over-read month-to-month differences between the sensors.",
+   "Latitude-band values are the rate of change of XCO\u2082 over a band, not regional fluxes. The 10\u00b0 bands come from a separate, closely related run of the method.",
+   "The 2025\u201326 slowdown is not falling emissions: fossil emissions were flat or up about 1%.",
+   "The 10\u00b0 bands use complete 16-day windows only, so they use OCO-2 data to 20 Oct 2026 and GOSAT data to 25 Oct 2026, 11 and 6 days less than the global series.",
+   "The OCO-2 data for 1\u201331 Oct 2026 are preliminary forward-processing (FP) data from the OCO-2 team (product FwDaily_B11301_r01; no data on 6 Oct 2026), used before the public retrospective data for that period are released. The monthly values for Jun\u2013Sep 2026 rest on them (flag preliminary_fp_data) and may change when the public data are used."
   ],
-  "method_summary": "GRESO (Pandey et al. 2024, doi:10.1029/2023AV001145), method version GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time, seasonal fit solved exactly). Input: OCO-2 v11 10-s XCO₂ (v11.2r through 2023, v11.3r from 2024, preliminary forward-processing data for 1–31 Oct 2026), land + ocean (target mode excluded), retrieval uncertainty < 2 ppm. Each 16-day repeat cycle is binned to 5°×5° cells (median), averaged along each latitude row and area-weighted across rows. Each 16-day bin is dated at its effective time, the area-weighted mean time of the soundings it uses (the same weights as the XCO₂ mean), not at the window's midpoint. Seasonal cycle: least-squares fit (solved exactly) of a cubic polynomial plus four annual harmonics over the whole record; the harmonics are subtracted. The deseasonalized series is gap-filled linearly and smoothed with a 7-window (7×16-day ≈ 112-day) running mean. Monthly growth = trend(1st of next month) − trend(1st of month), ×12 for ppm/yr, displayed with a 5-month running mean. Annual growth = trend(1 Jan Y+1) − trend(1 Jan Y), not the mean of the displayed monthly values. Annual 1σ = √(retrieval² + smoothing² + 0.04²): retrieval = spread over 40 decile subsets of four retrieval parameters, smoothing = spread over 6 smoothing widths, 0.04 ppm/yr = OSSE sampling error.",
-  "citation": "Pandey, S., O'Dell, C. W., Frankenberg, C., Liu, J., Payne, V. H., & Wennberg, P. O. (2026). GRESO OCO-2 whole-atmosphere CO₂ growth rates, release v2026.11. OCO Science Applications and Partnerships Center, Caltech. [dashboard base URL]. [data DOI].",
+  "method_summary": "GRESO (Pandey et al. 2024, doi:10.1029/2023AV001145), method version GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time, seasonal fit solved exactly). Input: OCO-2 v11 10-s XCO\u2082 (v11.2r through 2023, v11.3r from 2024, preliminary forward-processing data for 1\u201331 Oct 2026), land + ocean (target mode excluded), retrieval uncertainty < 2 ppm. Each 16-day repeat cycle is binned to 5\u00b0\u00d75\u00b0 cells (median), averaged along each latitude row and area-weighted across rows. Each 16-day bin is dated at its effective time, the area-weighted mean time of the soundings it uses (the same weights as the XCO\u2082 mean), not at the window's midpoint. Seasonal cycle: least-squares fit (solved exactly) of a cubic polynomial plus four annual harmonics over the whole record; the harmonics are subtracted. The deseasonalized series is gap-filled linearly and smoothed with a 7-window (7\u00d716-day \u2248 112-day) running mean. Monthly growth = trend(1st of next month) \u2212 trend(1st of month), \u00d712 for ppm/yr, displayed with a 5-month running mean. Annual growth = trend(1 Jan Y+1) \u2212 trend(1 Jan Y), not the mean of the displayed monthly values. Annual 1\u03c3 = \u221a(retrieval\u00b2 + smoothing\u00b2 + 0.04\u00b2): retrieval = spread over 40 decile subsets of four retrieval parameters, smoothing = spread over 6 smoothing widths, 0.04 ppm/yr = OSSE sampling error.",
+  "citation": "Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O. (2026). GRESO: whole-atmosphere CO\u2082 growth rates from satellite observations, release v2026.11. OCO Science Applications and Partnerships Center, Caltech. https://doi.org/10.82941/ocosac.greso.co2. https://doi.org/10.82941/ocosac.greso.co2.data.v2026.11.",
   "method_citation": "Pandey, S., Miller, J. B., Basu, S., Liu, J., Weir, B., Byrne, B., Chevallier, F., Bowman, K. W., Liu, Z., Deng, F., O'Dell, C. W., & Chatterjee, A. (2024). Toward low-latency estimation of atmospheric CO2 growth rates using satellite observations: Evaluating sampling errors of satellite and in situ observing approaches. AGU Advances, 5, e2023AV001145. https://doi.org/10.1029/2023AV001145",
-  "license": "[Licence: CC BY 4.0 proposed — confirm]",
+  "license": "CC BY 4.0 (Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/)",
   "downloads": [
    {
     "file": "greso_monthly_v2026.11.csv",
@@ -68,9 +68,9 @@
     "main": true,
     "path": "data/v2026.11/greso_monthly_v2026.11.csv",
     "latest_path": "data/latest/greso_monthly_latest.csv",
-    "desc": "One value per month, January 2015 to September 2026, in ppm/yr and PgC/yr, with status flags; GOSAT and a series derived from NOAA alongside.",
-    "bytes": 16343,
-    "sha256": "03cec6aed48f0bbc7d5a6530d70556fc878d1fbd6e02f73d94ce0778f8e4f957"
+    "desc": "One value per month and satellite (OCO-2 and GOSAT), January 2015 to September 2026, in ppm/yr, with status flags; a series derived from NOAA alongside.",
+    "bytes": 12997,
+    "sha256": "6d63962a4f223e900b3e3fbfe983189412761f64a821271140fa7b8d5b22c158"
    },
    {
     "file": "greso_annual_v2026.11.csv",
@@ -78,9 +78,9 @@
     "main": true,
     "path": "data/v2026.11/greso_annual_v2026.11.csv",
     "latest_path": "data/latest/greso_annual_latest.csv",
-    "desc": "Growth from 1 January to 1 January with its 1σ uncertainty, OCO-2 2015–2025; GOSAT 2010–2025 and NOAA surface values 2010–2025 alongside.",
-    "bytes": 6566,
-    "sha256": "c04bfc641e8e224831a835e35ad7983f54072f3081af4ffc29708270b5615ac7"
+    "desc": "Growth from 1 January to 1 January with its 1\u03c3 uncertainty, from the satellites: OCO-2 2015\u20132025, GOSAT 2010\u20132025 and their mean; NOAA surface values 2010\u20132025 alongside.",
+    "bytes": 3823,
+    "sha256": "3401e50f953760bb92d99e39f00724955a4f2f364b550781a7b4dd97a022c9c7"
    },
    {
     "file": "greso_zonal_monthly_v2026.11.csv",
@@ -88,19 +88,19 @@
     "main": true,
     "path": "data/v2026.11/greso_zonal_monthly_v2026.11.csv",
     "latest_path": "data/latest/greso_zonal_monthly_latest.csv",
-    "desc": "Monthly growth in ten 10° latitude bands, OCO-2 and GOSAT, one row per month and band.",
-    "bytes": 164819,
-    "sha256": "679f8916315a7fd7eb6c9b5cbc381ad5d42555262fe86dd602018cb7ab1058fa"
+    "desc": "Monthly growth in ten 10\u00b0 latitude bands, OCO-2 and GOSAT, one row per month and band.",
+    "bytes": 161889,
+    "sha256": "2c787df74258134ee361ea96625e5a028d10ddabbd589c111aa64673713121b7"
    },
    {
     "file": "greso_xco2_16day_v2026.11.csv",
-    "label": "16-day XCO₂ (CSV)",
+    "label": "16-day XCO\u2082 (CSV)",
     "main": false,
     "path": "data/v2026.11/greso_xco2_16day_v2026.11.csv",
     "latest_path": "data/latest/greso_xco2_16day_latest.csv",
-    "desc": "Global-mean column XCO₂ every 16 days and its deseasonalized, smoothed trend (ppm), from which the growth rates are computed.",
-    "bytes": 22163,
-    "sha256": "f838e585c402d0b77bc1ef4df12bd123cf419fd7fa0e4a36ed30f1d2956613f2"
+    "desc": "Global-mean column XCO\u2082 every 16 days and its deseasonalized, smoothed trend (ppm), from which the growth rates are computed.",
+    "bytes": 19269,
+    "sha256": "bec746694fca49171bc3bd06f7e692ebc40faf62371f5e58cee01f05b039a422"
    },
    {
     "file": "greso_budget_annual_v2026.11.csv",
@@ -109,8 +109,38 @@
     "path": "data/v2026.11/greso_budget_annual_v2026.11.csv",
     "latest_path": "data/latest/greso_budget_annual_latest.csv",
     "desc": "Annual growth in PgC/yr next to fossil and land-use emissions, the airborne fraction and the implied land and ocean uptake.",
-    "bytes": 6013,
-    "sha256": "c4890be2c0d253ae87acf785934d7f5b9acbc212da8bb599b8e8163e5a04b433"
+    "bytes": 3465,
+    "sha256": "c4cc917e45c4bd4df40941a24bf4a36e28c04708d6b4d3a77351eea9b5745d6c"
+   },
+   {
+    "file": "greso_cube_oco2_v2026.11.nc",
+    "label": "OCO-2 cube (NetCDF)",
+    "main": false,
+    "path": "data/v2026.11/greso_cube_oco2_v2026.11.nc",
+    "latest_path": "data/latest/greso_cube_oco2_latest.nc",
+    "desc": "Median OCO-2 XCO\u2082 in every 5\u00b0\u00d75\u00b0 cell and 16-day window, with each cell's mean sounding time and number of soundings: the cells the growth rates are computed from.",
+    "bytes": 3281640,
+    "sha256": "207da5181f1a5d734d815353f63ebb5b3ea1a83fcf8475b08536a685a53b4d8d"
+   },
+   {
+    "file": "greso_cube_gosat_v2026.11.nc",
+    "label": "GOSAT cube (NetCDF)",
+    "main": false,
+    "path": "data/v2026.11/greso_cube_gosat_v2026.11.nc",
+    "latest_path": "data/latest/greso_cube_gosat_latest.nc",
+    "desc": "The same for GOSAT, from April 2009.",
+    "bytes": 3979153,
+    "sha256": "897a9f0e7b9b37dfa3d2e7e465771241523cd3294ab4f769f4a5fb7cb791d3c7"
+   },
+   {
+    "file": "greso_growth_from_cube.py",
+    "label": "Script (Python)",
+    "main": false,
+    "path": "data/v2026.11/greso_growth_from_cube.py",
+    "latest_path": "data/latest/greso_growth_from_cube.py",
+    "desc": "Computes the 16-day series, its trend and the monthly and annual growth rates from a cube.",
+    "bytes": 13088,
+    "sha256": "82254a45db3034ad09a74681e62447352676bf22cf89de22b02a0d72ce77bd59"
    },
    {
     "file": "README_v2026.11.txt",
@@ -119,18 +149,18 @@
     "path": "data/v2026.11/README_v2026.11.txt",
     "latest_path": "data/latest/README_latest.txt",
     "desc": "Definitions, units, status rules, input versions, data gaps, citation and licence.",
-    "bytes": 18655,
-    "sha256": "dfa6c176a23f7c6300a169f75eeba5378c1fc3c86b8f611d70685cdc866ebcf3"
+    "bytes": 6410,
+    "sha256": "096086cbce097310bee3a313f17379faefc06d5588a706729ff9f14ba42ced1b"
    },
    {
-    "file": "CHANGELOG.md",
+    "file": "CHANGELOG.txt",
     "label": "CHANGELOG",
     "main": false,
-    "path": "data/v2026.11/CHANGELOG.md",
-    "latest_path": "data/latest/CHANGELOG.md",
-    "desc": "What changed in each release, and the list of releases.",
-    "bytes": 6521,
-    "sha256": "2f0b39a5aa67558abc31ee796799fce0029e2351291e370b53e8bc9ce37588de"
+    "path": "data/v2026.11/CHANGELOG.txt",
+    "latest_path": "data/latest/CHANGELOG.txt",
+    "desc": "What changed in each release.",
+    "bytes": 352,
+    "sha256": "7f98ed1c0b2c0e92e918f8f1746be92b530c96c2fcdfcea6c42c29eac98d0df7"
    },
    {
     "file": "greso_v2026.11.json",
@@ -148,7 +178,7 @@
     "main": false,
     "path": "data/v2026.11/greso_v2026.11.zip",
     "latest_path": "data/latest/greso_latest.zip",
-    "desc": "All CSV files, the JSON file, README and CHANGELOG in one ZIP.",
+    "desc": "All files of this release in one ZIP: the CSV files, the JSON file, the cubes, the script, README and CHANGELOG.",
     "bytes": null,
     "sha256": null
    },
@@ -184,8 +214,8 @@
     "2026-08",
     "2026-09"
    ],
-   "note": "Values for June–September 2026 use preliminary OCO-2 data for October 2026 (forward processing), so they may change.",
-   "text": "The OCO-2 data for 1–31 Oct 2026 are preliminary forward-processing (FP) data from the OCO-2 team (product FwDaily_B11301_r01; no data on 6 Oct 2026), used before the public retrospective data for that period are released. The monthly values for Jun–Sep 2026 rest on them (flag preliminary_fp_data) and may change when the public data are used."
+   "note": "Values for June\u2013September 2026 use preliminary OCO-2 data for October 2026 (forward processing), so they may change.",
+   "text": "The OCO-2 data for 1\u201331 Oct 2026 are preliminary forward-processing (FP) data from the OCO-2 team (product FwDaily_B11301_r01; no data on 6 Oct 2026), used before the public retrospective data for that period are released. The monthly values for Jun\u2013Sep 2026 rest on them (flag preliminary_fp_data) and may change when the public data are used."
   }
  },
  "annual": {
@@ -8431,7 +8461,7 @@
   ]
  },
  "kpis": {
-  "summary": "Over the 12 months through September 2026, CO₂ built up in the whole atmosphere at 2.4 ppm a year (an early estimate: the newest months are still revised), about 5.1 billion tonnes of carbon: 69% of the 2024 pace, while fossil emissions were flat or up about 1%.",
+  "summary": "Over the 12 months through September 2026, CO\u2082 built up in the whole atmosphere at 2.4 ppm a year (an early estimate: the newest months are still revised), about 5.1 billion tonnes of carbon: 69% of the 2024 pace, while fossil emissions were flat or up about 1%.",
   "last12": {
    "start": "2025-10-01",
    "end": "2026-10-01",
@@ -8440,7 +8470,7 @@
    "ppm": 2.4032,
    "PgC": 5.1,
    "status": "early",
-   "method": "Change of the deseasonalized OCO-2 XCO₂ trend between 00:00 UTC on 2025-10-01 and 2026-10-01: the same definition as the annual value (1 Jan → 1 Jan), shifted so that the window ends with September 2026, the newest month with observations (August–September 2026 are early estimates, so the value will still be revised). The trend is used as published (it is already smoothed and is not smoothed again). No NOAA value for these dates: its monthly trend (co2_mm_gl.txt, file created 2026-10-09) ends in mid-July 2026, before the window ends.",
+   "method": "Change of the deseasonalized OCO-2 XCO\u2082 trend between 00:00 UTC on 2025-10-01 and 2026-10-01: the same definition as the annual value (1 Jan \u2192 1 Jan), shifted so that the window ends with September 2026, the newest month with observations (August\u2013September 2026 are early estimates, so the value will still be revised). The trend is used as published (it is already smoothed and is not smoothed again). No NOAA value for these dates: its monthly trend (co2_mm_gl.txt, file created 2026-10-09) ends in mid-July 2026, before the window ends.",
    "noaa": null,
    "typical_annual_unc": 0.088
   },
@@ -8477,11 +8507,11 @@
   },
   "af_mean_2015_2024": 0.486,
   "enso": {
-   "label": "El Niño: strong and strengthening (CPC El Niño Advisory in effect)",
+   "label": "El Ni\u00f1o: strong and strengthening (CPC El Ni\u00f1o Advisory in effect)",
    "oni": 2.46,
    "season": "ASO 2026",
-   "as_of": "ONI for Aug–Oct 2026: +2.46 °C (NOAA CPC, checked 9 Nov 2026), the newest season in the CPC series the charts use.",
-   "source": "NOAA CPC Oceanic Niño Index (https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt); CPC ENSO diagnostic discussion of 8 Oct 2026: a strong-to-very strong El Niño is likely through January–March 2027 (https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml).",
+   "as_of": "ONI for Aug\u2013Oct 2026: +2.46 \u00b0C (NOAA CPC, checked 9 Nov 2026), the newest season in the CPC series the charts use.",
+   "source": "NOAA CPC Oceanic Ni\u00f1o Index (https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt); CPC ENSO diagnostic discussion of 8 Oct 2026: a strong-to-very strong El Ni\u00f1o is likely through January\u2013March 2027 (https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml).",
    "latest_reported": null
   },
   "lag": {

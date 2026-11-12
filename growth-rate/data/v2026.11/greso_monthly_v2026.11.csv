@@ -1,55 +1,28 @@
-# GRESO monthly whole-atmosphere (column) CO2 growth rate from OCO-2, with GOSAT and a NOAA-derived series
-# Release: v2026.11    Built: 2026-11-11T03:57:16Z    Data end (OCO-2): 2026-10-31
+# GRESO monthly whole-atmosphere (column) CO2 growth rate using satellite data (OCO-2 and GOSAT); a NOAA-derived series alongside
+# Release: v2026.11    Built: 2026-11-12T17:25:05Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
-# Authors: Sudhanshu Pandey (Caltech), Christopher W. O'Dell (CIRA, Colorado State University), Christian
-#   Frankenberg (Caltech), Junjie Liu (Jet Propulsion Laboratory, Caltech), Vivienne H. Payne (Jet Propulsion
-#   Laboratory, Caltech) and Paul O. Wennberg (Caltech).
-# DRAFT: placeholders are in [brackets].
-#
-# Input versions:
-#   OCO-2 Lite 10-s XCO2: v11.2r through 2023-12-31 (doi:10.5067/70K2B2W8MNGY), v11.3r from 2024-01-01
-#     (doi:10.5067/C4OENLFCYVSA).
-#   GOSAT (optional layer): ACOS GOSAT v11 Lite soundings (NASA GES DISC, doi:10.5067/UAY6VJYTS8OD), filtered subset acosGOSATv11_lite_20090418-20261031_filtered_tiny.h5, 2009-04-18 → 2026-10-31.
-#   Method: GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time, seasonal fit solved exactly) (Pandey et al. 2024).
-# Definitions:
-#   Growth rate = whole-atmosphere (column) CO2 growth rate from OCO-2 (GRESO): rate of change of the
-#     deseasonalized, area-weighted mean column XCO2 over 50S-50N, where coverage is good all year; CO2 added or
-#     removed further poleward mixes into this band within weeks to months, so it tracks the whole atmosphere.
-#   Annual = trend(1 Jan Y+1) - trend(1 Jan Y). It is NOT the mean of the monthly values.
-#   Monthly = trend(1st of next month) - trend(1st of month); displayed series = 5-month running mean, x12 -> ppm/yr.
-#   Trend = cubic polynomial + 4 harmonics fit (solved exactly), harmonics removed, then 7 x 16-day running mean.
-# Units: ppm = micromol/mol dry air (column average). 1 ppm = 2.124 PgC; 1 PgC = 3.664 GtCO2.
-# Status: age = whole months from the end of the month to the data end (2026-10-31); early <= 2,
-#   provisional 3-5, final >= 6. Calendar year: provisional until data
-#   through the end of February of the following year are in (normally released about April), then final.
-# Data gaps:
-#   2017-07-31 to 2017-09-19: OCO-2 safe mode: no data. The 16-day trend is linearly interpolated across the gap, so the Aug and Sep 2017 monthly values rest on the interpolation (flagged in the downloads)
-#   2026-07-28 to 2026-08-13: OCO-2 paused science observations 28 Jul–13 Aug 2026 (safe mode after an instrument anomaly); those days stay missing. The 16-day trend is interpolated across the gap, so the Aug 2026 monthly value rests partly on the interpolation (flagged in the downloads). This release uses OCO-2 data up to 30 Sep 2026 from the retrospective stream, which NASA expects to be of nominal quality after the gap (forward-stream data were of reduced quality until 17 Sep 2026), then preliminary forward-processing data for 1–31 Oct 2026
+# Authors: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech), Christopher W. O'Dell (CIRA, Colorado
+#   State University), Christian Frankenberg (Caltech), Vivienne H. Payne (Jet Propulsion Laboratory, Caltech)
+#   and Paul O. Wennberg (Caltech).
 #
 # Columns:
-#   date = month midpoint (the value applies to the whole calendar month); month = YYYY-MM; time_year = decimal year.
-#   oco2_ppm_yr = displayed monthly growth: 5-month running mean of 12 x monthly increments (first/last 2 months unsmoothed).
-#   oco2_PgC_yr = oco2_ppm_yr x 2.124.
-#   oco2_unsmoothed_ppm_month = trend(1st of next month) - trend(1st of month), NOT smoothed. Twelve of these sum
-#     exactly to the annual value (telescoping). Do not sum or average oco2_ppm_yr to get annual values.
-#   gosat_ppm_yr = GOSAT v11 displayed monthly growth (same definition; optional layer).
-#   noaa_mbl_derived_ppm_yr = our derivative of NOAA's global MBL trend, NOT a NOAA product: 12 x the change of the
-#     trend column of co2_mm_gl.txt (file created 2026-10-09) from the 1st of the month to the 1st of the next
-#     (linearly interpolated; the same dates as oco2_unsmoothed_ppm_month), then the same 5-month running mean as
-#     oco2_ppm_yr (last two months unsmoothed). Empty after 2026-06: NOAA's trend ends in mid-2026-07.
-#     Third-party input, redistributed for comparison; cite Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07.
-#   status/age_months: see Status above. Early months are revised most as data arrive.
-#   flag = trend_interpolated_data_gap where the month rests on the trend interpolated across a data gap (2017-08, 2017-09, 2026-08).
-#   flag = preliminary_fp_data where the month rests on the preliminary OCO-2 forward-processing data of 1–31 Oct 2026
-#     (2026-06, 2026-07, 2026-08, 2026-09); two flags are separated by ';'. The OCO-2 data for 1–31 Oct 2026 are preliminary forward-processing (FP) data from the OCO-2 team (product FwDaily_B11301_r01; no data on 6 Oct 2026), used before the public retrospective data for that period are released. The monthly values for Jun–Sep 2026 rest on them (flag preliminary_fp_data) and may change when the public data are used.
-#   Monthly uncertainty is not quantified per month; order 0.7 ppm/yr (0.06 ppm/month), larger for recent months.
+#   date = middle of the month (the value is for the whole month); month = YYYY-MM; time_year = decimal year.
+#   oco2_ppm_yr = OCO-2 monthly growth rate in ppm/yr (5-month running mean); oco2_PgC_yr = the same in PgC/yr.
+#   oco2_unsmoothed_ppm_month = the month's increase in ppm, not smoothed; twelve add up to the annual value.
+#   gosat_ppm_yr = GOSAT, same method.
+#   noaa_mbl_derived_ppm_yr = derived from NOAA's global marine boundary layer trend (co2_mm_gl.txt, file created
+#     2026-10-09; not a NOAA product), to 2026-06; cite Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07.
+#   status = early (age_months 0-2), provisional (3-5) or final; recent months change as more data arrive.
+#   flag = trend_interpolated_data_gap: rests on the trend interpolated across a data gap (2017-08, 2017-09, 2026-08).
+#   flag = preliminary_fp_data: rests on preliminary OCO-2 forward-processing data (1-31 Oct 2026) and may change.
+#   Two flags are separated by ';'.
 #
-# Citation: Pandey, S., O'Dell, C. W., Frankenberg, C., Liu, J., Payne, V. H., & Wennberg, P. O. (2026). GRESO
-#   OCO-2 whole-atmosphere CO2 growth rates, release v2026.11. OCO Science Applications and Partnerships Center,
-#   Caltech. [dashboard base URL]. [data DOI].
-# Method: Pandey et al. (2024), AGU Advances 5, e2023AV001145, doi:10.1029/2023AV001145.
-# Licence: [Licence: CC BY 4.0 proposed — confirm] (applies to the GRESO columns; third-party columns keep their own terms, cited above).
-# See README_v2026.11.txt for full definitions, caveats and input versions.
+# Citation: Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O. (2026). GRESO:
+#   whole-atmosphere CO2 growth rates from satellite observations, release v2026.11. OCO Science Applications
+#   and Partnerships Center, Caltech. https://doi.org/10.82941/ocosac.greso.co2.
+#   https://doi.org/10.82941/ocosac.greso.co2.data.v2026.11.
+# Licence: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/) for the GRESO columns; third-party columns keep their own terms.
+# Method: Pandey et al. (2024), AGU Advances 5, e2023AV001145, doi:10.1029/2023AV001145. More in README_v2026.11.txt.
 #
 date,month,time_year,oco2_ppm_yr,oco2_PgC_yr,oco2_unsmoothed_ppm_month,gosat_ppm_yr,noaa_mbl_derived_ppm_yr,status,age_months,flag
 2015-01-16,2015-01,2015.04247,1.9603,4.164,0.16336,1.9547,2.262,final,141,
