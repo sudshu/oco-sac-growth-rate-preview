@@ -3,7 +3,7 @@ GRESO WHOLE-ATMOSPHERE (COLUMN) CO2 GROWTH RATE USING SATELLITE DATA -- RELEASE 
 OCO Science Applications and Partnerships Center (OCO-SAC), Caltech
 Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 Contact: Sudhanshu Pandey, sudhanshu.pandey@caltech.edu
-Built: 2026-11-13T23:00:54Z   Data end: 2026-10-31 (OCO-2 and GOSAT)
+Built: 2026-11-13T23:28:59Z   Data end: 2026-10-31 (OCO-2 and GOSAT)
 
 HOW TO CITE
   Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O.
@@ -60,7 +60,7 @@ FILES
   greso_cube_gosat_v2026.11.nc      the same for GOSAT
   greso_growth_from_cube.py         computes the growth rates from a cube
   greso_v2026.11.json               all values in one file (the web page's data)
-  CHANGELOG.txt, SHA256SUMS and greso_v2026.11.zip (all files in one ZIP).
+  CHANGELOG.txt and greso_v2026.11.zip (all files in one ZIP).
   Script: python greso_growth_from_cube.py greso_cube_oco2_v2026.11.nc
     (Python 3.9 or later, numpy, and netCDF4 or h5py)
   CSV files start with '#' lines describing their columns; missing values are
