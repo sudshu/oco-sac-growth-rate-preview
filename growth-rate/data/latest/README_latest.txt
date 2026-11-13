@@ -1,12 +1,9 @@
 GRESO WHOLE-ATMOSPHERE (COLUMN) CO2 GROWTH RATE USING SATELLITE DATA -- RELEASE v2026.11
 ========================================================================================
 OCO Science Applications and Partnerships Center (OCO-SAC), Caltech
-Authors: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech),
-  Christopher W. O'Dell (CIRA, Colorado State University), Christian Frankenberg
-  (Caltech), Vivienne H. Payne (Jet Propulsion Laboratory, Caltech) and Paul O.
-  Wennberg (Caltech).
+Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 Contact: Sudhanshu Pandey, sudhanshu.pandey@caltech.edu
-Built: 2026-11-12T17:25:05Z   Data end: 2026-10-31 (OCO-2 and GOSAT)
+Built: 2026-11-13T18:23:33Z   Data end: 2026-10-31 (OCO-2 and GOSAT)
 
 HOW TO CITE
   Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O.

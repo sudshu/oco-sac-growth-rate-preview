@@ -1,7 +1,7 @@
 GRESO growth-rate data: CHANGELOG
 =================================
 
-v2026.11 (built 2026-11-12T17:25:05Z): first public release.
+v2026.11 (built 2026-11-13T18:23:33Z): first public release.
   - Method: GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time, seasonal fit solved
     exactly).
   - Each later release adds an entry above this one: what changed, and any change to earlier values.

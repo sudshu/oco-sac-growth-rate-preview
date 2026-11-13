@@ -1,9 +1,7 @@
 # GRESO OCO-2 16-day area-weighted mean column XCO2 and deseasonalized smoothed trend
-# Release: v2026.11    Built: 2026-11-12T17:25:05Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
+# Release: v2026.11    Built: 2026-11-13T18:23:33Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
-# Authors: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech), Christopher W. O'Dell (CIRA, Colorado
-#   State University), Christian Frankenberg (Caltech), Vivienne H. Payne (Jet Propulsion Laboratory, Caltech)
-#   and Paul O. Wennberg (Caltech).
+# Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 #
 # Columns:
 #   time_year, date = time of the 16-day bin, the mean time of the soundings it uses; time_year_window_mid,

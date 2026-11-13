@@ -1,9 +1,7 @@
 # GRESO OCO-2 atmospheric growth in mass units, emissions and airborne fraction (annual)
-# Release: v2026.11    Built: 2026-11-12T17:25:05Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
+# Release: v2026.11    Built: 2026-11-13T18:23:33Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
-# Authors: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech), Christopher W. O'Dell (CIRA, Colorado
-#   State University), Christian Frankenberg (Caltech), Vivienne H. Payne (Jet Propulsion Laboratory, Caltech)
-#   and Paul O. Wennberg (Caltech).
+# Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 #
 # Columns (PgC/yr unless noted):
 #   growth_ppm_yr, growth_PgC_yr, growth_unc1s_PgC_yr = OCO-2 annual growth in ppm/yr and PgC/yr, and its 1-sigma.

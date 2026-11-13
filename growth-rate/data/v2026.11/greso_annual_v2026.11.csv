@@ -1,9 +1,7 @@
 # GRESO annual whole-atmosphere (column) CO2 growth rate using satellite data: OCO-2 (2015-2025), GOSAT (2010-2025) and their mean; NOAA MBL alongside
-# Release: v2026.11    Built: 2026-11-12T17:25:05Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
+# Release: v2026.11    Built: 2026-11-13T18:23:33Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
-# Authors: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech), Christopher W. O'Dell (CIRA, Colorado
-#   State University), Christian Frankenberg (Caltech), Vivienne H. Payne (Jet Propulsion Laboratory, Caltech)
-#   and Paul O. Wennberg (Caltech).
+# Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 #
 # Columns (ppm/yr unless noted; 1 ppm = 2.124 PgC):
 #   year; oco2_ppm_yr = OCO-2 growth from 1 January to 1 January of the next year (not the mean of the monthly
