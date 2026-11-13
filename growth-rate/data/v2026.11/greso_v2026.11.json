@@ -1,7 +1,7 @@
 {
  "meta": {
   "release": "v2026.11",
-  "built_utc": "2026-11-13T18:23:33Z",
+  "built_utc": "2026-11-13T23:00:54Z",
   "data_end": "2026-10-31",
   "ref_month": "2026-10",
   "conv": {
@@ -18,8 +18,8 @@
   },
   "status_rules": {
    "early_max_age": 2,
-   "provisional_max_age": 5,
-   "note": "Each monthly value gets a status from its age: the number of whole months between the end of that month and the data end (31 Oct 2026). Age 0\u20132 = early estimate (dashed; revised most as data arrive); 3\u20135 = provisional (still revised; about 0.7 ppm/yr RMS at 3 months, falling to 0.24 ppm/yr at 5 [revision sizes from an earlier pipeline run; recompute on this release]); 6 or more = final. In this release April 2026 and earlier are final, May\u2013July 2026 provisional and August\u2013September 2026 early. A calendar-year value is provisional until data through the end of February of the following year are in (normally released about April), then final. No partial-year annual values are published. The same rule applies to every chart and file."
+   "provisional_max_age": 4,
+   "note": "Each monthly value gets a status from its age: the number of whole months between the end of that month and the data end (31 Oct 2026). Age 0\u20132 = early estimate (dashed; revised most as data arrive); 3\u20134 = provisional (still revised; about 0.20 ppm/yr RMS at 3 months, falling to 0.15 ppm/yr at 4, from this release's method rerun with the data cut at every month end since 2018); 5 or more = final: the smoothing no longer changes the value, though each release refits the seasonal cycle to the whole record, which can still move a final value by about 0.1 ppm/yr. In this release May 2026 and earlier are final, June\u2013July 2026 provisional and August\u2013September 2026 early. A calendar-year value is provisional until data through the end of February of the following year are in (normally released about April), then final. No partial-year annual values are published. The same rule applies to every chart and file."
   },
   "gaps": [
    {
@@ -69,8 +69,8 @@
     "path": "data/v2026.11/greso_monthly_v2026.11.csv",
     "latest_path": "data/latest/greso_monthly_latest.csv",
     "desc": "One value per month and satellite (OCO-2 and GOSAT), January 2015 to September 2026, in ppm/yr, with status flags; a series derived from NOAA alongside.",
-    "bytes": 12812,
-    "sha256": "7bb709ffbea409d29fcf38f5905047e8737f7c063dab3861824cee5a38228d1d"
+    "bytes": 12806,
+    "sha256": "7cbb96472e2a15143d8fcfd304e62b70466c9d04d3738216807b82ef70b1ac76"
    },
    {
     "file": "greso_annual_v2026.11.csv",
@@ -80,7 +80,7 @@
     "latest_path": "data/latest/greso_annual_latest.csv",
     "desc": "Growth from 1 January to 1 January with its 1\u03c3 uncertainty, from the satellites: OCO-2 2015\u20132025, GOSAT 2010\u20132025 and their mean; NOAA surface values 2010\u20132025 alongside.",
     "bytes": 3638,
-    "sha256": "bbddb511468f08d85f6d393241ecb5d7d24468c413f8e46461f815a5ada8f4e5"
+    "sha256": "eecdb6c0a4d4446bd3eb827775e96f03075acd6673d4d9e5ab15bdd75a9c3466"
    },
    {
     "file": "greso_zonal_monthly_v2026.11.csv",
@@ -89,8 +89,8 @@
     "path": "data/v2026.11/greso_zonal_monthly_v2026.11.csv",
     "latest_path": "data/latest/greso_zonal_monthly_latest.csv",
     "desc": "Monthly growth in ten 10\u00b0 latitude bands, OCO-2 and GOSAT, one row per month and band.",
-    "bytes": 161704,
-    "sha256": "04661861a44beaefa96817693f6daa0e342cb18ae56c7514a9cf2a0f2678a101"
+    "bytes": 161584,
+    "sha256": "07973aea861cd1b782e4049b0d7c4ac563fcad66b6b0dcbf2995d8dc10c06dce"
    },
    {
     "file": "greso_xco2_16day_v2026.11.csv",
@@ -100,7 +100,7 @@
     "latest_path": "data/latest/greso_xco2_16day_latest.csv",
     "desc": "Global-mean column XCO\u2082 every 16 days and its deseasonalized, smoothed trend (ppm), from which the growth rates are computed.",
     "bytes": 19084,
-    "sha256": "790cd7fae350bc836c2007adecd61d672a9c808113bee9c7e1b11b9ded8bb7f7"
+    "sha256": "da28584e5af26bc19acafede0ce8f9d92bec2d18194cfef9c942365a5245c10e"
    },
    {
     "file": "greso_budget_annual_v2026.11.csv",
@@ -110,7 +110,7 @@
     "latest_path": "data/latest/greso_budget_annual_latest.csv",
     "desc": "Annual growth in PgC/yr next to fossil and land-use emissions, the airborne fraction and the implied land and ocean uptake.",
     "bytes": 3280,
-    "sha256": "541bbc85aebb33ddc92cacbe1c9471c9ac570431a6e0254e543c7f061c7724a3"
+    "sha256": "e37e09b01d021d59c525541e20efe8bc0b10bfbea696fdf55100b0557388c62f"
    },
    {
     "file": "greso_cube_oco2_v2026.11.nc",
@@ -150,7 +150,7 @@
     "latest_path": "data/latest/README_latest.txt",
     "desc": "Definitions, units, status rules, input versions, data gaps, citation and licence.",
     "bytes": 6227,
-    "sha256": "b8d60223f8e6e266257808d3389dbad163114cff62b0a65b83cbbb5fbaa6ebdc"
+    "sha256": "9b4f46b53a58ea20ba7355633838b62d639549b1445fe7059c1f622f2db9509b"
    },
    {
     "file": "CHANGELOG.txt",
@@ -160,7 +160,7 @@
     "latest_path": "data/latest/CHANGELOG.txt",
     "desc": "What changed in each release.",
     "bytes": 352,
-    "sha256": "508c3505450b66b03bcefb60d42ab70ea4ad42f4b810bdd3feb40bba6bff093d"
+    "sha256": "f1acdd35c2da4a314aebb632e5633ea1c8908728a8e2ceadf125c0c9f3339898"
    },
    {
     "file": "greso_v2026.11.json",
@@ -1630,7 +1630,7 @@
    "final",
    "final",
    "final",
-   "provisional",
+   "final",
    "provisional",
    "provisional",
    "early",
@@ -7698,7 +7698,7 @@
    false,
    false,
    false,
-   true,
+   false,
    true,
    true,
    true,
@@ -7841,7 +7841,7 @@
    "final",
    "final",
    "final",
-   "provisional",
+   "final",
    "provisional",
    "provisional",
    "early",

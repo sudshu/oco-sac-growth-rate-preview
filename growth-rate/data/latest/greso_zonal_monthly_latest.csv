@@ -1,5 +1,5 @@
 # GRESO monthly growth rate of column XCO2 in 10-degree latitude bands, using satellite data (OCO-2 and GOSAT)
-# Release: v2026.11    Built: 2026-11-13T18:23:33Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
+# Release: v2026.11    Built: 2026-11-13T23:00:54Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
 # Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 #
@@ -155,7 +155,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,oco2,50S-40S,-50,-40,1.5340,final,
 2026-03-16,2026.20411,oco2,50S-40S,-50,-40,1.5068,final,
 2026-04-16,2026.28767,oco2,50S-40S,-50,-40,1.5688,final,
-2026-05-16,2026.37123,oco2,50S-40S,-50,-40,1.7116,provisional,preliminary_fp_data
+2026-05-16,2026.37123,oco2,50S-40S,-50,-40,1.7116,final,preliminary_fp_data
 2026-06-16,2026.45479,oco2,50S-40S,-50,-40,2.1466,provisional,preliminary_fp_data
 2026-07-16,2026.53836,oco2,50S-40S,-50,-40,2.4683,provisional,preliminary_fp_data
 2026-08-16,2026.62329,oco2,50S-40S,-50,-40,3.3790,early,trend_interpolated_data_gap;preliminary_fp_data
@@ -296,7 +296,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,oco2,40S-30S,-40,-30,1.1100,final,
 2026-03-16,2026.20411,oco2,40S-30S,-40,-30,0.9849,final,
 2026-04-16,2026.28767,oco2,40S-30S,-40,-30,1.1698,final,
-2026-05-16,2026.37123,oco2,40S-30S,-40,-30,1.6538,provisional,preliminary_fp_data
+2026-05-16,2026.37123,oco2,40S-30S,-40,-30,1.6538,final,preliminary_fp_data
 2026-06-16,2026.45479,oco2,40S-30S,-40,-30,2.4372,provisional,preliminary_fp_data
 2026-07-16,2026.53836,oco2,40S-30S,-40,-30,3.2688,provisional,preliminary_fp_data
 2026-08-16,2026.62329,oco2,40S-30S,-40,-30,4.8625,early,trend_interpolated_data_gap;preliminary_fp_data
@@ -437,7 +437,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,oco2,30S-20S,-30,-20,1.4733,final,
 2026-03-16,2026.20411,oco2,30S-20S,-30,-20,1.6512,final,
 2026-04-16,2026.28767,oco2,30S-20S,-30,-20,1.9687,final,
-2026-05-16,2026.37123,oco2,30S-20S,-30,-20,2.3619,provisional,preliminary_fp_data
+2026-05-16,2026.37123,oco2,30S-20S,-30,-20,2.3619,final,preliminary_fp_data
 2026-06-16,2026.45479,oco2,30S-20S,-30,-20,2.8031,provisional,preliminary_fp_data
 2026-07-16,2026.53836,oco2,30S-20S,-30,-20,3.5709,provisional,preliminary_fp_data
 2026-08-16,2026.62329,oco2,30S-20S,-30,-20,3.9994,early,trend_interpolated_data_gap;preliminary_fp_data
@@ -578,7 +578,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,oco2,20S-10S,-20,-10,1.6672,final,
 2026-03-16,2026.20411,oco2,20S-10S,-20,-10,1.7630,final,
 2026-04-16,2026.28767,oco2,20S-10S,-20,-10,1.9964,final,
-2026-05-16,2026.37123,oco2,20S-10S,-20,-10,2.4021,provisional,preliminary_fp_data
+2026-05-16,2026.37123,oco2,20S-10S,-20,-10,2.4021,final,preliminary_fp_data
 2026-06-16,2026.45479,oco2,20S-10S,-20,-10,2.9375,provisional,preliminary_fp_data
 2026-07-16,2026.53836,oco2,20S-10S,-20,-10,3.3762,provisional,preliminary_fp_data
 2026-08-16,2026.62329,oco2,20S-10S,-20,-10,4.5906,early,trend_interpolated_data_gap;preliminary_fp_data
@@ -719,7 +719,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,oco2,10S-0,-10,0,1.3106,final,
 2026-03-16,2026.20411,oco2,10S-0,-10,0,1.3559,final,
 2026-04-16,2026.28767,oco2,10S-0,-10,0,1.7384,final,
-2026-05-16,2026.37123,oco2,10S-0,-10,0,2.2577,provisional,preliminary_fp_data
+2026-05-16,2026.37123,oco2,10S-0,-10,0,2.2577,final,preliminary_fp_data
 2026-06-16,2026.45479,oco2,10S-0,-10,0,3.0374,provisional,preliminary_fp_data
 2026-07-16,2026.53836,oco2,10S-0,-10,0,3.7601,provisional,preliminary_fp_data
 2026-08-16,2026.62329,oco2,10S-0,-10,0,4.7991,early,trend_interpolated_data_gap;preliminary_fp_data
@@ -860,7 +860,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,oco2,0-10N,0,10,1.5812,final,
 2026-03-16,2026.20411,oco2,0-10N,0,10,1.5641,final,
 2026-04-16,2026.28767,oco2,0-10N,0,10,1.7757,final,
-2026-05-16,2026.37123,oco2,0-10N,0,10,2.2557,provisional,preliminary_fp_data
+2026-05-16,2026.37123,oco2,0-10N,0,10,2.2557,final,preliminary_fp_data
 2026-06-16,2026.45479,oco2,0-10N,0,10,2.7925,provisional,preliminary_fp_data
 2026-07-16,2026.53836,oco2,0-10N,0,10,3.8000,provisional,preliminary_fp_data
 2026-08-16,2026.62329,oco2,0-10N,0,10,4.1230,early,trend_interpolated_data_gap;preliminary_fp_data
@@ -1001,7 +1001,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,oco2,10N-20N,10,20,1.5450,final,
 2026-03-16,2026.20411,oco2,10N-20N,10,20,1.4796,final,
 2026-04-16,2026.28767,oco2,10N-20N,10,20,1.6358,final,
-2026-05-16,2026.37123,oco2,10N-20N,10,20,2.0964,provisional,preliminary_fp_data
+2026-05-16,2026.37123,oco2,10N-20N,10,20,2.0964,final,preliminary_fp_data
 2026-06-16,2026.45479,oco2,10N-20N,10,20,2.7416,provisional,preliminary_fp_data
 2026-07-16,2026.53836,oco2,10N-20N,10,20,3.6145,provisional,preliminary_fp_data
 2026-08-16,2026.62329,oco2,10N-20N,10,20,4.6900,early,trend_interpolated_data_gap;preliminary_fp_data
@@ -1142,7 +1142,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,oco2,20N-30N,20,30,1.5634,final,
 2026-03-16,2026.20411,oco2,20N-30N,20,30,1.2994,final,
 2026-04-16,2026.28767,oco2,20N-30N,20,30,1.4229,final,
-2026-05-16,2026.37123,oco2,20N-30N,20,30,1.8252,provisional,preliminary_fp_data
+2026-05-16,2026.37123,oco2,20N-30N,20,30,1.8252,final,preliminary_fp_data
 2026-06-16,2026.45479,oco2,20N-30N,20,30,2.4737,provisional,preliminary_fp_data
 2026-07-16,2026.53836,oco2,20N-30N,20,30,3.2832,provisional,preliminary_fp_data
 2026-08-16,2026.62329,oco2,20N-30N,20,30,3.8617,early,trend_interpolated_data_gap;preliminary_fp_data
@@ -1283,7 +1283,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,oco2,30N-40N,30,40,1.4362,final,
 2026-03-16,2026.20411,oco2,30N-40N,30,40,0.9002,final,
 2026-04-16,2026.28767,oco2,30N-40N,30,40,0.8785,final,
-2026-05-16,2026.37123,oco2,30N-40N,30,40,1.3435,provisional,preliminary_fp_data
+2026-05-16,2026.37123,oco2,30N-40N,30,40,1.3435,final,preliminary_fp_data
 2026-06-16,2026.45479,oco2,30N-40N,30,40,2.2824,provisional,preliminary_fp_data
 2026-07-16,2026.53836,oco2,30N-40N,30,40,3.4939,provisional,preliminary_fp_data
 2026-08-16,2026.62329,oco2,30N-40N,30,40,4.7700,early,trend_interpolated_data_gap;preliminary_fp_data
@@ -1424,7 +1424,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,oco2,40N-50N,40,50,1.4188,final,
 2026-03-16,2026.20411,oco2,40N-50N,40,50,0.8347,final,
 2026-04-16,2026.28767,oco2,40N-50N,40,50,0.9027,final,
-2026-05-16,2026.37123,oco2,40N-50N,40,50,1.2962,provisional,preliminary_fp_data
+2026-05-16,2026.37123,oco2,40N-50N,40,50,1.2962,final,preliminary_fp_data
 2026-06-16,2026.45479,oco2,40N-50N,40,50,2.1103,provisional,preliminary_fp_data
 2026-07-16,2026.53836,oco2,40N-50N,40,50,3.1759,provisional,preliminary_fp_data
 2026-08-16,2026.62329,oco2,40N-50N,40,50,4.2904,early,trend_interpolated_data_gap;preliminary_fp_data
@@ -1565,7 +1565,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,gosat,50S-40S,-50,-40,2.1791,final,
 2026-03-16,2026.20411,gosat,50S-40S,-50,-40,2.1663,final,
 2026-04-16,2026.28767,gosat,50S-40S,-50,-40,1.8167,final,
-2026-05-16,2026.37123,gosat,50S-40S,-50,-40,1.8313,provisional,
+2026-05-16,2026.37123,gosat,50S-40S,-50,-40,1.8313,final,
 2026-06-16,2026.45479,gosat,50S-40S,-50,-40,1.7691,provisional,
 2026-07-16,2026.53836,gosat,50S-40S,-50,-40,2.4875,provisional,
 2026-08-16,2026.62329,gosat,50S-40S,-50,-40,0.8737,early,
@@ -1706,7 +1706,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,gosat,40S-30S,-40,-30,1.9738,final,
 2026-03-16,2026.20411,gosat,40S-30S,-40,-30,1.9078,final,
 2026-04-16,2026.28767,gosat,40S-30S,-40,-30,1.7210,final,
-2026-05-16,2026.37123,gosat,40S-30S,-40,-30,1.6535,provisional,
+2026-05-16,2026.37123,gosat,40S-30S,-40,-30,1.6535,final,
 2026-06-16,2026.45479,gosat,40S-30S,-40,-30,1.7966,provisional,
 2026-07-16,2026.53836,gosat,40S-30S,-40,-30,2.2061,provisional,
 2026-08-16,2026.62329,gosat,40S-30S,-40,-30,2.8929,early,
@@ -1847,7 +1847,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,gosat,30S-20S,-30,-20,2.0578,final,
 2026-03-16,2026.20411,gosat,30S-20S,-30,-20,1.9501,final,
 2026-04-16,2026.28767,gosat,30S-20S,-30,-20,1.8512,final,
-2026-05-16,2026.37123,gosat,30S-20S,-30,-20,1.9307,provisional,
+2026-05-16,2026.37123,gosat,30S-20S,-30,-20,1.9307,final,
 2026-06-16,2026.45479,gosat,30S-20S,-30,-20,2.2101,provisional,
 2026-07-16,2026.53836,gosat,30S-20S,-30,-20,2.8964,provisional,
 2026-08-16,2026.62329,gosat,30S-20S,-30,-20,3.7170,early,
@@ -1988,7 +1988,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,gosat,20S-10S,-20,-10,2.0946,final,
 2026-03-16,2026.20411,gosat,20S-10S,-20,-10,1.9878,final,
 2026-04-16,2026.28767,gosat,20S-10S,-20,-10,1.9970,final,
-2026-05-16,2026.37123,gosat,20S-10S,-20,-10,2.1463,provisional,
+2026-05-16,2026.37123,gosat,20S-10S,-20,-10,2.1463,final,
 2026-06-16,2026.45479,gosat,20S-10S,-20,-10,2.3653,provisional,
 2026-07-16,2026.53836,gosat,20S-10S,-20,-10,2.5498,provisional,
 2026-08-16,2026.62329,gosat,20S-10S,-20,-10,3.4783,early,
@@ -2129,7 +2129,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,gosat,10S-0,-10,0,1.4946,final,
 2026-03-16,2026.20411,gosat,10S-0,-10,0,1.3875,final,
 2026-04-16,2026.28767,gosat,10S-0,-10,0,1.6848,final,
-2026-05-16,2026.37123,gosat,10S-0,-10,0,1.9906,provisional,
+2026-05-16,2026.37123,gosat,10S-0,-10,0,1.9906,final,
 2026-06-16,2026.45479,gosat,10S-0,-10,0,2.4926,provisional,
 2026-07-16,2026.53836,gosat,10S-0,-10,0,3.0654,provisional,
 2026-08-16,2026.62329,gosat,10S-0,-10,0,3.9729,early,
@@ -2270,7 +2270,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,gosat,0-10N,0,10,1.8262,final,
 2026-03-16,2026.20411,gosat,0-10N,0,10,1.7496,final,
 2026-04-16,2026.28767,gosat,0-10N,0,10,1.6463,final,
-2026-05-16,2026.37123,gosat,0-10N,0,10,1.8316,provisional,
+2026-05-16,2026.37123,gosat,0-10N,0,10,1.8316,final,
 2026-06-16,2026.45479,gosat,0-10N,0,10,2.1535,provisional,
 2026-07-16,2026.53836,gosat,0-10N,0,10,2.6896,provisional,
 2026-08-16,2026.62329,gosat,0-10N,0,10,3.1934,early,
@@ -2411,7 +2411,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,gosat,10N-20N,10,20,1.6836,final,
 2026-03-16,2026.20411,gosat,10N-20N,10,20,1.8943,final,
 2026-04-16,2026.28767,gosat,10N-20N,10,20,2.0339,final,
-2026-05-16,2026.37123,gosat,10N-20N,10,20,2.3177,provisional,
+2026-05-16,2026.37123,gosat,10N-20N,10,20,2.3177,final,
 2026-06-16,2026.45479,gosat,10N-20N,10,20,2.7985,provisional,
 2026-07-16,2026.53836,gosat,10N-20N,10,20,3.4083,provisional,
 2026-08-16,2026.62329,gosat,10N-20N,10,20,4.0145,early,
@@ -2552,7 +2552,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,gosat,20N-30N,20,30,1.9799,final,
 2026-03-16,2026.20411,gosat,20N-30N,20,30,1.7697,final,
 2026-04-16,2026.28767,gosat,20N-30N,20,30,1.6910,final,
-2026-05-16,2026.37123,gosat,20N-30N,20,30,1.9283,provisional,
+2026-05-16,2026.37123,gosat,20N-30N,20,30,1.9283,final,
 2026-06-16,2026.45479,gosat,20N-30N,20,30,2.2984,provisional,
 2026-07-16,2026.53836,gosat,20N-30N,20,30,3.1014,provisional,
 2026-08-16,2026.62329,gosat,20N-30N,20,30,3.6334,early,
@@ -2693,7 +2693,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,gosat,30N-40N,30,40,1.6056,final,
 2026-03-16,2026.20411,gosat,30N-40N,30,40,1.1317,final,
 2026-04-16,2026.28767,gosat,30N-40N,30,40,1.1605,final,
-2026-05-16,2026.37123,gosat,30N-40N,30,40,1.5033,provisional,
+2026-05-16,2026.37123,gosat,30N-40N,30,40,1.5033,final,
 2026-06-16,2026.45479,gosat,30N-40N,30,40,2.4130,provisional,
 2026-07-16,2026.53836,gosat,30N-40N,30,40,3.3303,provisional,
 2026-08-16,2026.62329,gosat,30N-40N,30,40,4.8448,early,
@@ -2834,7 +2834,7 @@ date,time_year,product,band,lat_min,lat_max,growth_ppm_yr,status,flag
 2026-02-15,2026.12329,gosat,40N-50N,40,50,1.0225,final,
 2026-03-16,2026.20411,gosat,40N-50N,40,50,0.5636,final,
 2026-04-16,2026.28767,gosat,40N-50N,40,50,0.5816,final,
-2026-05-16,2026.37123,gosat,40N-50N,40,50,1.1531,provisional,
+2026-05-16,2026.37123,gosat,40N-50N,40,50,1.1531,final,
 2026-06-16,2026.45479,gosat,40N-50N,40,50,2.0801,provisional,
 2026-07-16,2026.53836,gosat,40N-50N,40,50,3.2928,provisional,
 2026-08-16,2026.62329,gosat,40N-50N,40,50,4.1775,early,

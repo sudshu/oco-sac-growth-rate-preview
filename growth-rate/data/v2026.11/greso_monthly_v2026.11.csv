@@ -1,5 +1,5 @@
 # GRESO monthly whole-atmosphere (column) CO2 growth rate using satellite data (OCO-2 and GOSAT); a NOAA-derived series alongside
-# Release: v2026.11    Built: 2026-11-13T18:23:33Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
+# Release: v2026.11    Built: 2026-11-13T23:00:54Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
 # Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 #
@@ -10,7 +10,7 @@
 #   gosat_ppm_yr = GOSAT, same method.
 #   noaa_mbl_derived_ppm_yr = derived from NOAA's global marine boundary layer trend (co2_mm_gl.txt, file created
 #     2026-10-09; not a NOAA product), to 2026-06; cite Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07.
-#   status = early (age_months 0-2), provisional (3-5) or final; recent months change as more data arrive.
+#   status = early (age_months 0-2), provisional (3-4) or final; recent months change as more data arrive.
 #   flag = trend_interpolated_data_gap: rests on the trend interpolated across a data gap (2017-08, 2017-09, 2026-08).
 #   flag = preliminary_fp_data: rests on preliminary OCO-2 forward-processing data (1-31 Oct 2026) and may change.
 #   Two flags are separated by ';'.
@@ -159,7 +159,7 @@ date,month,time_year,oco2_ppm_yr,oco2_PgC_yr,oco2_unsmoothed_ppm_month,gosat_ppm
 2026-02-15,2026-02,2026.12329,1.4735,3.130,0.11084,1.7823,1.139,final,8,
 2026-03-16,2026-03,2026.20411,1.3526,2.873,0.08997,1.6470,1.187,final,7,
 2026-04-16,2026-04,2026.28767,1.5362,3.263,0.09565,1.6293,1.230,final,6,
-2026-05-16,2026-05,2026.37123,1.9542,4.151,0.12548,1.8498,2.603,provisional,5,
+2026-05-16,2026-05,2026.37123,1.9542,4.151,0.12548,1.8498,2.603,final,5,
 2026-06-16,2026-06,2026.45479,2.6627,5.656,0.21810,2.2655,3.014,provisional,4,preliminary_fp_data
 2026-07-16,2026-07,2026.53836,3.4405,7.308,0.28504,2.9392,,provisional,3,preliminary_fp_data
 2026-08-16,2026-08,2026.62329,4.6233,9.820,0.38524,3.5357,,early,2,trend_interpolated_data_gap;preliminary_fp_data

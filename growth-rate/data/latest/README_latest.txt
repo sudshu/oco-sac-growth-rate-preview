@@ -3,7 +3,7 @@ GRESO WHOLE-ATMOSPHERE (COLUMN) CO2 GROWTH RATE USING SATELLITE DATA -- RELEASE 
 OCO Science Applications and Partnerships Center (OCO-SAC), Caltech
 Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 Contact: Sudhanshu Pandey, sudhanshu.pandey@caltech.edu
-Built: 2026-11-13T18:23:33Z   Data end: 2026-10-31 (OCO-2 and GOSAT)
+Built: 2026-11-13T23:00:54Z   Data end: 2026-10-31 (OCO-2 and GOSAT)
 
 HOW TO CITE
   Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O.
@@ -42,7 +42,7 @@ METHOD IN BRIEF
   1 ppm = 2.124 PgC; 1 PgC = 3.664 GtCO2.
 
 STATUS AND FLAGS
-  status: early (0-2 months after the month ends), provisional (3-5 months) or
+  status: early (0-2 months after the month ends), provisional (3-4 months) or
     final (later); recent months change as more data arrive. A year is
     provisional until data through February of the next year are in.
   flag preliminary_fp_data: rests on preliminary OCO-2 forward-processing data
