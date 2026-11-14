@@ -2523,7 +2523,8 @@ function setupZ10() {
    reader's units and switches, and put back before the screen repaints. The picture holds the title, the legend's
    active entries, the chart, the small text the page shows under the chart, links aside (the emissions credit, the
    forecast note, GOSAT's blank months, a zoomed map's key to its numbered boxes; since decision 127 nothing that the
-   page does not show), a short source line (PNG_SOURCE), the page's home address (PNG_HOME) and the date, and at the
+   page does not show), a short source line (PNG_SOURCE with the data release, decision 144), the page's home address
+   (PNG_HOME) and the date, and at the
    bottom right the Caltech and JPL logos, at 3x and 300 dpi. The QR code for the address that sat beside the logos
    (decisions 78, 83, 86 and 111) went in decision 127 (user, 2026-11-12: "I think we can remove it"): the printed
    address leads back to the page. The PNG's text fields carry the title, that text, the page's full citation and the
@@ -2711,7 +2712,9 @@ function pngDraw(c, s, im, draw) {
   // smaller"), in the corner since the QR code beside them went (decision 127; user, 2026-11-12: "I think we can remove
   // it"). The logos and the last text line's baseline share one bottom line.
   var hC = 15, hJ = 12, wC = im.caltech.width / im.caltech.height * hC, wJ = im.jpl.width / im.jpl.height * hJ;
-  var tw = cw - (wJ + 22 + wC) - 28, src = "Source: " + PNG_SOURCE;
+  // the source line names the data release (decision 144; user, 2026-11-13: "I want the plots to mention the data
+  // version so that people know which version of data they are plotting"), as the citation does (decision 142)
+  var tw = cw - (wJ + 22 + wC) - 28, src = "Source: " + PNG_SOURCE + ", data release " + M.release;
   function lines(str, font, lh) { c.font = font; return str ? lh * pngWrap(str, tw, function (t) { return c.measureText(t).width; }).length : 0; }
   var th = (s.text ? lines(s.text, "11px " + SANS, 15) + 3 : 0) + lines(src, "10.5px " + SANS, 14) + lines(s.where, "10px " + SANS, 14) - 3.5;   // the text's top to its last baseline
   var base = Math.round((y + Math.max(th, hC)) * PNG_SCALE) / PNG_SCALE, lx = X + cw - wC;
