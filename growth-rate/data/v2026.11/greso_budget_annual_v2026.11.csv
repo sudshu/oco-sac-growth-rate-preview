@@ -1,5 +1,5 @@
 # GRESO OCO-2 atmospheric growth in mass units, emissions and airborne fraction (annual)
-# Release: v2026.11    Built: 2026-11-13T23:28:59Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
+# Release: v2026.11    Built: 2026-11-14T00:42:12Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
 # Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 #
@@ -14,10 +14,10 @@
 #   Emissions from 2025: Carbon Monitor, carbonmonitor.org (Liu et al. 2020, arXiv:2004.13614), x 1.020, plus extrapolated land-use change (provisional).
 #   NOAA: Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07.
 #
-# Citation: Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O. (2026). GRESO:
-#   whole-atmosphere CO2 growth rates from satellite observations, release v2026.11. OCO Science Applications
-#   and Partnerships Center, Caltech. https://doi.org/10.82941/ocosac.greso.co2.
-#   https://doi.org/10.82941/ocosac.greso.co2.data.v2026.11.
+# Citation: Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O. (2026). GRESO Portal:
+#   whole-atmosphere CO2 growth rates from satellite observations, data release v2026.11. OCO Science
+#   Applications and Partnerships Center, Caltech. https://doi.org/10.82941/ocosac.greso.co2
+# This release on CaltechDATA: https://doi.org/10.82941/ocosac.greso.co2.data.v2026.11
 # Licence: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/) for the GRESO columns; third-party columns keep their own terms.
 # Method: Pandey et al. (2024), AGU Advances 5, e2023AV001145, doi:10.1029/2023AV001145. More in README_v2026.11.txt.
 #

@@ -1,7 +1,7 @@
 {
  "meta": {
   "release": "v2026.11",
-  "built_utc": "2026-11-13T23:28:59Z",
+  "built_utc": "2026-11-14T00:42:12Z",
   "data_end": "2026-10-31",
   "ref_month": "2026-10",
   "conv": {
@@ -58,7 +58,8 @@
    "The OCO-2 data for 1\u201331 Oct 2026 are preliminary forward-processing (FP) data from the OCO-2 team (product FwDaily_B11301_r01; no data on 6 Oct 2026), used before the public retrospective data for that period are released. The monthly values for Jun\u2013Sep 2026 rest on them (flag preliminary_fp_data) and may change when the public data are used."
   ],
   "method_summary": "GRESO (Pandey et al. 2024, doi:10.1029/2023AV001145), method version GRESO 1.x (baseline 2026-01-12, 16-day bins dated at their effective time, seasonal fit solved exactly). Input: OCO-2 v11 10-s XCO\u2082 (v11.2r through 2023, v11.3r from 2024, preliminary forward-processing data for 1\u201331 Oct 2026), land + ocean (target mode excluded), retrieval uncertainty < 2 ppm. Each 16-day repeat cycle is binned to 5\u00b0\u00d75\u00b0 cells (median), averaged along each latitude row and area-weighted across rows. Each 16-day bin is dated at its effective time, the area-weighted mean time of the soundings it uses (the same weights as the XCO\u2082 mean), not at the window's midpoint. Seasonal cycle: least-squares fit (solved exactly) of a cubic polynomial plus four annual harmonics over the whole record; the harmonics are subtracted. The deseasonalized series is gap-filled linearly and smoothed with a 7-window (7\u00d716-day \u2248 112-day) running mean. Monthly growth = trend(1st of next month) \u2212 trend(1st of month), \u00d712 for ppm/yr, displayed with a 5-month running mean. Annual growth = trend(1 Jan Y+1) \u2212 trend(1 Jan Y), not the mean of the displayed monthly values. Annual 1\u03c3 = \u221a(retrieval\u00b2 + smoothing\u00b2 + 0.04\u00b2): retrieval = spread over 40 decile subsets of four retrieval parameters, smoothing = spread over 6 smoothing widths, 0.04 ppm/yr = OSSE sampling error.",
-  "citation": "Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O. (2026). GRESO: whole-atmosphere CO\u2082 growth rates from satellite observations, release v2026.11. OCO Science Applications and Partnerships Center, Caltech. https://doi.org/10.82941/ocosac.greso.co2. https://doi.org/10.82941/ocosac.greso.co2.data.v2026.11.",
+  "citation": "Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O. (2026). GRESO Portal: whole-atmosphere CO\u2082 growth rates from satellite observations, data release v2026.11. OCO Science Applications and Partnerships Center, Caltech. https://doi.org/10.82941/ocosac.greso.co2",
+  "release_doi": "https://doi.org/10.82941/ocosac.greso.co2.data.v2026.11",
   "method_citation": "Pandey, S., Miller, J. B., Basu, S., Liu, J., Weir, B., Byrne, B., Chevallier, F., Bowman, K. W., Liu, Z., Deng, F., O'Dell, C. W., & Chatterjee, A. (2024). Toward low-latency estimation of atmospheric CO2 growth rates using satellite observations: Evaluating sampling errors of satellite and in situ observing approaches. AGU Advances, 5, e2023AV001145. https://doi.org/10.1029/2023AV001145",
   "license": "CC BY 4.0 (Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/)",
   "downloads": [
@@ -69,8 +70,8 @@
     "path": "data/v2026.11/greso_monthly_v2026.11.csv",
     "latest_path": "data/latest/greso_monthly_latest.csv",
     "desc": "One value per month and satellite (OCO-2 and GOSAT), January 2015 to September 2026, in ppm/yr, with status flags; a series derived from NOAA alongside.",
-    "bytes": 12806,
-    "sha256": "cd9b8371c3a7d63d5f668e37aca9fa4caf34e3daedcdffb69b34c267ecba3908"
+    "bytes": 12843,
+    "sha256": "15ed1f17d92cd7f9760fd36fa78a8ef3b321761ccf206c5fc1972ec98f75e27c"
    },
    {
     "file": "greso_annual_v2026.11.csv",
@@ -79,8 +80,8 @@
     "path": "data/v2026.11/greso_annual_v2026.11.csv",
     "latest_path": "data/latest/greso_annual_latest.csv",
     "desc": "Growth from 1 January to 1 January with its 1\u03c3 uncertainty, from the satellites: OCO-2 2015\u20132025, GOSAT 2010\u20132025 and their mean; NOAA surface values 2010\u20132025 alongside.",
-    "bytes": 3638,
-    "sha256": "3132a438242c88cfa72d41ca7831a9e0af3e969873db81e7876e6a7426c9aed5"
+    "bytes": 3675,
+    "sha256": "bffa7a606d7c9f11c95f9a2fc17218fccf503969b5c3c6ef7c52664448e91acb"
    },
    {
     "file": "greso_zonal_monthly_v2026.11.csv",
@@ -89,8 +90,8 @@
     "path": "data/v2026.11/greso_zonal_monthly_v2026.11.csv",
     "latest_path": "data/latest/greso_zonal_monthly_latest.csv",
     "desc": "Monthly growth in ten 10\u00b0 latitude bands, OCO-2 and GOSAT, one row per month and band.",
-    "bytes": 161584,
-    "sha256": "549893d812c65a58d27f49e7bc8194b9da0c47377eef3c31c844bfaf25504146"
+    "bytes": 161621,
+    "sha256": "a55aecf87c35b2c49bf7d6c38c739af4326c5a783d1f30e8acd78ba8e66c9186"
    },
    {
     "file": "greso_xco2_16day_v2026.11.csv",
@@ -99,8 +100,8 @@
     "path": "data/v2026.11/greso_xco2_16day_v2026.11.csv",
     "latest_path": "data/latest/greso_xco2_16day_latest.csv",
     "desc": "Global-mean column XCO\u2082 every 16 days and its deseasonalized, smoothed trend (ppm), from which the growth rates are computed.",
-    "bytes": 19084,
-    "sha256": "711d2f486847ef57bc863f05a1b1ad8b8018e039e90fcedd9dacaf64041c8cc2"
+    "bytes": 19121,
+    "sha256": "9386b62f9f60e9edba4eb32393ede87f0a7115006da34a8246c7fec3d49ef587"
    },
    {
     "file": "greso_budget_annual_v2026.11.csv",
@@ -109,8 +110,8 @@
     "path": "data/v2026.11/greso_budget_annual_v2026.11.csv",
     "latest_path": "data/latest/greso_budget_annual_latest.csv",
     "desc": "Annual growth in PgC/yr next to fossil and land-use emissions, the airborne fraction and the implied land and ocean uptake.",
-    "bytes": 3280,
-    "sha256": "6399e657f0b4450cf833b806b6641eb4c0c3b08b2bc53d4366aa5af9a0c35a30"
+    "bytes": 3317,
+    "sha256": "29b59f4d2ea767c46f49942fa130e81329494ffc9361fb86fd85323b63d1c38e"
    },
    {
     "file": "greso_cube_oco2_v2026.11.nc",
@@ -119,8 +120,8 @@
     "path": "data/v2026.11/greso_cube_oco2_v2026.11.nc",
     "latest_path": "data/latest/greso_cube_oco2_latest.nc",
     "desc": "Median OCO-2 XCO\u2082 in every 5\u00b0\u00d75\u00b0 cell and 16-day window, with each cell's mean sounding time and number of soundings: the cells the growth rates are computed from.",
-    "bytes": 3281707,
-    "sha256": "76c12dabff3085ca99a95409d417521514243255c2782eba4068e7afd03d6529"
+    "bytes": 3282837,
+    "sha256": "b3417f5d25bf655998f945590ef301dc01d13358e1d088aa597f9a5fb320614c"
    },
    {
     "file": "greso_cube_gosat_v2026.11.nc",
@@ -129,8 +130,8 @@
     "path": "data/v2026.11/greso_cube_gosat_v2026.11.nc",
     "latest_path": "data/latest/greso_cube_gosat_latest.nc",
     "desc": "The same for GOSAT, from April 2009.",
-    "bytes": 3979206,
-    "sha256": "cb711db5571c4b6d95ffe8a96968ff8374955d3f4cbdf38b50d836bab0e2214c"
+    "bytes": 3980250,
+    "sha256": "4dc300a22e0370ecfdc2ce9c6ad16b3f8f74f71bd3242f4e4b4e9ff4d9908d8f"
    },
    {
     "file": "greso_growth_from_cube.py",
@@ -149,8 +150,8 @@
     "path": "data/v2026.11/README_v2026.11.txt",
     "latest_path": "data/latest/README_latest.txt",
     "desc": "Definitions, units, status rules, input versions, data gaps, citation and licence.",
-    "bytes": 6215,
-    "sha256": "3d18cd13d4e057910cb23222678d5cf4c31ce3f8048c523cb6499847890d6ef2"
+    "bytes": 6256,
+    "sha256": "a69af8195c704d7006899695bf1a009d24f4f2250290292c2232c4240997f5b2"
    },
    {
     "file": "CHANGELOG.txt",
@@ -160,7 +161,7 @@
     "latest_path": "data/latest/CHANGELOG.txt",
     "desc": "What changed in each release.",
     "bytes": 352,
-    "sha256": "470c325151e1aba5e0a9709f6afe08d404aa07624f55ec5153c661f7ff1de740"
+    "sha256": "aaa44333ec71b2ffde6217e96da083a2b69b5165eac997f2ce1745b0a4e65cc7"
    },
    {
     "file": "greso_v2026.11.json",

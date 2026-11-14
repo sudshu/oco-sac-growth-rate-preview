@@ -1,5 +1,5 @@
 # GRESO monthly whole-atmosphere (column) CO2 growth rate using satellite data (OCO-2 and GOSAT); a NOAA-derived series alongside
-# Release: v2026.11    Built: 2026-11-13T23:28:59Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
+# Release: v2026.11    Built: 2026-11-14T00:42:12Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
 # Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 #
@@ -15,10 +15,10 @@
 #   flag = preliminary_fp_data: rests on preliminary OCO-2 forward-processing data (1-31 Oct 2026) and may change.
 #   Two flags are separated by ';'.
 #
-# Citation: Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O. (2026). GRESO:
-#   whole-atmosphere CO2 growth rates from satellite observations, release v2026.11. OCO Science Applications
-#   and Partnerships Center, Caltech. https://doi.org/10.82941/ocosac.greso.co2.
-#   https://doi.org/10.82941/ocosac.greso.co2.data.v2026.11.
+# Citation: Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O. (2026). GRESO Portal:
+#   whole-atmosphere CO2 growth rates from satellite observations, data release v2026.11. OCO Science
+#   Applications and Partnerships Center, Caltech. https://doi.org/10.82941/ocosac.greso.co2
+# This release on CaltechDATA: https://doi.org/10.82941/ocosac.greso.co2.data.v2026.11
 # Licence: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/) for the GRESO columns; third-party columns keep their own terms.
 # Method: Pandey et al. (2024), AGU Advances 5, e2023AV001145, doi:10.1029/2023AV001145. More in README_v2026.11.txt.
 #
