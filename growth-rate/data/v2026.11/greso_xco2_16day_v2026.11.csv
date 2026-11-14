@@ -1,5 +1,5 @@
 # GRESO OCO-2 16-day area-weighted mean column XCO2 and deseasonalized smoothed trend
-# Release: v2026.11    Built: 2026-11-14T00:42:12Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
+# Release: v2026.11    Built: 2026-11-14T01:51:51Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
 # Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 #
@@ -7,8 +7,9 @@
 #   time_year, date = time of the 16-day bin, the mean time of the soundings it uses; time_year_window_mid,
 #     date_window_mid = middle of its 16-day window.
 #   xco2_16day_ppm = area-weighted mean XCO2 of the 5x5-degree cell medians, in ppm (blank = no data).
-#   xco2_trend_smoothed_ppm = deseasonalized, gap-filled and smoothed series; the growth rates are its changes
-#     from the 1st of one month to the next.
+#   xco2_trend_smoothed_ppm = deseasonalized, gap-filled series smoothed with a 7-window running mean (the
+#     first and last three windows unsmoothed); the growth rates are its changes from the 1st of one month to the
+#     next.
 #   flag = no_data_interpolated (no data; the trend is interpolated), partial_window_data_end_2026-10-31 or preliminary_fp_data (preliminary OCO-2 data, 1-31 Oct 2026).
 #
 # Citation: Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O. (2026). GRESO Portal:

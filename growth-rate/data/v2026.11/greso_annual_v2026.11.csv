@@ -1,5 +1,5 @@
 # GRESO annual whole-atmosphere (column) CO2 growth rate using satellite data: OCO-2 (2015-2025), GOSAT (2010-2025) and their mean; NOAA MBL alongside
-# Release: v2026.11    Built: 2026-11-14T00:42:12Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
+# Release: v2026.11    Built: 2026-11-14T01:51:51Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
 # Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 #
@@ -10,8 +10,9 @@
 #   oco2_PgC_yr, oco2_unc1s_PgC_yr = the same in PgC/yr; oco2_land_ppm_yr, oco2_ocean_ppm_yr = land or ocean
 #     soundings only.
 #   gosat_ppm_yr, gosat_unc1s_ppm_yr = GOSAT, same method; oco2_gosat_mean_ppm_yr, oco2_gosat_mean_unc1s_ppm_yr =
-#     mean of OCO-2 and GOSAT (years with both). The satellite series, as on the web page: gosat_ppm_yr before
-#     2015, oco2_gosat_mean_ppm_yr from 2015.
+#     mean of OCO-2 and GOSAT (years with both), with 1-sigma = sqrt((oco2_unc1s^2 + gosat_unc1s^2)/2 +
+#     ((oco2 - gosat)/2)^2). The satellite series, as on the web page: gosat_ppm_yr before 2015,
+#     oco2_gosat_mean_ppm_yr from 2015.
 #   noaa_mbl_ppm_yr, noaa_mbl_unc1s_ppm_yr = NOAA GML global marine boundary layer annual increase, from
 #     co2_gr_gl.txt (file created 2026-10-09); cite Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07.
 #   status = provisional until data through February of the next year are in, then final.

@@ -1,7 +1,7 @@
 {
  "meta": {
   "release": "v2026.11",
-  "built_utc": "2026-11-14T00:42:12Z",
+  "built_utc": "2026-11-14T01:51:51Z",
   "data_end": "2026-10-31",
   "ref_month": "2026-10",
   "conv": {
@@ -62,138 +62,6 @@
   "release_doi": "https://doi.org/10.82941/ocosac.greso.co2.data.v2026.11",
   "method_citation": "Pandey, S., Miller, J. B., Basu, S., Liu, J., Weir, B., Byrne, B., Chevallier, F., Bowman, K. W., Liu, Z., Deng, F., O'Dell, C. W., & Chatterjee, A. (2024). Toward low-latency estimation of atmospheric CO2 growth rates using satellite observations: Evaluating sampling errors of satellite and in situ observing approaches. AGU Advances, 5, e2023AV001145. https://doi.org/10.1029/2023AV001145",
   "license": "CC BY 4.0 (Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/)",
-  "downloads": [
-   {
-    "file": "greso_monthly_v2026.11.csv",
-    "label": "Monthly growth rate (CSV)",
-    "main": true,
-    "path": "data/v2026.11/greso_monthly_v2026.11.csv",
-    "latest_path": "data/latest/greso_monthly_latest.csv",
-    "desc": "One value per month and satellite (OCO-2 and GOSAT), January 2015 to September 2026, in ppm/yr, with status flags; a series derived from NOAA alongside.",
-    "bytes": 12843,
-    "sha256": "15ed1f17d92cd7f9760fd36fa78a8ef3b321761ccf206c5fc1972ec98f75e27c"
-   },
-   {
-    "file": "greso_annual_v2026.11.csv",
-    "label": "Annual growth rate (CSV)",
-    "main": true,
-    "path": "data/v2026.11/greso_annual_v2026.11.csv",
-    "latest_path": "data/latest/greso_annual_latest.csv",
-    "desc": "Growth from 1 January to 1 January with its 1\u03c3 uncertainty, from the satellites: OCO-2 2015\u20132025, GOSAT 2010\u20132025 and their mean; NOAA surface values 2010\u20132025 alongside.",
-    "bytes": 3675,
-    "sha256": "bffa7a606d7c9f11c95f9a2fc17218fccf503969b5c3c6ef7c52664448e91acb"
-   },
-   {
-    "file": "greso_zonal_monthly_v2026.11.csv",
-    "label": "Latitude bands (CSV)",
-    "main": true,
-    "path": "data/v2026.11/greso_zonal_monthly_v2026.11.csv",
-    "latest_path": "data/latest/greso_zonal_monthly_latest.csv",
-    "desc": "Monthly growth in ten 10\u00b0 latitude bands, OCO-2 and GOSAT, one row per month and band.",
-    "bytes": 161621,
-    "sha256": "a55aecf87c35b2c49bf7d6c38c739af4326c5a783d1f30e8acd78ba8e66c9186"
-   },
-   {
-    "file": "greso_xco2_16day_v2026.11.csv",
-    "label": "16-day XCO\u2082 (CSV)",
-    "main": false,
-    "path": "data/v2026.11/greso_xco2_16day_v2026.11.csv",
-    "latest_path": "data/latest/greso_xco2_16day_latest.csv",
-    "desc": "Global-mean column XCO\u2082 every 16 days and its deseasonalized, smoothed trend (ppm), from which the growth rates are computed.",
-    "bytes": 19121,
-    "sha256": "9386b62f9f60e9edba4eb32393ede87f0a7115006da34a8246c7fec3d49ef587"
-   },
-   {
-    "file": "greso_budget_annual_v2026.11.csv",
-    "label": "Carbon budget (CSV)",
-    "main": false,
-    "path": "data/v2026.11/greso_budget_annual_v2026.11.csv",
-    "latest_path": "data/latest/greso_budget_annual_latest.csv",
-    "desc": "Annual growth in PgC/yr next to fossil and land-use emissions, the airborne fraction and the implied land and ocean uptake.",
-    "bytes": 3317,
-    "sha256": "29b59f4d2ea767c46f49942fa130e81329494ffc9361fb86fd85323b63d1c38e"
-   },
-   {
-    "file": "greso_cube_oco2_v2026.11.nc",
-    "label": "OCO-2 cube (NetCDF)",
-    "main": false,
-    "path": "data/v2026.11/greso_cube_oco2_v2026.11.nc",
-    "latest_path": "data/latest/greso_cube_oco2_latest.nc",
-    "desc": "Median OCO-2 XCO\u2082 in every 5\u00b0\u00d75\u00b0 cell and 16-day window, with each cell's mean sounding time and number of soundings: the cells the growth rates are computed from.",
-    "bytes": 3282837,
-    "sha256": "b3417f5d25bf655998f945590ef301dc01d13358e1d088aa597f9a5fb320614c"
-   },
-   {
-    "file": "greso_cube_gosat_v2026.11.nc",
-    "label": "GOSAT cube (NetCDF)",
-    "main": false,
-    "path": "data/v2026.11/greso_cube_gosat_v2026.11.nc",
-    "latest_path": "data/latest/greso_cube_gosat_latest.nc",
-    "desc": "The same for GOSAT, from April 2009.",
-    "bytes": 3980250,
-    "sha256": "4dc300a22e0370ecfdc2ce9c6ad16b3f8f74f71bd3242f4e4b4e9ff4d9908d8f"
-   },
-   {
-    "file": "greso_growth_from_cube.py",
-    "label": "Script (Python)",
-    "main": false,
-    "path": "data/v2026.11/greso_growth_from_cube.py",
-    "latest_path": "data/latest/greso_growth_from_cube.py",
-    "desc": "Computes the 16-day series, its trend and the monthly and annual growth rates from a cube.",
-    "bytes": 13088,
-    "sha256": "82254a45db3034ad09a74681e62447352676bf22cf89de22b02a0d72ce77bd59"
-   },
-   {
-    "file": "README_v2026.11.txt",
-    "label": "README (plain text)",
-    "main": false,
-    "path": "data/v2026.11/README_v2026.11.txt",
-    "latest_path": "data/latest/README_latest.txt",
-    "desc": "Definitions, units, status rules, input versions, data gaps, citation and licence.",
-    "bytes": 6256,
-    "sha256": "a69af8195c704d7006899695bf1a009d24f4f2250290292c2232c4240997f5b2"
-   },
-   {
-    "file": "CHANGELOG.txt",
-    "label": "CHANGELOG",
-    "main": false,
-    "path": "data/v2026.11/CHANGELOG.txt",
-    "latest_path": "data/latest/CHANGELOG.txt",
-    "desc": "What changed in each release.",
-    "bytes": 352,
-    "sha256": "aaa44333ec71b2ffde6217e96da083a2b69b5165eac997f2ce1745b0a4e65cc7"
-   },
-   {
-    "file": "greso_v2026.11.json",
-    "label": "All data as JSON",
-    "main": false,
-    "path": "data/v2026.11/greso_v2026.11.json",
-    "latest_path": "data/latest/greso_latest.json",
-    "desc": "Everything in the CSV files in one JSON file (the data behind this page, with third-party values and their citations), plus the NOAA CPC ONI series.",
-    "bytes": null,
-    "sha256": null
-   },
-   {
-    "file": "greso_v2026.11.zip",
-    "label": "All data (ZIP)",
-    "main": false,
-    "path": "data/v2026.11/greso_v2026.11.zip",
-    "latest_path": "data/latest/greso_latest.zip",
-    "desc": "All files of this release in one ZIP: the CSV files, the JSON file, the cubes, the script, README and CHANGELOG.",
-    "bytes": null,
-    "sha256": null
-   },
-   {
-    "file": "SHA256SUMS",
-    "label": "SHA256SUMS (checksums)",
-    "main": false,
-    "path": "data/v2026.11/SHA256SUMS",
-    "latest_path": "data/latest/SHA256SUMS",
-    "desc": "SHA-256 checksums of every file in this release, to check that a download is complete.",
-    "bytes": null,
-    "sha256": null
-   }
-  ],
   "fp": {
    "start": "2026-10-01",
    "end": "2026-10-31",

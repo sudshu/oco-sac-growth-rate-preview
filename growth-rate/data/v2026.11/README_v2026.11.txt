@@ -3,7 +3,7 @@ GRESO WHOLE-ATMOSPHERE (COLUMN) CO2 GROWTH RATE USING SATELLITE DATA -- RELEASE 
 OCO Science Applications and Partnerships Center (OCO-SAC), Caltech
 Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 Contact: Sudhanshu Pandey, sudhanshu.pandey@caltech.edu
-Built: 2026-11-14T00:42:12Z   Data end: 2026-10-31 (OCO-2 and GOSAT)
+Built: 2026-11-14T01:51:51Z   Data end: 2026-10-31 (OCO-2 and GOSAT)
 
 HOW TO CITE
   Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O.
@@ -26,8 +26,8 @@ WHAT THE DATA ARE
     column-average CO2 (XCO2) measured by two satellites, NASA's OCO-2 and
     Japan's GOSAT, each processed with the GRESO method (Growth Rate from
     Satellite Observations; Pandey et al. 2024). The annual satellite series is
-    GOSAT alone before 2015 and the mean of OCO-2 and GOSAT from 2015 (its
-    1-sigma combines theirs with half their difference). Monthly and
+    GOSAT alone before 2015 and the mean of OCO-2 and GOSAT from 2015, with
+    1-sigma = sqrt((s_OCO2^2 + s_GOSAT^2)/2 + ((OCO2 - GOSAT)/2)^2). Monthly and
     latitude-band values are given for each satellite. NOAA's surface values are
     included for comparison.
 
@@ -35,11 +35,12 @@ METHOD IN BRIEF
   Every 16 days the XCO2 soundings are binned into 5x5-degree cells (median) and
     averaged over 50S-50N with area weights. The seasonal cycle (a cubic
     polynomial plus four annual harmonics, fitted to the whole record) is
-    removed, and the result is smoothed with a 7 x 16-day running mean: the
-    trend.
+    removed, and the result is smoothed with a 7 x 16-day running mean (the
+    first and last three windows unsmoothed): the trend.
   Annual growth rate = trend(1 Jan of the next year) - trend(1 Jan), in ppm/yr.
   Monthly growth rate = (trend(1st of the next month) - trend(1st)) x 12, in
-    ppm/yr, shown as a 5-month running mean.
+    ppm/yr, shown as a 5-month running mean (the first and last two months
+    unsmoothed).
   1 ppm = 2.124 PgC; 1 PgC = 3.664 GtCO2.
 
 STATUS AND FLAGS
@@ -47,9 +48,12 @@ STATUS AND FLAGS
     final (later); recent months change as more data arrive. A year is
     provisional until data through February of the next year are in.
   flag preliminary_fp_data: rests on preliminary OCO-2 forward-processing data
-    (1-31 Oct 2026); may change when the public data are used.
+    (1-31 Oct 2026): the monthly values 2026-06 to 2026-09 and the latitude
+    bands 2026-05 to 2026-09 (the bands use complete 16-day windows). They may
+    change when the public data are used.
   flag trend_interpolated_data_gap: rests on the trend interpolated across a
-    data gap (2017-08, 2017-09, 2026-08).
+    data gap: OCO-2 2017-08, 2017-09, 2026-08; GOSAT 2015-01, 2026-01
+    (latitude-band file). The monthly file's flags are OCO-2's.
 
 FILES
   greso_monthly_v2026.11.csv        monthly growth rate, 2015-01 to 2026-09
@@ -59,11 +63,13 @@ FILES
   greso_budget_annual_v2026.11.csv  OCO-2 PgC/yr, emissions, airborne fraction
   greso_cube_oco2_v2026.11.nc       OCO-2 XCO2 per 5x5-degree cell and 16 days
   greso_cube_gosat_v2026.11.nc      the same for GOSAT
-  greso_growth_from_cube.py         computes the growth rates from a cube
-  greso_v2026.11.json               all values in one file (the web page's data)
+  greso_growth_from_cube.py         computes the global growth rates from a cube
+  greso_v2026.11.json               the web page's data in one file
   CHANGELOG.txt and greso_v2026.11.zip (all files in one ZIP).
   Script: python greso_growth_from_cube.py greso_cube_oco2_v2026.11.nc
-    (Python 3.9 or later, numpy, and netCDF4 or h5py)
+    (Python 3.9 or later, numpy, and netCDF4 or h5py). It gives the global
+    16-day series and the monthly and annual growth rates, not the
+    uncertainties, the land and ocean values or the latitude bands.
   CSV files start with '#' lines describing their columns; missing values are
     empty.
 

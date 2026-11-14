@@ -1,19 +1,21 @@
 # GRESO monthly whole-atmosphere (column) CO2 growth rate using satellite data (OCO-2 and GOSAT); a NOAA-derived series alongside
-# Release: v2026.11    Built: 2026-11-14T00:42:12Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
+# Release: v2026.11    Built: 2026-11-14T01:51:51Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
 # Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 #
 # Columns:
 #   date = middle of the month (the value is for the whole month); month = YYYY-MM; time_year = decimal year.
-#   oco2_ppm_yr = OCO-2 monthly growth rate in ppm/yr (5-month running mean); oco2_PgC_yr = the same in PgC/yr.
+#   oco2_ppm_yr = OCO-2 monthly growth rate in ppm/yr (5-month running mean; the first and last two months
+#     unsmoothed); oco2_PgC_yr = the same in PgC/yr.
 #   oco2_unsmoothed_ppm_month = the month's increase in ppm, not smoothed; twelve add up to the annual value.
 #   gosat_ppm_yr = GOSAT, same method.
 #   noaa_mbl_derived_ppm_yr = derived from NOAA's global marine boundary layer trend (co2_mm_gl.txt, file created
 #     2026-10-09; not a NOAA product), to 2026-06; cite Lan, X., Tans, P. and Thoning, K.W., Trends in globally-averaged CO2 determined from NOAA GML measurements, doi:10.15138/9N0H-ZH07.
 #   status = early (age_months 0-2), provisional (3-4) or final; recent months change as more data arrive.
-#   flag = trend_interpolated_data_gap: rests on the trend interpolated across a data gap (2017-08, 2017-09, 2026-08).
-#   flag = preliminary_fp_data: rests on preliminary OCO-2 forward-processing data (1-31 Oct 2026) and may change.
-#   Two flags are separated by ';'.
+#   flag (OCO-2's; GOSAT's gap months are flagged in the latitude-band file):
+#     trend_interpolated_data_gap = rests on the trend interpolated across a data gap (2017-08, 2017-09, 2026-08).
+#     preliminary_fp_data = rests on preliminary OCO-2 forward-processing data (1-31 Oct 2026) and may change.
+#     Two flags are separated by ';'.
 #
 # Citation: Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O. (2026). GRESO Portal:
 #   whole-atmosphere CO2 growth rates from satellite observations, data release v2026.11. OCO Science

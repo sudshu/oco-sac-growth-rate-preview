@@ -1,5 +1,5 @@
 # GRESO monthly growth rate of column XCO2 in 10-degree latitude bands, using satellite data (OCO-2 and GOSAT)
-# Release: v2026.11    Built: 2026-11-14T00:42:12Z    Data end: 2026-10-31 (OCO-2 and GOSAT)
+# Release: v2026.11    Built: 2026-11-14T01:51:51Z    Data end: OCO-2 2026-10-20, GOSAT 2026-10-25 (complete 16-day windows only)
 # Producer: OCO Science Applications and Partnerships Center (OCO-SAC), Caltech.
 # Creator: Sudhanshu Pandey (Caltech; Jet Propulsion Laboratory, Caltech).
 #
@@ -8,7 +8,9 @@
 #     (degrees); growth_ppm_yr = monthly growth rate in ppm/yr. For a wider band, average the bands weighted by
 #     sin(lat_max) - sin(lat_min).
 #   status as in the monthly file; flag = trend_interpolated_data_gap where a month rests on the trend
-#     interpolated across a data gap, preliminary_fp_data where an OCO-2 month rests on the preliminary OCO-2 data of 1-31 Oct 2026.
+#     interpolated across a data gap: OCO-2 2017-08, 2017-09, 2026-08; GOSAT 2015-01, 2026-01 (months without any GOSAT data).
+#   flag = preliminary_fp_data where an OCO-2 month rests on the preliminary OCO-2 data of 1-31 Oct 2026:
+#     2026-05 to 2026-09, one month more than the monthly file, as the bands use complete 16-day windows.
 #   The growth rate over a band is the rate of change of XCO2 there, not a regional flux.
 #
 # Citation: Pandey, S., O'Dell, C. W., Frankenberg, C., Payne, V. H., & Wennberg, P. O. (2026). GRESO Portal:
