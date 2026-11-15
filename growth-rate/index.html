@@ -135,6 +135,10 @@ html.js #sum-main{position:absolute!important;width:1px;height:1px;overflow:hidd
 .seg .opts{display:inline-flex;border:1px solid var(--rule);border-radius:7px;overflow:hidden}
 .seg button{background:none;border:0;padding:.32rem .75rem;cursor:pointer;font-size:.88rem;color:var(--ink)}
 .seg button+button{border-left:1px solid var(--rule)}
+/* four units since decision 149: two by two where one row does not fit, ppm/yr and ppm/month on top */
+@media (max-width:429px){#unitBtns{display:inline-grid;grid-template-columns:1fr 1fr}
+ #unitBtns button+button{border-left:0}#unitBtns button:nth-child(2n){border-left:1px solid var(--rule)}
+ #unitBtns button:nth-child(n+3){border-top:1px solid var(--rule)}}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 .seg button:hover:not([aria-pressed="true"]){background:var(--panel)}
 .controls .hint{font-size:.8rem;color:var(--muted)}
@@ -526,8 +530,10 @@ html.js .anntbl-wrap:not(.open){display:none}
   </div>
 
   <!-- Units + forecast/emissions bar: sits with the top chart and stays in reach while scrolling (static on phones),
-       through the annual section only: it switches nothing further down (the user, 2026-11-11, C1 of the review of
-       10 Nov), so its sticky box, .stickscope, ends after "Annual growth rate" -->
+       through the annual section only: it switched nothing further down (the user, 2026-11-11, C1 of the review of
+       10 Nov), so its sticky box, .stickscope, ends after "Annual growth rate". Since decision 149 its ppm/month also
+       sets the latitude map's unit, which names it on its colour bar -->
+  <!-- ppm/month (decision 149; user, 2026-11-15) is the fourth unit, not the default: ppm/yr is pressed at the start -->
   <div class="stickscope">
   <div class="controls" id="controls">
     <div class="wrap widefig">
@@ -535,6 +541,7 @@ html.js .anntbl-wrap:not(.open){display:none}
         <span id="unitsLab">Units</span>
         <span class="opts" id="unitBtns">
           <button type="button" data-unit="ppm" aria-pressed="true" title="parts per million of CO₂ in the whole atmosphere, per year">ppm/yr</button>
+          <button type="button" data-unit="ppm_month" aria-pressed="false" title="parts per million of CO₂ in the whole atmosphere, per month: ppm/yr ÷ 12">ppm/month</button>
           <button type="button" data-unit="PgC" aria-pressed="false" title="petagrams (billion tonnes) of carbon per year; 1 ppm = 2.124 PgC">PgC/yr</button>
           <button type="button" data-unit="GtCO2" aria-pressed="false" title="billion tonnes of CO₂ per year; 1 PgC = 3.664 GtCO₂">GtCO₂/yr</button>
         </span>
@@ -691,7 +698,7 @@ html.js .anntbl-wrap:not(.open){display:none}
       <details>
         <summary>Data sources and units</summary>
         <!-- the contact in the embed version only (decision 109; the standalone page's footer has a contact) -->
-        <div class="body"><ul id="productList"><li><strong>OCO-2</strong> (NASA&#x27;s Orbiting Carbon Observatory-2): Lite XCO₂ (column-average CO₂) data from NASA GES DISC, <a href="https://doi.org/10.5067/70K2B2W8MNGY">version 11.2r</a> through 2023 and <a href="https://doi.org/10.5067/C4OENLFCYVSA">version 11.3r</a> from 2024, up to 30 September 2026, then preliminary data for October 2026 from the OCO-2 team's forward processing, which the public data will replace.</li><li><strong>GOSAT</strong> (Japan&#x27;s Greenhouse gases Observing SATellite): <a href="https://doi.org/10.5067/UAY6VJYTS8OD">ACOS GOSAT v11 Lite data</a> from NASA GES DISC, April 2009 to October 2026.</li><li><strong>NOAA:</strong> the global surface average from NOAA's Global Monitoring Laboratory (<a href="https://doi.org/10.15138/9N0H-ZH07">Lan, Tans and Thoning</a>): its <a href="https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_gl.txt">monthly CO₂ file</a> and <a href="https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_gr_gl.txt">annual growth-rate file</a>, both of 9 October 2026. We calculate the monthly NOAA line ourselves, from the trend in the monthly file.</li><li><strong>Emissions:</strong> fossil fuels and land use. The yearly totals through 2024 are from the Global Carbon Budget 2025 (<a href="https://doi.org/10.5194/essd-18-3211-2026">Friedlingstein et al. 2026</a>). For the monthly line, each year is spread over the months with Carbon Monitor data (<a href="https://arxiv.org/abs/2004.13614">Liu et al. 2020</a>), and the seasonal cycle is removed. From 2025 the values are a first estimate (“low-latency” in the files): Carbon Monitor's fossil emissions scaled to match the Global Carbon Budget, plus land-use emissions continuing their recent trend.</li><li><strong>Climate stripes:</strong> differences from the 1991–2020 average, leaving out 2011, for sea-surface temperature in the Niño-3.4 region of the Pacific, where El Niño is measured, and for temperature, air dryness and rainfall over tropical land. Air dryness is measured by the vapour-pressure deficit (VPD): the difference between how much water vapour the air could hold at its temperature and how much it holds. The land rows come from <a href="https://doi.org/10.24381/cds.f17050d7">ERA5</a>, the Copernicus Climate Change Service's reconstruction of past weather (<a href="https://doi.org/10.1002/qj.3803">Hersbach et al. 2020</a>), and the Niño-3.4 row from NOAA's <a href="https://doi.org/10.7289/V5T72FNM">ERSST v5</a> sea-surface temperatures (<a href="https://doi.org/10.1175/JCLI-D-16-0836.1">Huang et al. 2017</a>). The Niño-3.4 row uses this average rather than NOAA's official Oceanic Niño Index, so it can read higher.</li><li><strong>Units:</strong> 1 part per million (ppm) of CO₂ in the whole atmosphere is 2.124 petagrams of carbon (PgC, Global Carbon Budget convention). A petagram is a billion tonnes, and with the oxygen included 1 PgC is 3.664 billion tonnes of CO₂. So 1 ppm a year is 2.124 PgC, or 7.8 billion tonnes of CO₂ (GtCO₂), a year.</li></ul><p class="embonly" id="contactEmb">Contact: Sudhanshu Pandey, <a href="mailto:sudhanshu.pandey@caltech.edu">sudhanshu.pandey@caltech.edu</a></p></div>
+        <div class="body"><ul id="productList"><li><strong>OCO-2</strong> (NASA&#x27;s Orbiting Carbon Observatory-2): Lite XCO₂ (column-average CO₂) data from NASA GES DISC, <a href="https://doi.org/10.5067/70K2B2W8MNGY">version 11.2r</a> through 2023 and <a href="https://doi.org/10.5067/C4OENLFCYVSA">version 11.3r</a> from 2024, up to 30 September 2026, then preliminary data for October 2026 from the OCO-2 team's forward processing, which the public data will replace.</li><li><strong>GOSAT</strong> (Japan&#x27;s Greenhouse gases Observing SATellite): <a href="https://doi.org/10.5067/UAY6VJYTS8OD">ACOS GOSAT v11 Lite data</a> from NASA GES DISC, April 2009 to October 2026.</li><li><strong>NOAA:</strong> the global surface average from NOAA's Global Monitoring Laboratory (<a href="https://doi.org/10.15138/9N0H-ZH07">Lan, Tans and Thoning</a>): its <a href="https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_gl.txt">monthly CO₂ file</a> and <a href="https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_gr_gl.txt">annual growth-rate file</a>, both of 9 October 2026. We calculate the monthly NOAA line ourselves, from the trend in the monthly file.</li><li><strong>Emissions:</strong> fossil fuels and land use. The yearly totals through 2024 are from the Global Carbon Budget 2025 (<a href="https://doi.org/10.5194/essd-18-3211-2026">Friedlingstein et al. 2026</a>). For the monthly line, each year is spread over the months with Carbon Monitor data (<a href="https://arxiv.org/abs/2004.13614">Liu et al. 2020</a>), and the seasonal cycle is removed. From 2025 the values are a first estimate (“low-latency” in the files): Carbon Monitor's fossil emissions scaled to match the Global Carbon Budget, plus land-use emissions continuing their recent trend.</li><li><strong>Climate stripes:</strong> differences from the 1991–2020 average, leaving out 2011, for sea-surface temperature in the Niño-3.4 region of the Pacific, where El Niño is measured, and for temperature, air dryness and rainfall over tropical land. Air dryness is measured by the vapour-pressure deficit (VPD): the difference between how much water vapour the air could hold at its temperature and how much it holds. The land rows come from <a href="https://doi.org/10.24381/cds.f17050d7">ERA5</a>, the Copernicus Climate Change Service's reconstruction of past weather (<a href="https://doi.org/10.1002/qj.3803">Hersbach et al. 2020</a>), and the Niño-3.4 row from NOAA's <a href="https://doi.org/10.7289/V5T72FNM">ERSST v5</a> sea-surface temperatures (<a href="https://doi.org/10.1175/JCLI-D-16-0836.1">Huang et al. 2017</a>). The Niño-3.4 row uses this average rather than NOAA's official Oceanic Niño Index, so it can read higher.</li><li><strong>Units:</strong> 1 part per million (ppm) of CO₂ in the whole atmosphere is 2.124 petagrams of carbon (PgC, Global Carbon Budget convention). A petagram is a billion tonnes, and with the oxygen included 1 PgC is 3.664 billion tonnes of CO₂. So 1 ppm a year is 2.124 PgC, or 7.8 billion tonnes of CO₂ (GtCO₂), a year. A rate in ppm a month is the rate in ppm a year divided by 12.</li></ul><p class="embonly" id="contactEmb">Contact: Sudhanshu Pandey, <a href="mailto:sudhanshu.pandey@caltech.edu">sudhanshu.pandey@caltech.edu</a></p></div>
       </details>
       <!-- How to cite: the page's own citation first (decisions 82 and 91; the PNG pictures read it, #cite p), then the
            citation each data source asks for (decision 113; user, 2026-11-11: "add the citation for different kinds of
@@ -761,8 +768,11 @@ if (!G || !G.meta) {
 /* ------------------------------------------------------------------ data */
 var M = G.meta, A = G.annual, MO = G.monthly, KP_ = G.kpis;
 var KP = M.conv.PgC_per_ppm, KG = M.conv.GtCO2_per_PgC;
+// ppm/month (decision 149; user, 2026-11-15): the same rates ÷ 12 (each monthly rate is 12 × the month's rise), not the
+// default
 var UNITS = {
   ppm:   { label: "ppm/yr",   name: "parts per million per year",     f: 1,       d: 2 },
+  ppm_month: { label: "ppm/month", name: "parts per million per month", f: 1 / 12, d: 3 },
   PgC:   { label: "PgC/yr",   name: "petagrams of carbon per year",   f: KP,      d: 2 },
   GtCO2: { label: "GtCO₂/yr", name: "gigatonnes of CO₂ per year",     f: KP * KG, d: 1 }
 };
@@ -780,7 +790,7 @@ function U() { return UNITS[state.unit]; }
 function num(v, d) { if (v == null || !isFinite(v)) return "–"; var s = Math.abs(v).toFixed(d); return (v < 0 && +s !== 0 ? "−" : "") + s; }
 function conv(v) { return v == null ? null : v * U().f; }
 function fu(v, d) { return num(conv(v), d == null ? U().d : d); }
-function fromPgC(v, unit) { if (v == null) return null; unit = unit || state.unit; return unit === "GtCO2" ? v * KG : unit === "PgC" ? v : v / KP; }
+function fromPgC(v, unit) { if (v == null) return null; unit = unit || state.unit; return unit === "GtCO2" ? v * KG : unit === "PgC" ? v : v / KP * UNITS[unit].f; }
 function signed(v, d) { return (v > 0 ? "+" : "") + num(v, d); }
 function ym2t(s) { return +s.slice(0, 4) + (+s.slice(5, 7) - 0.5) / 12; }
 function ymd2t(s) { var y = +s.slice(0, 4), a = Date.UTC(y, 0, 1), b = Date.UTC(y + 1, 0, 1), d = Date.UTC(y, +s.slice(5, 7) - 1, +s.slice(8, 10)); return y + (d - a) / (b - a); }
@@ -2057,11 +2067,26 @@ function z10Colour(v, lo, hi, cen, ramp) {
   return rampColor(v >= cen ? 0.5 + 0.5 * (v - cen) / (hi - cen) : 0.5 - 0.5 * (cen - v) / (cen - lo), ramp);
 }
 var z10Shown = null;                     // the range last drawn: Auto off freezes it
+// The map's unit: ppm/yr, or ppm/month when the reader picks it (decision 149; user, 2026-11-15: "the latitude plot will
+// also go to ppm per year, ppm per month if for people when they want it"); never PgC or GtCO₂ (decision 45). The range
+// stays in ppm/yr inside (state, colours, the link); the boxes show it in the map's unit, to 0.1 ppm/yr or 0.01 ppm/month.
+function z10U() { return state.unit === "ppm_month" ? UNITS.ppm_month : UNITS.ppm; }
+function z10Num(v) { var u = z10U(); return (v * u.f).toFixed(u.f === 1 ? 1 : 2); }
+function z10BoxUnit() {
+  var a = $("#z10lo"), b = $("#z10hi"), cu = $(".crange .cu"); if (!a || !b) return;
+  var u = z10U(), cen = G.zonal10.colour_centre;
+  if (cu) cu.textContent = u.label;
+  a.setAttribute("aria-label", "Colour bar from, " + u.label); b.setAttribute("aria-label", "Colour bar to, " + u.label);
+  a.step = b.step = u.f === 1 ? "0.1" : "0.01";
+  a.min = z10Num(Z10_LIM[0]); a.max = z10Num(z10Clamp(Z10_LIM[1], Z10_LIM[1], cen)[0]);
+  b.min = z10Num(z10Clamp(Z10_LIM[0], Z10_LIM[0], cen)[1]); b.max = z10Num(Z10_LIM[1]);
+}
 // the boxes and Auto show the range drawn; a box being typed in is left alone
 function z10Boxes(lo, hi) {
   var a = $("#z10lo"), b = $("#z10hi"), au = $("#z10auto");
-  if (a && doc.activeElement !== a) a.value = lo.toFixed(1);
-  if (b && doc.activeElement !== b) b.value = hi.toFixed(1);
+  z10BoxUnit();
+  if (a && doc.activeElement !== a) a.value = z10Num(lo);
+  if (b && doc.activeElement !== b) b.value = z10Num(hi);
   if (au) au.setAttribute("aria-pressed", String(!state.z10.clim));
 }
 var Z10_EVENTS = [      // box (t0-t1, lat0-lat1); label anchor (at, anc); leader from a box point to a label side
@@ -2083,9 +2108,9 @@ function renderZ10() {
   writeHash();
   var Z = G.zonal10, host = $("#chart-z10"); if (!Z || !host) return;
   var sat = state.z10.sat === "gosat" ? "gosat" : "oco2", SN = Z10_SAT[sat], ZV = Z[sat];
-  // ppm/yr only, whatever the Units switch says (user, 2026-11-04): the whole-atmosphere factor (PgC per ppm)
-  // does not convert one band's rate, so these local conv/fu shadow the page-wide unit helpers
-  var u = UNITS.ppm, conv = function (v) { return v; }, fu = function (v, d) { return num(v, d == null ? u.d : d); };
+  // ppm/yr or ppm/month, never PgC or GtCO₂ (user, 2026-11-04): the whole-atmosphere factor (PgC per ppm) does not
+  // convert one band's rate, so these local conv/fu shadow the page-wide unit helpers (z10U, decision 149)
+  var u = z10U(), conv = function (v) { return v == null ? null : v * u.f; }, fu = function (v, d) { return num(conv(v), d == null ? u.d : d); };
   var W = hostWidth(host), narrow = W < 640, ev = !!state.z10.events;
   var lats = Z.lat_center, R = lats.length, hw = (Z.band_width || 10) / 2, n = Z.date.length;
   var zt = Z.date.map(ym2t), zst = Z.status || Z.provisional.map(function (p) { return p ? "provisional" : "final"; });
@@ -2204,7 +2229,7 @@ function renderZ10() {
     var tx = E.to === "left" ? bb.x0 : E.to === "right" ? bb.x1 : (bb.x0 + bb.x1) / 2, ty = E.to === "top" ? bb.y0 : (bb.y0 + bb.y1) / 2;
     gE.insertBefore(S("line", { x1: x(E.from[0]), y1: yl(E.from[1]), x2: tx, y2: ty, class: "lead" }, null), tg);
   });
-  // colour bar in ppm/yr: vertical on the right, or horizontal under the years on phones. To scale, white where the
+  // colour bar in the map's unit: vertical on the right, or horizontal under the years on phones. To scale, white where the
   // median falls (decision 119), with a triangle at an end only where a cell shown lies beyond it
   var gB = S("g", { class: "cbar" }, svg), st = niceStep(conv(hi) - conv(lo), 4), fW = (cen - lo) / (hi - lo), past = [false, false];
   for (var pi = i0; pi <= i1; pi++) ZV[pi].forEach(function (v) { if (v == null) return; if (v < lo) past[0] = true; if (v > hi) past[1] = true; });
@@ -2465,7 +2490,8 @@ function setupZ10() {
     legendToggle(box, { on: state.z10.events, c: "--ink", key: "evt", label: "Show events", toggle: function () { state.z10.events = !state.z10.events; rebuild(); renderZ10(); } }).setAttribute("data-png", "skip");
     rangeBox();
   }
-  // the colour range (decision 119): "Colour range [from] to [to] ppm/yr" and Auto, after the switches and, like them,
+  // the colour range (decision 119): "Colour range [from] to [to] ppm/yr" (or ppm/month, decision 149: z10BoxUnit sets
+  // the unit, steps and limits) and Auto, after the switches and, like them,
   // left out of the PNG picture (whose colour bar shows the range). Typing applies a value at once if it keeps the
   // median inside the range, otherwise on Enter or on leaving the box, moved inside; either switches Auto off. Auto
   // brings back the range of the months shown; switching it off freezes the range drawn.
@@ -2473,21 +2499,22 @@ function setupZ10() {
     var Z = G.zonal10, cen = Z.colour_centre, pend = false;
     var g = H("div", { class: "crange", role: "group", "aria-label": "Colour range", "data-png": "skip" }, box);
     H("span", null, g, "Colour range");
-    var a = H("input", { type: "number", id: "z10lo", step: "0.1", min: String(Z10_LIM[0]), max: z10Clamp(Z10_LIM[1], Z10_LIM[1], cen)[0].toFixed(1), inputmode: "decimal", "aria-label": "Colour bar from, ppm/yr" }, g);
+    var a = H("input", { type: "number", id: "z10lo", inputmode: "decimal" }, g);
     H("span", null, g, "to");
-    var b = H("input", { type: "number", id: "z10hi", step: "0.1", min: z10Clamp(Z10_LIM[0], Z10_LIM[0], cen)[1].toFixed(1), max: String(Z10_LIM[1]), inputmode: "decimal", "aria-label": "Colour bar to, ppm/yr" }, g);
-    H("span", { class: "cu" }, g, "ppm/yr");
+    var b = H("input", { type: "number", id: "z10hi", inputmode: "decimal" }, g);
+    H("span", { class: "cu" }, g, z10U().label);
+    z10BoxUnit();
     var au = H("button", { type: "button", class: "lg", id: "z10auto", "aria-pressed": String(!state.z10.clim), "data-png": "skip",
       title: "On: the colours span the months shown. Off: they keep the range in the boxes." }, g, "Auto");
     function soon() { if (pend) return; pend = true; requestAnimationFrame(function () { pend = false; renderZ10(); }); }
     function apply(k, commit) {
-      var el = k ? b : a, v = parseFloat(el.value);       // a number box gives "" while its text is not a number yet
+      var el = k ? b : a, v = parseFloat(el.value) / z10U().f;   // to ppm/yr; a number box gives "" while its text is not a number yet
       if (!isFinite(v)) { if (commit) z10Boxes(z10Shown[0], z10Shown[1]); return; }
       var r = (state.z10.clim || z10Shown).slice(); r[k] = v;
       var c = z10Clamp(r[0], r[1], cen);
       if (!commit && c[k] !== Math.round(v * 10) / 10) return;   // past the median or the limits: wait for Enter
       state.z10.clim = c;
-      if (commit) el.value = c[k].toFixed(1);
+      if (commit) el.value = z10Num(c[k]);
       soon();
     }
     [a, b].forEach(function (el, k) {
@@ -2499,13 +2526,13 @@ function setupZ10() {
   }
   rebuild();
   VIEWS.z10 = function () {
-    var Z = G.zonal10, u = UNITS.ppm, hw = (Z.band_width || 10) / 2, lats = Z.lat_center.slice().reverse();   // ppm/yr only
+    var Z = G.zonal10, u = z10U(), hw = (Z.band_width || 10) / 2, lats = Z.lat_center.slice().reverse();   // ppm/yr or ppm/month (decision 149)
     var sat = state.z10.sat === "gosat" ? "gosat" : "oco2";
     var cols = [{ label: "Month", txt: true }, { label: "Status", txt: true }];
     lats.forEach(function (l) { cols.push({ label: z10Band(l, hw) }); });
     var rows = Z.date.map(function (d, i) {
       var r = [d, { st: Z.status ? Z.status[i] : (Z.provisional[i] ? "provisional" : "final"), fp: !!(sat === "oco2" && M.fp && M.fp.zonal_months.indexOf(d) >= 0) }];
-      Z[sat][i].slice().reverse().forEach(function (v) { r.push(fmtCell(v, u.d)); });
+      Z[sat][i].slice().reverse().forEach(function (v) { r.push(fmtCell(v == null ? null : v * u.f, u.d)); });
       return r;
     });
     rows.reverse();   // newest month at the top, oldest at the bottom, as the monthly table (decision 140; user, 2026-11-13)
@@ -2765,7 +2792,8 @@ function savePng(name, btn) {
   function done(msg) { btn.disabled = false; btn.textContent = lab; announce(msg); }
   btn.disabled = true; btn.textContent = "Preparing…"; tipHide();
   try { s = pngSnapshot(spec); } catch (e) { done("Sorry, the picture could not be made."); return; }
-  var file = "greso_" + spec.file + "_chart" + (name !== "z10" && state.unit !== "ppm" ? "_" + state.unit : "") + (name === "z10" && state.z10.sat === "gosat" ? "_gosat" : "") + "_" + M.release + ".png";
+  // the unit in the name when it is not ppm/yr; the map's only for ppm/month, as it stays in ppm/yr otherwise (decision 149)
+  var file = "greso_" + spec.file + "_chart" + (state.unit !== "ppm" && (name !== "z10" || state.unit === "ppm_month") ? "_" + state.unit : "") + (name === "z10" && state.z10.sat === "gosat" ? "_gosat" : "") + "_" + M.release + ".png";
   // the printed address leads back to the page (user, 2026-11-07: "Somebody can go back to the actual page"; the QR code
   // that also held it went in decision 127): the page's home, whatever copy the picture was made on (decision 111)
   s.where = PNG_HOME.replace(/^https?:\/\//, "") + "  ·  Downloaded " + now.getDate() + " " + MON[now.getMonth()] + " " + now.getFullYear();
@@ -2959,7 +2987,7 @@ function renderAll() {
 function setUnit(un) {
   state.unit = un;
   Array.prototype.forEach.call(doc.querySelectorAll("#unitBtns button"), function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-unit") === un)); });
-  $("#unitHint").textContent = un === "ppm" ? "" : "1 ppm/yr = " + KP + " PgC/yr" + (un === "GtCO2" ? " = " + num(KP * KG, 2) + " GtCO₂/yr" : "");
+  $("#unitHint").textContent = un === "ppm" ? "" : un === "ppm_month" ? "ppm/month = ppm/yr ÷ 12" : "1 ppm/yr = " + KP + " PgC/yr" + (un === "GtCO2" ? " = " + num(KP * KG, 2) + " GtCO₂/yr" : "");
   renderAll();
   syncScrollPadding();
 }
