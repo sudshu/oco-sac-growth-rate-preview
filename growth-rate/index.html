@@ -135,10 +135,6 @@ html.js #sum-main{position:absolute!important;width:1px;height:1px;overflow:hidd
 .seg .opts{display:inline-flex;border:1px solid var(--rule);border-radius:7px;overflow:hidden}
 .seg button{background:none;border:0;padding:.32rem .75rem;cursor:pointer;font-size:.88rem;color:var(--ink)}
 .seg button+button{border-left:1px solid var(--rule)}
-/* four units since decision 149: two by two where one row does not fit, ppm/yr and ppm/month on top */
-@media (max-width:429px){#unitBtns{display:inline-grid;grid-template-columns:1fr 1fr}
- #unitBtns button+button{border-left:0}#unitBtns button:nth-child(2n){border-left:1px solid var(--rule)}
- #unitBtns button:nth-child(n+3){border-top:1px solid var(--rule)}}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 .seg button:hover:not([aria-pressed="true"]){background:var(--panel)}
 .controls .hint{font-size:.8rem;color:var(--muted)}
@@ -533,17 +529,24 @@ html.js .anntbl-wrap:not(.open){display:none}
        through the annual section only: it switched nothing further down (the user, 2026-11-11, C1 of the review of
        10 Nov), so its sticky box, .stickscope, ends after "Annual growth rate". Since decision 149 its ppm/month also
        sets the latitude map's unit, which names it on its colour bar -->
-  <!-- ppm/month (decision 149; user, 2026-11-15) is the fourth unit, not the default: ppm/yr is pressed at the start -->
+  <!-- Units since decision 151 (user, 2026-11-15): an amount (ppm | PgC | GtCO₂) and per month | per year; the monthly
+       charts open in ppm per month, the annual chart is always per year, the latitude map always in ppm -->
   <div class="stickscope">
   <div class="controls" id="controls">
     <div class="wrap widefig">
       <div class="seg" role="group" aria-labelledby="unitsLab">
         <span id="unitsLab">Units</span>
         <span class="opts" id="unitBtns">
-          <button type="button" data-unit="ppm" aria-pressed="true" title="parts per million of CO₂ in the whole atmosphere, per year">ppm/yr</button>
-          <button type="button" data-unit="ppm_month" aria-pressed="false" title="parts per million of CO₂ in the whole atmosphere, per month: ppm/yr ÷ 12">ppm/month</button>
-          <button type="button" data-unit="PgC" aria-pressed="false" title="petagrams (billion tonnes) of carbon per year; 1 ppm = 2.124 PgC">PgC/yr</button>
-          <button type="button" data-unit="GtCO2" aria-pressed="false" title="billion tonnes of CO₂ per year; 1 PgC = 3.664 GtCO₂">GtCO₂/yr</button>
+          <button type="button" data-unit="ppm" aria-pressed="true" title="parts per million of CO₂ in the whole atmosphere">ppm</button>
+          <button type="button" data-unit="PgC" aria-pressed="false" title="petagrams (billion tonnes) of carbon; 1 ppm = 2.124 PgC">PgC</button>
+          <button type="button" data-unit="GtCO2" aria-pressed="false" title="billion tonnes of CO₂; 1 PgC = 3.664 GtCO₂">GtCO₂</button>
+        </span>
+      </div>
+      <!-- per month or per year (decision 151): the monthly charts open per month; the annual chart is always per year -->
+      <div class="seg" role="group" aria-label="Monthly charts per month or per year">
+        <span class="opts" id="perBtns">
+          <button type="button" data-per="month" aria-pressed="true" title="The monthly charts per month: the rate per year ÷ 12. The annual chart stays per year.">per month</button>
+          <button type="button" data-per="year" aria-pressed="false" title="The monthly charts per year: 12 × the month's rise, as the annual chart">per year</button>
         </span>
       </div>
       <button type="button" class="olbtn" id="olBtn" aria-pressed="false" aria-controls="chart-main" hidden><span class="olsw" aria-hidden="true"></span>Show forecast</button>
@@ -627,7 +630,7 @@ html.js .anntbl-wrap:not(.open){display:none}
         </div>
         <div class="chart" id="chart-z10" tabindex="0" role="group" aria-roledescription="chart" aria-describedby="about-z10 cap-z10 sum-z10"><noscript><p class="caption">This chart needs JavaScript. Its values are in the latitude-band data file on CaltechDATA.</p></noscript></div>
         <div class="zoom" id="zoom-z10" role="group" aria-label="Zoom the months shown"></div>
-        <p class="caption" id="about-z10">Each row is a 10° band of latitude and each column a month. Red means CO₂ over that band rose faster than the 2015–2026 median of 2.40 ppm a year, and blue more slowly. Winds carry air between bands, so the colours show where CO₂ built up in the air, which is not always where it was emitted or taken up.</p>
+        <p class="caption" id="about-z10">Each row is a 10° band of latitude and each column a month. Red means CO₂ over that band rose faster than the 2015–2026 median of <span id="z10cen">2.40 ppm a year</span>, and blue more slowly. Winds carry air between bands, so the colours show where CO₂ built up in the air, which is not always where it was emitted or taken up.</p>
         <p class="caption" id="cap-z10"></p>
         <p class="sr" id="sum-z10"></p>
         <div id="tbl-z10"></div>
@@ -642,7 +645,7 @@ html.js .anntbl-wrap:not(.open){display:none}
          the data") the link goes to the release's own DOI, and one line under it names the release and that DOI. -->
     <section class="block" id="download" aria-labelledby="dl-h">
       <h2 id="dl-h" class="sr">Download</h2>
-      <p class="dl-go"><a class="primary" href="https://doi.org/10.82941/ocosac.greso.co2.data.v2026.11">Get the data on CaltechDATA</a> <span class="todo">[record not public yet]</span></p>
+      <p class="dl-go"><a class="primary" href="https://doi.org/10.82941/ocosac.greso.co2.data.v2026.11">Get the data on CaltechDATA</a></p>
       <p class="dl-ver">Release v2026.11 · DOI <a href="https://doi.org/10.82941/ocosac.greso.co2.data.v2026.11">10.82941/ocosac.greso.co2.data.v2026.11</a></p>
     </section>
 
@@ -768,16 +771,25 @@ if (!G || !G.meta) {
 /* ------------------------------------------------------------------ data */
 var M = G.meta, A = G.annual, MO = G.monthly, KP_ = G.kpis;
 var KP = M.conv.PgC_per_ppm, KG = M.conv.GtCO2_per_PgC;
-// ppm/month (decision 149; user, 2026-11-15): the same rates ÷ 12 (each monthly rate is 12 × the month's rise), not the
-// default
-var UNITS = {
-  ppm:   { label: "ppm/yr",   name: "parts per million per year",     f: 1,       d: 2 },
-  ppm_month: { label: "ppm/month", name: "parts per million per month", f: 1 / 12, d: 3 },
-  PgC:   { label: "PgC/yr",   name: "petagrams of carbon per year",   f: KP,      d: 2 },
-  GtCO2: { label: "GtCO₂/yr", name: "gigatonnes of CO₂ per year",     f: KP * KG, d: 1 }
+// Units (decision 151; user, 2026-11-15): an amount (ppm, PgC, GtCO₂) per year or per month. Per month is the rate per
+// year ÷ 12 (each monthly rate is 12 × the month's rise, decision 149) with one more decimal. The monthly charts use
+// state.amt and state.per (default ppm per month); the annual chart is always per year (UA); the latitude map always ppm
+// (decision 45), per state.per (z10U).
+var AMOUNTS = {
+  ppm:   { label: "ppm",   name: "parts per million",   f: 1,       d: 2 },
+  PgC:   { label: "PgC",   name: "petagrams of carbon", f: KP,      d: 2 },
+  GtCO2: { label: "GtCO₂", name: "gigatonnes of CO₂",   f: KP * KG, d: 1 }
 };
+var UNITS = {};          // "ppm|month", "PgC|year", ...
+Object.keys(AMOUNTS).forEach(function (a) {
+  ["year", "month"].forEach(function (p) {
+    var A = AMOUNTS[a], m = p === "month";
+    UNITS[a + "|" + p] = { amt: a, per: p, label: A.label + (m ? "/month" : "/yr"), name: A.name + (m ? " per month" : " per year"),
+                           f: m ? A.f / 12 : A.f, d: A.d + (m ? 1 : 0), tf: m ? 1 / 12 : 1 };
+  });
+});
 var state = {
-  unit: "ppm",
+  amt: "ppm", per: "month",
   main: { oco2: true, gosat: false, noaa: false },          // NOAA's derived line starts off (user, 2026-11-03)
   outlook: false, emis: true, panel: null,
   annual: { gosat: true, noaa: false },                    // the OCO-2 + GOSAT mean by default (user, 2026-11-05); NOAA's dots start off (2026-11-04)
@@ -786,11 +798,13 @@ var state = {
 };
 var MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 var MONLONG = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-function U() { return UNITS[state.unit]; }
+function U() { return UNITS[state.amt + "|" + state.per]; }     // the monthly charts' unit
+function UA() { return UNITS[state.amt + "|year"]; }               // the annual chart's: always per year
 function num(v, d) { if (v == null || !isFinite(v)) return "–"; var s = Math.abs(v).toFixed(d); return (v < 0 && +s !== 0 ? "−" : "") + s; }
 function conv(v) { return v == null ? null : v * U().f; }
 function fu(v, d) { return num(conv(v), d == null ? U().d : d); }
-function fromPgC(v, unit) { if (v == null) return null; unit = unit || state.unit; return unit === "GtCO2" ? v * KG : unit === "PgC" ? v : v / KP * UNITS[unit].f; }
+function pgcIn(v, u) { if (v == null) return null; return u.amt === "GtCO2" ? v * KG * u.tf : u.amt === "PgC" ? v * u.tf : v / KP * u.tf; }
+function fromPgC(v) { return pgcIn(v, U()); }      // emissions (PgC/yr in the payload) in the monthly charts' unit
 function signed(v, d) { return (v > 0 ? "+" : "") + num(v, d); }
 function ym2t(s) { return +s.slice(0, 4) + (+s.slice(5, 7) - 0.5) / 12; }
 function ymd2t(s) { var y = +s.slice(0, 4), a = Date.UTC(y, 0, 1), b = Date.UTC(y + 1, 0, 1), d = Date.UTC(y, +s.slice(5, 7) - 1, +s.slice(8, 10)); return y + (d - a) / (b - a); }
@@ -890,10 +904,13 @@ function timeAxis(g, x, x0, x1, yTop, yBot, labY) {
     S("text", { x: x(c), y: labY, "text-anchor": "middle", class: "axl" }, g, short ? "’" + String(y2).slice(2) : String(y2));
   }
 }
+// an axis tick: zero is "0" on every scale, so a per-month axis ("0.0", "0.1", ...) keeps clear of the first year label
+// under it, as the ppm/yr axis does (decision 151)
+function tickNum(t, d) { return Math.abs(t) < 1e-9 ? "0" : num(t, d); }
 function yAxis(g, y, sc, xL, xR, fmtf, unitLabel, unitY) {
   sc.ticks.forEach(function (t) {
     S("line", { x1: xL, x2: xR, y1: y(t), y2: y(t), class: Math.abs(t) < 1e-9 ? "zero" : "grid" }, g);
-    S("text", { x: xL - 7, y: y(t) + 4, "text-anchor": "end", class: "axl" }, g, fmtf ? fmtf(t) : num(t, sc.dec));
+    S("text", { x: xL - 7, y: y(t) + 4, "text-anchor": "end", class: "axl" }, g, fmtf ? fmtf(t) : tickNum(t, sc.dec));
   });
   if (unitLabel) S("text", { x: xL - 7, y: unitY, "text-anchor": "start", class: "axl", "font-weight": 600, transform: "" }, g, unitLabel);
 }
@@ -1415,7 +1432,7 @@ function renderMain() {
     // horizontal grid + y labels (left panel only)
     sc.ticks.forEach(function (t) {
       S("line", { x1: P.xa, x2: P.xb, y1: y(t), y2: y(t), class: Math.abs(t) < 1e-9 ? "zero" : "grid" }, gAx);
-      if (pi === 0) S("text", { x: P.xa - 7, y: y(t) + 4, "text-anchor": "end", class: "axl" }, gAx, num(t, sc.dec));
+      if (pi === 0) S("text", { x: P.xa - 7, y: y(t) + 4, "text-anchor": "end", class: "axl" }, gAx, tickNum(t, sc.dec));
     });
     // x axis: year ticks (full) or quarter ticks (recent), labels under the stripes; with the stripes, the years again
     // just under the growth-rate panel (years only, also in the recent panel)
@@ -1779,7 +1796,10 @@ var SAT_CAP = { oco2: "oco2", mean: "sat", gosat: "gosat" }, SAT_KEY = { oco2: "
 var SAT_NAME = { oco2: "OCO-2", mean: "mean of OCO-2 and GOSAT", gosat: "GOSAT; no OCO-2 yet" };
 function renderAnnual() {
   writeHash();
-  var host = $("#chart-annual"), W = hostWidth(host), narrow = W < 640, u = U(), em = aemOn(), both = !!state.annual.gosat;
+  var host = $("#chart-annual"), W = hostWidth(host), narrow = W < 640, u = UA(), em = aemOn(), both = !!state.annual.gosat;
+  // always per year (decision 151): local conv, fu and fromPgC in the annual chart's unit shadow the page-wide ones
+  var conv = function (v) { return v == null ? null : v * u.f; }, fu = function (v, d) { return num(conv(v), d == null ? u.d : d); };
+  var fromPgC = function (v) { return pgcIn(v, u); };
   // from 2010 with the GOSAT layer on (the default); from 2015 (OCO-2 alone) with it off
   var yrs = []; A.year.forEach(function (yv, i) { if (both || A.oco2[i] != null) yrs.push(i); });
   var m = { l: narrow ? 40 : 50, r: narrow ? 8 : 16, t: 34, b: 30 };
@@ -1990,7 +2010,8 @@ function renderAnnTable() {
   var t = $("#annTable"); if (!t) return;
   clear(t);
   t.className = state.annual.gosat ? "anntbl g" : "anntbl";
-  var u = U(), gs = !!state.annual.gosat, em = aemOn(), l12 = KP_.last12, cols = ["oco2", "noaa"].concat(gs ? ["gosat", "sat"] : []);
+  var u = UA(), gs = !!state.annual.gosat, em = aemOn(), l12 = KP_.last12, cols = ["oco2", "noaa"].concat(gs ? ["gosat", "sat"] : []);
+  var fromPgC = function (v) { return pgcIn(v, u); };                // per year (decision 151)
   // "Satellite series", with a note under the table (the user, 2026-11-11, B10 of the review of 10 Nov: the old header
   // "OCO-2 + GOSAT mean (GOSAT alone to 2014)" stacked tall on phones)
   var NAME = { oco2: "OCO-2 (GRESO)", noaa: "NOAA surface network", gosat: "GOSAT", sat: "Satellite series" };
@@ -2070,7 +2091,10 @@ var z10Shown = null;                     // the range last drawn: Auto off freez
 // The map's unit: ppm/yr, or ppm/month when the reader picks it (decision 149; user, 2026-11-15: "the latitude plot will
 // also go to ppm per year, ppm per month if for people when they want it"); never PgC or GtCO₂ (decision 45). The range
 // stays in ppm/yr inside (state, colours, the link); the boxes show it in the map's unit, to 0.1 ppm/yr or 0.01 ppm/month.
-function z10U() { return state.unit === "ppm_month" ? UNITS.ppm_month : UNITS.ppm; }
+// The map shows ppm/month to two decimals (decision 150; user, 2026-11-15: "Only second decimal precision is needed"),
+// the other charts to three
+var Z10_PPM_MONTH = { amt: "ppm", per: "month", label: UNITS["ppm|month"].label, name: UNITS["ppm|month"].name, f: UNITS["ppm|month"].f, d: 2, tf: 1 / 12 };
+function z10U() { return state.per === "month" ? Z10_PPM_MONTH : UNITS["ppm|year"]; }
 function z10Num(v) { var u = z10U(); return (v * u.f).toFixed(u.f === 1 ? 1 : 2); }
 function z10BoxUnit() {
   var a = $("#z10lo"), b = $("#z10hi"), cu = $(".crange .cu"); if (!a || !b) return;
@@ -2111,6 +2135,8 @@ function renderZ10() {
   // ppm/yr or ppm/month, never PgC or GtCO₂ (user, 2026-11-04): the whole-atmosphere factor (PgC per ppm) does not
   // convert one band's rate, so these local conv/fu shadow the page-wide unit helpers (z10U, decision 149)
   var u = z10U(), conv = function (v) { return v == null ? null : v * u.f; }, fu = function (v, d) { return num(conv(v), d == null ? u.d : d); };
+  // the text under the map gives the median in the map's unit: "0.20 ppm a month" or "2.40 ppm a year" (decision 151)
+  var zcen = $("#z10cen"); if (zcen) zcen.textContent = num(G.zonal10.colour_centre * u.f, 2) + (u.per === "month" ? " ppm a month" : " ppm a year");
   var W = hostWidth(host), narrow = W < 640, ev = !!state.z10.events;
   var lats = Z.lat_center, R = lats.length, hw = (Z.band_width || 10) / 2, n = Z.date.length;
   var zt = Z.date.map(ym2t), zst = Z.status || Z.provisional.map(function (p) { return p ? "provisional" : "final"; });
@@ -2793,7 +2819,11 @@ function savePng(name, btn) {
   btn.disabled = true; btn.textContent = "Preparing…"; tipHide();
   try { s = pngSnapshot(spec); } catch (e) { done("Sorry, the picture could not be made."); return; }
   // the unit in the name when it is not ppm/yr; the map's only for ppm/month, as it stays in ppm/yr otherwise (decision 149)
-  var file = "greso_" + spec.file + "_chart" + (state.unit !== "ppm" && (name !== "z10" || state.unit === "ppm_month") ? "_" + state.unit : "") + (name === "z10" && state.z10.sat === "gosat" ? "_gosat" : "") + "_" + M.release + ".png";
+  // the unit in the name: always for the monthly charts and the map (ppm_month, PgC_yr, ...), the annual chart's amount
+  // when it is not ppm (decisions 149 and 151)
+  var uf = name === "z10" ? z10U() : name === "annual" ? UA() : U();
+  var tok = name === "annual" ? (uf.amt !== "ppm" ? "_" + uf.amt : "") : "_" + uf.amt + (uf.per === "month" ? "_month" : "_yr");
+  var file = "greso_" + spec.file + "_chart" + tok + (name === "z10" && state.z10.sat === "gosat" ? "_gosat" : "") + "_" + M.release + ".png";
   // the printed address leads back to the page (user, 2026-11-07: "Somebody can go back to the actual page"; the QR code
   // that also held it went in decision 127): the page's home, whatever copy the picture was made on (decision 111)
   s.where = PNG_HOME.replace(/^https?:\/\//, "") + "  ·  Downloaded " + now.getDate() + " " + MON[now.getMonth()] + " " + now.getFullYear();
@@ -2865,7 +2895,7 @@ function pngPreview(url, file, title, btn) {
 
 /* ============ view permalink: #units=PgC&show=gosat,noaa&forecast=on&emissions=off&panel=recent&months=2023-05..2026-10&annual=nogosat,noaa&latitude=gosat,noevents,2023-04..2026-09,0.0..6.5&table=main,z10 */
 var TABLES = ["main", "z10"];
-function isStateHash(h) { return /(^|&)(units|show|forecast|outlook|emissions|panel|months|annual|latitude|z4|table)=/.test(h); }   // z4 = older links
+function isStateHash(h) { return /(^|&)(units|per|show|forecast|outlook|emissions|panel|months|annual|latitude|z4|table)=/.test(h); }   // z4 = older links
 /* The zoom in the view link (decision 101; user, 2026-11-10, asked whether the page's link should remember the zoom:
    "yes."): a window as "YYYY-MM..YYYY-MM", months= for the top chart and an item in latitude= for the map. linkWin reads
    it into month indices of a series whose month 0 is ym0: null when it is damaged, misses the record or covers all of
@@ -2892,14 +2922,17 @@ function readHash() {
   var h = (location.hash || "").replace(/^#/, "");
   if (!isStateHash(h)) return false;
   // reset to defaults, then apply the link
-  state.unit = "ppm";
+  state.amt = "ppm"; state.per = "month";
+  var hasAmt = false, hasPer = false;
   state.main = { oco2: true, gosat: false, noaa: false }; state.outlook = false; state.emis = true; state.panel = null;
   state.annual = { gosat: true, noaa: false }; state.z10 = { events: true, sat: "oco2" }; state.open = {};
   h.split("&").forEach(function (kv) {
     var p = kv.split("="), k = p[0], v = p[1] || "";
     try { v = decodeURIComponent(v); } catch (e) { v = ""; }            // a damaged link falls back to the defaults
     var set = v.split(",");
-    if (k === "units" && UNITS[v]) state.unit = v;
+    // units= and per= (decision 151); units=ppm_month is decision 149's ppm per month
+    if (k === "units") { if (v === "ppm_month") { state.amt = "ppm"; state.per = "month"; hasPer = true; } else if (AMOUNTS[v]) { state.amt = v; hasAmt = true; } }
+    else if (k === "per") { if (v === "month" || v === "year") { state.per = v; hasPer = true; } }
     else if (k === "show") {
       state.main.gosat = set.indexOf("gosat") >= 0; state.main.noaa = set.indexOf("noaa") >= 0;
       if (set.indexOf("nooco2") >= 0) state.main.oco2 = false;
@@ -2913,6 +2946,7 @@ function readHash() {
       if (G.zonal10) set.forEach(function (s) { if (/^\d{4}-/.test(s)) state.z10.win = linkWin(s, G.zonal10.date.length, G.zonal10.date[0]); else linkRange(s); }); }
     else if (k === "table") set.forEach(function (n) { if (TABLES.indexOf(n) >= 0 || n === "annual") state.open[n] = true; });
   });
+  if (hasAmt && !hasPer) state.per = "year";       // a link from before decision 151: its units were per year
   return true;
 }
 var lastHash = "", hashAt = 0, hashT = null;
@@ -2928,7 +2962,9 @@ function hashSoon() { clearTimeout(hashT); hashT = setTimeout(writeHashNow, 250)
 function writeHashNow() {
   if (!window.history || !history.replaceState) return;
   var parts = [], sh = [], an = [];
-  if (state.unit !== "ppm") parts.push("units=" + state.unit);
+  // the defaults (ppm per month) write nothing; an amount always comes with per= (older units= links meant per year)
+  if (state.amt !== "ppm") { parts.push("units=" + state.amt); parts.push("per=" + state.per); }
+  else if (state.per !== "month") parts.push("per=" + state.per);
   if (state.main.gosat) sh.push("gosat");
   if (state.main.noaa) sh.push("noaa");
   if (!state.main.oco2) sh.push("nooco2");
@@ -2984,15 +3020,19 @@ function renderAll() {
   writeHash();
 }
 
-function setUnit(un) {
-  state.unit = un;
-  Array.prototype.forEach.call(doc.querySelectorAll("#unitBtns button"), function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-unit") === un)); });
-  $("#unitHint").textContent = un === "ppm" ? "" : un === "ppm_month" ? "ppm/month = ppm/yr ÷ 12" : "1 ppm/yr = " + KP + " PgC/yr" + (un === "GtCO2" ? " = " + num(KP * KG, 2) + " GtCO₂/yr" : "");
+// the amount and per month | per year switches (decision 151); setUnit(amt, per) with either left out keeps it
+function setUnit(amt, per) {
+  if (amt && AMOUNTS[amt]) state.amt = amt;
+  if (per === "month" || per === "year") state.per = per;
+  Array.prototype.forEach.call(doc.querySelectorAll("#unitBtns button"), function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-unit") === state.amt)); });
+  Array.prototype.forEach.call(doc.querySelectorAll("#perBtns button"), function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-per") === state.per)); });
+  $("#unitHint").textContent = state.amt === "ppm" ? "" : "1 ppm = " + KP + " PgC" + (state.amt === "GtCO2" ? " = " + num(KP * KG, 2) + " GtCO₂" : "");
   renderAll();
   syncScrollPadding();
 }
 function setupControls() {
-  Array.prototype.forEach.call(doc.querySelectorAll("#unitBtns button"), function (b) { b.addEventListener("click", function () { setUnit(b.getAttribute("data-unit")); }); });
+  Array.prototype.forEach.call(doc.querySelectorAll("#unitBtns button"), function (b) { b.addEventListener("click", function () { setUnit(b.getAttribute("data-unit"), null); }); });
+  Array.prototype.forEach.call(doc.querySelectorAll("#perBtns button"), function (b) { b.addEventListener("click", function () { setUnit(null, b.getAttribute("data-per")); }); });
   // phones: Full record | Recent for the top chart
   Array.prototype.forEach.call(doc.querySelectorAll("#panelBtns button"), function (b) {
     b.addEventListener("click", function () { state.panel = b.getAttribute("data-panel") === "recent" ? "recent" : "full"; renderMain(); writeHash(); });
@@ -3041,7 +3081,7 @@ setupAnchors();
 setupMainLegend();
 setupAnnual(); setupZ10();
 setupControls();
-setUnit(state.unit);
+setUnit(state.amt, state.per);
 setupEmbed();   // last: the first height it sends is the drawn page's
 })();
 </script>
