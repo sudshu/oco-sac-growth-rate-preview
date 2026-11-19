@@ -409,6 +409,10 @@ html:not(.js) #cap-ol,html:not(.js) #olTitle{display:none}
 .olbtn[aria-pressed="true"] .olsw::after{left:1rem;box-shadow:none}
 .topfig{padding-top:.35rem}
 .topfig>header{margin-top:.6rem}      /* "Monthly growth rate" under the units bar (decision 121) */
+/* decision 162: subheadings under "Monthly growth rate", "Global" over the top chart and "By latitude" over the map */
+.subh{font-size:clamp(1.12rem,1.02rem + .35vw,1.32rem);color:var(--ink)}
+.topfig>header .subh{margin-top:.55rem}
+section.block.sub{padding-top:2rem}
 .topfig .figbar{border-top:0;padding-bottom:.2rem}
 .topfig .figtitle{font-size:clamp(1.2rem,1.05rem + .5vw,1.45rem);margin:0 0 .15rem}
 .topfig .figsub{font-size:.9rem;color:var(--muted);margin:0;max-width:60rem}
@@ -567,6 +571,9 @@ html.js .anntbl-wrap:not(.open){display:none}
            with a forecast, screen readers alone hear that it is there -->
       <header>
         <h2 id="monthly-h">Monthly growth rate<span id="olTitle" class="sr">, with an experimental forecast</span></h2>
+        <!-- decision 162 (user, 2026-11-19: "I think we can have a subheading under monthly growth rates about global ... For
+             the top monthly growth rate plot"): "Global" here, "By latitude" over the map -->
+        <h3 class="subh" id="global-h">Global</h3>
       </header>
       <div class="figure">
         <div class="figbar">
@@ -594,10 +601,14 @@ html.js .anntbl-wrap:not(.open){display:none}
     </section>
   </div>
 
-  <div class="wrap">
+  <div class="wrap widefig">
     <!-- no answer sentence or "ENSO now" line under the chart (user decision 30) -->
     <noscript><p class="nojs-note">The charts on this page are interactive and need JavaScript. Without it you see simple versions of the monthly and annual charts and the annual table. Every value is in the data files on CaltechDATA.</p></noscript>
 
+    <!-- in the top chart's wide column since decision 161 (user, 2026-11-19: "There is an alignment difference between the
+         top monthly growth rates and the latitude band growth rates ... the latitude band is plotting further to the
+         right side"), under the subheading "By latitude" since decision 162 (it was the heading "Monthly growth rate by
+         latitude", decision 121, which stays as the section's name) -->
     <!-- above "Annual growth rate" since decision 153 (user, 2026-11-19: "I also want to put the latitude band monthly
          plots above the annual growth rates ... I think it's cleaner"): the two monthly charts sit together, and the
          annual chart follows them -->
@@ -606,9 +617,9 @@ html.js .anntbl-wrap:not(.open){display:none}
          decision 121 (user, 2026-11-12: '"By latitude" => "monthly grwoth rates By latitude"'); the text that explains the
          colours moved from under the heading to under the map ("put this text at the bottom of the plot"), where the
          chart's description for screen readers starts with it and the PNG picture leaves it out -->
-    <section class="block" id="latitude" aria-labelledby="lat-h">
+    <section class="block sub" id="latitude" aria-label="Monthly growth rate by latitude">
       <header>
-        <h2 id="lat-h">Monthly growth rate by latitude</h2>
+        <h3 class="subh" id="lat-h">By latitude</h3>
       </header>
       <div class="figure">
         <div class="figbar">
@@ -623,7 +634,9 @@ html.js .anntbl-wrap:not(.open){display:none}
         <div id="tbl-z10"></div>
       </div>
     </section>
+  </div>
 
+  <div class="wrap">
     <!-- Annual growth rate: budget columns, then the visible table (also the chart's table view) and three short paragraphs -->
     <section class="block" id="annual" aria-labelledby="annual-h">
       <header>
@@ -1218,6 +1231,14 @@ function olOn() { return !!(FC && state.outlook); }
    record they would take the last ~20 px). */
 function panelNow() { return olOn() ? state.panel || "recent" : "full"; }
 
+// the top chart's plot at width W, for the latitude map to line up with it (decision 161): its left and right edges (px)
+// and the years it shows (x0, x1), zoomed or not; null while the forecast's two panels are shown
+function mainPlot(W) {
+  var L = mainLayout(W), P = L.panels[0];
+  if (L.panels.length !== 1 || P.id !== "full") return null;
+  var MN = mainMonths(), mz = zoomWin(state.main.win, MN);
+  return { xa: P.xa, xb: P.xb, x0: 2015 + mz[0] / 12, x1: mz[1] === MN - 1 ? AX_OBS_END : 2015 + (mz[1] + 1) / 12 };
+}
 function mainLayout(W) {
   var narrow = W < 860, wide = W >= 940, on = olOn();
   var L = { W: W, narrow: narrow, wide: wide, olOn: on, hasDr: !!DR };
@@ -2161,7 +2182,8 @@ function renderZ10() {
   var u = z10U(), conv = function (v) { return v == null ? null : v * u.f; }, fu = function (v, d) { return num(conv(v), d == null ? u.d : d); };
   // the text under the map gives the median in the map's unit: "0.20 ppm a month" or "2.40 ppm a year" (decision 151)
   var zcen = $("#z10cen"); if (zcen) zcen.textContent = num(G.zonal10.colour_centre * u.f, 2) + (u.per === "month" ? " ppm a month" : " ppm a year");
-  var W = hostWidth(host), narrow = W < 640, ev = !!state.z10.events;
+  // the phone layout (colour bar under the map) up to 860 px, where the top chart takes its own (decision 161; was 640)
+  var W = hostWidth(host), narrow = W < 860, ev = !!state.z10.events;
   var lats = Z.lat_center, R = lats.length, hw = (Z.band_width || 10) / 2, n = Z.date.length;
   var zt = Z.date.map(ym2t), zst = Z.status || Z.provisional.map(function (p) { return p ? "provisional" : "final"; });
   // zoom (decision 98): the months shown, i0..i1 (the whole record by default, decision 159). Zoomed in to 24 months
@@ -2173,6 +2195,15 @@ function renderZ10() {
   // phones: a line for "seasonal cycle removed"; wide: 104 px on the right (was 92) so the colour bar's "2015–2026"
   // under "median" fits inside the chart in every browser (decision 138)
   var m = { l: narrow ? 38 : 46, r: narrow ? 12 : 104, t: narrow ? 44 : 30, b: narrow ? 64 : 30 };
+  // decision 161 (user, 2026-11-19: "the latitude band is plotting further to the right side"): on the page the map lines
+  // up with the top chart, whose column it shares: the same left edge and, when both show months from the same start,
+  // the same width per month (the map's newest month is a month before the top chart's, so it ends that much earlier);
+  // otherwise the top chart's plot width. The colour bar sits in the room the top chart keeps for its stripes' colour bars
+  var MP = host.style.width ? null : mainPlot(W);
+  if (MP) {
+    var pxYr = (MP.xb - MP.xa) / (MP.x1 - MP.x0), xr = Math.abs(MP.x0 - x0) < 1e-6 ? Math.min(MP.xb, MP.xa + (x1 - x0) * pxYr) : MP.xb;
+    m.l = MP.xa; m.r = W - xr;
+  }
   var pxMon = (W - m.l - m.r) / ((x1 - x0) * 12), monthAxis = pxMon >= 11, axX = monthAxis ? 14 : 0;   // years in a row under the months
   m.b += axX;
   var rowH = narrow ? 20 : Math.round(Math.max(24, Math.min(32, W * 0.033))), ph = rowH * R, Ht = m.t + ph + m.b;
