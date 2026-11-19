@@ -639,7 +639,9 @@ html.js .anntbl-wrap:not(.open){display:none}
     </section>
   </div>
 
-  <div class="wrap">
+  <!-- in the charts' wide column since decision 164 (user, 2026-11-19: "The annual growth rates are too much intended right
+       now, so they need to be more to the left."), lined up with the two monthly charts above -->
+  <div class="wrap widefig">
     <!-- Annual growth rate: budget columns, then the visible table (also the chart's table view) and three short paragraphs -->
     <section class="block" id="annual" aria-labelledby="annual-h">
       <header>
@@ -658,7 +660,10 @@ html.js .anntbl-wrap:not(.open){display:none}
     </section>
   </div>
 
-  <div class="wrap">
+  <!-- in the charts' wide column since decision 165 (user, 2026-11-19: "yes move them left too", of "Get the data" and
+       Methods, after the annual chart moved left, #164), so everything under the title starts at one left edge; the
+       Methods text keeps its own width (.methods .body, max-width 50rem) -->
+  <div class="wrap widefig">
     <!-- Download: only the link to the CaltechDATA record (user, 2026-11-04: "I want the user to go to the Caltech data
          page ... I don't want to have direct download from this page", then "Remove all except for ... Get the data on
          CaltechDATA"). The record gives the files, the README, the citation and the licence; the heading is for screen
