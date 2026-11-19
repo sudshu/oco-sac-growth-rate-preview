@@ -2164,7 +2164,7 @@ function renderZ10() {
   var W = hostWidth(host), narrow = W < 640, ev = !!state.z10.events;
   var lats = Z.lat_center, R = lats.length, hw = (Z.band_width || 10) / 2, n = Z.date.length;
   var zt = Z.date.map(ym2t), zst = Z.status || Z.provisional.map(function (p) { return p ? "provisional" : "final"; });
-  // zoom (decision 98): the months shown, i0..i1 (from January 2023 by default, decision 154). Zoomed in to 24 months
+  // zoom (decision 98): the months shown, i0..i1 (the whole record by default, decision 159). Zoomed in to 24 months
   // or more, an event is named where its label fits (E.z: its place in a zoomed view) and numbered otherwise; the axis
   // names the months once they are wide enough
   var win = zoomWin(state.z10.win, n), i0 = win[0], i1 = win[1], zoomed = i0 > 0 || i1 < n - 1, labs = ev && W >= 760 && (!zoomed || i1 - i0 + 1 >= 24);
@@ -2263,7 +2263,7 @@ function renderZ10() {
     S("rect", { x: a, y: yT, width: b - a, height: yB - yT, class: "evt" }, gE);
     // the label goes where the full record places it (at, anc, from, to) or, zoomed in, at E.z where given; zoomed in, only
     // where its anchor and leader lie in the months shown and it fits without being pushed (decision 156; user, 2026-11-19:
-    // "yes add the event names", for the view the page opens on)
+    // "yes add the event names")
     var P = zoomed && E.z ? E.z : E, lh = 14, pad = 4, k = E.lines.length, tg = null, bg = null, bx = 0, bw = 0;
     if (labs && (!zoomed || (P.at[0] > x0 && P.at[0] < x1 && P.from[0] >= x0 && P.from[0] <= x1))) {
       tg = S("g", null, gE); bg = S("rect", { rx: 3, class: "evtbg" }, tg);
@@ -2430,13 +2430,19 @@ function renderZ10() {
    lined up with the plot and veiled outside the window, with a handle at each edge (native range inputs, so keys and
    screen readers work; a handle's centre sits on a month edge) */
 var ZOOM_MIN = 6;
-/* The monthly charts open zoomed in, from January 2023 to their newest month (decision 154; user, 2026-11-19: "make
-   the default that things are zoomed in for the last four years instead of the whole
-   period ... if people want more, then they can drag and open it", then "Can we make the default zoom start at the
-   beginning of 2023."). "Show all" shows the whole record, written "all" in the view link; the default window writes
-   nothing. ym0: the chart's first month, "YYYY-MM". */
-var DEF_START = "2023-01";
-function defWin(n, ym0) { var a = (+DEF_START.slice(0, 4) - +ym0.slice(0, 4)) * 12 + (+DEF_START.slice(5, 7) - +ym0.slice(5, 7)); return a > 0 && a < n - 1 ? [a, n - 1] : null; }
+/* The window the monthly charts open on (DEF_START) and the one "Zoom to recent" shows (RECENT_START), each from that
+   month to the chart's newest. Decision 154 (2026-11-19) opened both charts from January 2023; decision 159 (user, same
+   day: "Make both the plots start again in 2015. I think that's fine. It's not needed to start it in 2023. People can
+   drag it themselves if they want.") went back to the whole record, so the default window writes nothing in the view
+   link again and "all" (written while 154 was live) still reads as the whole record. Decision 160 (user, same day: "In
+   the bottom right button of the plots where it says "show all," toggle it between show all versus or zoom recent"):
+   the zoom bar's button reads "Zoom to recent" on the whole record and "Show all" when zoomed in. ym0: the chart's
+   first month, "YYYY-MM". */
+var DEF_START = null;
+var RECENT_START = "2023-01";
+function startWin(start, n, ym0) { if (!start) return null; var a = (+start.slice(0, 4) - +ym0.slice(0, 4)) * 12 + (+start.slice(5, 7) - +ym0.slice(5, 7)); return a > 0 && a < n - 1 ? [a, n - 1] : null; }
+function defWin(n, ym0) { return startWin(DEF_START, n, ym0); }
+var ZOOM_RECENT = {};   // zoom bar id -> its chart's recent window (decision 160)
 function sameWin(a, b) { return !a ? !b : !!b && a[0] === b[0] && a[1] === b[1]; }
 function zoomDefaults() { state.main.win = defWin(mainMonths(), "2015-01"); if (G.zonal10) state.z10.win = defWin(G.zonal10.date.length, G.zonal10.date[0]); }
 function zoomWin(w, n) {
@@ -2481,7 +2487,8 @@ function zoomDraw(id, o) {
   clear(zb._lab);
   H("b", null, zb._lab, fmtYM(o.ym(o.i0)) + " – " + fmtYM(o.ym(o.i1)));
   zb._lab.appendChild(doc.createTextNode("  ·  drag the handles to zoom, the window to move"));   // one hint (11 Nov)
-  zb._all.hidden = !o.zoomed;
+  zb._all.textContent = o.zoomed ? "Show all" : "Zoom to recent";   // decision 160
+  zb._all.hidden = !o.zoomed && !ZOOM_RECENT[id];
 }
 // get(): the window in the state; set(w): store it; render(): redraw the chart (and with it the bar)
 function zoomSetup(id, n, get, set, render) {
@@ -2508,7 +2515,10 @@ function zoomSetup(id, n, get, set, render) {
     if (b !== +zb._b.value) zb._b.value = b;
     put(w[0], Math.min(n - 1, b));
   });
-  zb._all.addEventListener("click", function () { set(null); render(); });
+  zb._all.addEventListener("click", function () {   // zoomed in: the whole record; on the whole record: the recent window (160)
+    var w = cur(), all = !w[0] && w[1] === n - 1;
+    set(all ? ZOOM_RECENT[id] || null : null); render();
+  });
   // drag the window to move it; a press on the overview outside the window moves the window there
   zb._win.addEventListener("pointerdown", function (e) {
     var w = cur(); drag = { x: e.clientX, a: w[0], b: w[1] };
@@ -2532,6 +2542,8 @@ function zoomSetup(id, n, get, set, render) {
 function mainMonths() { return Math.round((AX_OBS_END - 2015) * 12); }
 function mainYM(i) { var yv = 2015 + Math.floor(i / 12), mv = i % 12 + 1; return yv + "-" + (mv < 10 ? "0" : "") + mv; }
 function setupZooms() {
+  ZOOM_RECENT["zoom-main"] = startWin(RECENT_START, mainMonths(), "2015-01");
+  if (G.zonal10) ZOOM_RECENT["zoom-z10"] = startWin(RECENT_START, G.zonal10.date.length, G.zonal10.date[0]);
   if (G.zonal10) zoomSetup("zoom-z10", G.zonal10.date.length, function () { return state.z10.win; }, function (w) { state.z10.win = w; hashSoon(); }, renderZ10);
   zoomSetup("zoom-main", mainMonths(), function () { return state.main.win; }, function (w) { state.main.win = w; hashSoon(); }, renderMain);
 }
@@ -2965,7 +2977,7 @@ function readHash() {
   var hasAmt = false, hasPer = false;
   state.main = { oco2: true, gosat: false, noaa: false }; state.outlook = false; state.emis = true; state.panel = null;
   state.annual = { gosat: true, noaa: false }; state.z10 = { events: true, sat: "oco2" }; state.open = {};
-  zoomDefaults();   // from January 2023, unless the link says otherwise (decision 154)
+  zoomDefaults();   // the default windows (the whole record since decision 159), unless the link says otherwise
   h.split("&").forEach(function (kv) {
     var p = kv.split("="), k = p[0], v = p[1] || "";
     try { v = decodeURIComponent(v); } catch (e) { v = ""; }            // a damaged link falls back to the defaults
@@ -3118,7 +3130,7 @@ function setupControls() {
 }
 
 /* ============================================================== boot */
-zoomDefaults();   // from January 2023 (decision 154); a view link may change it
+zoomDefaults();   // the default windows (the whole record since decision 159); a view link may change them
 readHash();
 // "How to cite" opens with the page (decision 158) where the page then still fits the Caltech page's 3,500 px frame,
 // on screens 768 px and wider (about 3,400 px tall); on phones it would add 1,100-1,600 px, so there it starts closed
