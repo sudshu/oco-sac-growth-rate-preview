@@ -382,6 +382,9 @@ footer.site dd{margin:0;color:var(--ink)}
 .embed header.site,.embed .skip,.embed footer.site{display:none}
 /* shown in the embed version only: the contact, under "Get the data on CaltechDATA" since decision 152 (decision 109) */
 .embonly{display:none}
+/* decision 166: the Caltech page (the embed version) without the link to CaltechDATA and the release line, the 12-month row
+   and its sentence, this release's month statuses and the status key (it shows final months only); .stdonly = standalone only */
+.embed #download,.embed tr.l12,.embed .stdonly,.embed #lg-st{display:none}
 .embed .embonly{display:block}
 .embed #title{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .embed .intro{padding-top:.25rem}
@@ -707,7 +710,7 @@ html.js .anntbl-wrap:not(.open){display:none}
             <li>Monthly growth is the rise of this curve over each month, given as a rate per year; the chart shows its 5-month running average.</li>
             <li>Annual growth is the rise from 1 January to the next 1 January.</li>
           </ol>
-          <p id="l12Def">The 12-month value in the annual table is worked out the same way, over the latest 12 months of data.</p>
+          <p id="l12Def" class="stdonly">The 12-month value in the annual table is worked out the same way, over the latest 12 months of data.</p>
           <p id="gosatDef">By default (“OCO-2 + GOSAT mean”), the annual chart and table show GOSAT alone for 2010–2014 and the average of OCO-2 and GOSAT from 2015.</p>
           <p id="methodPaper">Method paper: Pandey, S., Miller, J. B., Basu, S., Liu, J., Weir, B., Byrne, B., Chevallier, F., Bowman, K. W., Liu, Z., Deng, F., O&#x27;Dell, C. W., &amp; Chatterjee, A. (2024). <a href="https://doi.org/10.1029/2023AV001145">Toward low-latency estimation of atmospheric CO₂ growth rates using satellite observations: Evaluating sampling errors of satellite and in situ observing approaches</a>. <em>AGU Advances</em>, 5, e2023AV001145.</p>
         </div>
@@ -723,7 +726,7 @@ html.js .anntbl-wrap:not(.open){display:none}
       <details id="revisions">
         <summary>Revisions</summary>
         <div class="body">
-          <p id="statusRule">Each month&#x27;s value is smoothed with data from the months around it, so the newest months are early estimates that change as later data arrive. A month becomes provisional after three more months of data and final after five. Provisional values can still shift, by about 0.20 ppm a year after 3 months and 0.15 ppm a year after 4 months. Final values can still move a little, by about 0.1 ppm a year, because each release fits the seasonal cycle again to the whole record. In this release, May 2026 and earlier are final, June–July 2026 provisional and August–September 2026 early. A year&#x27;s value is final once data through February of the next year are in, usually by April.</p>
+          <p id="statusRule">Each month&#x27;s value is smoothed with data from the months around it, so the newest months are early estimates that change as later data arrive. A month becomes provisional after three more months of data and final after five. Provisional values can still shift, by about 0.20 ppm a year after 3 months and 0.15 ppm a year after 4 months. Final values can still move a little, by about 0.1 ppm a year, because each release fits the seasonal cycle again to the whole record. <span class="stdonly">In this release, May 2026 and earlier are final, June–July 2026 provisional and August–September 2026 early.</span> A year&#x27;s value is final once data through February of the next year are in, usually by April.</p>
         </div>
       </details>
       <details>
@@ -736,7 +739,7 @@ html.js .anntbl-wrap:not(.open){display:none}
         <summary>Data sources and units</summary>
         <!-- the embed version's contact ended this box (decision 109) until decision 152 moved it under "Get the data on
              CaltechDATA" -->
-        <div class="body"><ul id="productList"><li><strong>OCO-2</strong> (NASA&#x27;s Orbiting Carbon Observatory-2): Lite XCO₂ (column-average CO₂) data from NASA GES DISC, <a href="https://doi.org/10.5067/70K2B2W8MNGY">version 11.2r</a> through 2023 and <a href="https://doi.org/10.5067/C4OENLFCYVSA">version 11.3r</a> from 2024, up to 30 September 2026, then preliminary data for October 2026 from the OCO-2 team's forward processing, which the public data will replace.</li><li><strong>GOSAT</strong> (Japan&#x27;s Greenhouse gases Observing SATellite): <a href="https://doi.org/10.5067/UAY6VJYTS8OD">ACOS GOSAT v11 Lite data</a> from NASA GES DISC, April 2009 to October 2026.</li><li><strong>NOAA:</strong> the global surface average from NOAA's Global Monitoring Laboratory (<a href="https://doi.org/10.15138/9N0H-ZH07">Lan, Tans and Thoning</a>): its <a href="https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_gl.txt">monthly CO₂ file</a> and <a href="https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_gr_gl.txt">annual growth-rate file</a>, both of 9 October 2026. We calculate the monthly NOAA line ourselves, from the trend in the monthly file.</li><li><strong>Emissions:</strong> fossil fuels and land use. The yearly totals through 2024 are from the Global Carbon Budget 2025 (<a href="https://doi.org/10.5194/essd-18-3211-2026">Friedlingstein et al. 2026</a>). For the monthly line, each year is spread over the months with Carbon Monitor data (<a href="https://arxiv.org/abs/2004.13614">Liu et al. 2020</a>), and the seasonal cycle is removed. From 2025 the values are a first estimate (“low-latency” in the files): Carbon Monitor's fossil emissions scaled to match the Global Carbon Budget, plus land-use emissions continuing their recent trend.</li><li><strong>Climate stripes:</strong> differences from the 1991–2020 average, leaving out 2011, for sea-surface temperature in the Niño-3.4 region of the Pacific, where El Niño is measured, and for temperature, air dryness and rainfall over tropical land. Air dryness is measured by the vapour-pressure deficit (VPD): the difference between how much water vapour the air could hold at its temperature and how much it holds. The land rows come from <a href="https://doi.org/10.24381/cds.f17050d7">ERA5</a>, the Copernicus Climate Change Service's reconstruction of past weather (<a href="https://doi.org/10.1002/qj.3803">Hersbach et al. 2020</a>), and the Niño-3.4 row from NOAA's <a href="https://doi.org/10.7289/V5T72FNM">ERSST v5</a> sea-surface temperatures (<a href="https://doi.org/10.1175/JCLI-D-16-0836.1">Huang et al. 2017</a>). The Niño-3.4 row uses this average rather than NOAA's official Oceanic Niño Index, so it can read higher.</li><li><strong>Units:</strong> 1 part per million (ppm) of CO₂ in the whole atmosphere is 2.124 petagrams of carbon (PgC, Global Carbon Budget convention). A petagram is a billion tonnes, and with the oxygen included 1 PgC is 3.664 billion tonnes of CO₂. So 1 ppm a year is 2.124 PgC, or 7.8 billion tonnes of CO₂ (GtCO₂), a year. A rate in ppm a month is the rate in ppm a year divided by 12.</li></ul></div>
+        <div class="body"><ul id="productList"><li><strong>OCO-2</strong> (NASA&#x27;s Orbiting Carbon Observatory-2): Lite XCO₂ (column-average CO₂) data from NASA GES DISC, <a href="https://doi.org/10.5067/70K2B2W8MNGY">version 11.2r</a> through 2023 and <a href="https://doi.org/10.5067/C4OENLFCYVSA">version 11.3r</a> from 2024<span class="stdonly">, up to 30 September 2026, then preliminary data for October 2026 from the OCO-2 team's forward processing, which the public data will replace</span>.</li><li><strong>GOSAT</strong> (Japan&#x27;s Greenhouse gases Observing SATellite): <a href="https://doi.org/10.5067/UAY6VJYTS8OD">ACOS GOSAT v11 Lite data</a> from NASA GES DISC<span class="stdonly">, April 2009 to October 2026</span>.</li><li><strong>NOAA:</strong> the global surface average from NOAA's Global Monitoring Laboratory (<a href="https://doi.org/10.15138/9N0H-ZH07">Lan, Tans and Thoning</a>): its <a href="https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_gl.txt">monthly CO₂ file</a> and <a href="https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_gr_gl.txt">annual growth-rate file</a>, both of 9 October 2026. We calculate the monthly NOAA line ourselves, from the trend in the monthly file.</li><li><strong>Emissions:</strong> fossil fuels and land use. The yearly totals through 2024 are from the Global Carbon Budget 2025 (<a href="https://doi.org/10.5194/essd-18-3211-2026">Friedlingstein et al. 2026</a>). For the monthly line, each year is spread over the months with Carbon Monitor data (<a href="https://arxiv.org/abs/2004.13614">Liu et al. 2020</a>), and the seasonal cycle is removed. From 2025 the values are a first estimate (“low-latency” in the files): Carbon Monitor's fossil emissions scaled to match the Global Carbon Budget, plus land-use emissions continuing their recent trend.</li><li><strong>Climate stripes:</strong> differences from the 1991–2020 average, leaving out 2011, for sea-surface temperature in the Niño-3.4 region of the Pacific, where El Niño is measured, and for temperature, air dryness and rainfall over tropical land. Air dryness is measured by the vapour-pressure deficit (VPD): the difference between how much water vapour the air could hold at its temperature and how much it holds. The land rows come from <a href="https://doi.org/10.24381/cds.f17050d7">ERA5</a>, the Copernicus Climate Change Service's reconstruction of past weather (<a href="https://doi.org/10.1002/qj.3803">Hersbach et al. 2020</a>), and the Niño-3.4 row from NOAA's <a href="https://doi.org/10.7289/V5T72FNM">ERSST v5</a> sea-surface temperatures (<a href="https://doi.org/10.1175/JCLI-D-16-0836.1">Huang et al. 2017</a>). The Niño-3.4 row uses this average rather than NOAA's official Oceanic Niño Index, so it can read higher.</li><li><strong>Units:</strong> 1 part per million (ppm) of CO₂ in the whole atmosphere is 2.124 petagrams of carbon (PgC, Global Carbon Budget convention). A petagram is a billion tonnes, and with the oxygen included 1 PgC is 3.664 billion tonnes of CO₂. So 1 ppm a year is 2.124 PgC, or 7.8 billion tonnes of CO₂ (GtCO₂), a year. A rate in ppm a month is the rate in ppm a year divided by 12.</li></ul></div>
       </details>
       <!-- How to cite: the page's own citation first (decisions 82 and 91; the PNG pictures read it, #cite p), then the
            citation each data source asks for (decision 113; user, 2026-11-11: "add the citation for different kinds of
@@ -781,6 +784,29 @@ html.js .anntbl-wrap:not(.open){display:none}
 (function () {
 "use strict";
 var G = window.GRESO;
+/* Decision 166 (user, 2026-11-20: "I want you to remove the last 4 months of data from the Caltech web page, and also
+   remove the link to the data.caltech page form caltech webpage. Keep in my GitHub page. You can keep the last four months
+   of data if useful."): the embed version, which the Caltech page frames, ends every monthly series EMBED_CUT months
+   early, at the newest final month (May 2026 in v2026.11: the cut months are the provisional and early ones, which rest
+   on the preliminary OCO-2 data), before anything is drawn: the charts, tables, summaries, zoom bars and the data end.
+   The months stay in the page file, and the standalone page shows them. */
+var EMBED_CUT = 4;
+(function () {
+  if (!document.documentElement.classList.contains("embed") || !G || !G.monthly || G.monthly.date.length <= EMBED_CUT) return;
+  var mo = G.monthly, last = mo.date[mo.date.length - EMBED_CUT - 1];
+  function cut(o) {   // every array as long as o.date, after the month `last`
+    if (!o || !o.date) return;
+    var len = o.date.length, k = 0;
+    while (k < len && o.date[k] <= last) k++;
+    Object.keys(o).forEach(function (key) { if (Array.isArray(o[key]) && o[key].length === len) o[key] = o[key].slice(0, k); });
+  }
+  cut(mo); cut(G.zonal10); if (G.outlook && G.outlook.drivers) cut(G.outlook.drivers);
+  var y = +last.slice(0, 4), m = +last.slice(5, 7), dd = new Date(Date.UTC(y, m, 0)).getUTCDate();
+  G.meta.data_end = last + "-" + (dd < 10 ? "0" : "") + dd;                                // the end of that month
+  if (G.meta.gaps) G.meta.gaps = G.meta.gaps.filter(function (g) { return g.start <= G.meta.data_end; });
+  var i = mo.date.length - 1;
+  if (G.kpis) G.kpis.latest_month = { date: mo.date[i], ppm: mo.oco2[i], status: mo.status[i] };
+})();
 var doc = document;
 function $(s, r) { return (r || doc).querySelector(s); }
 var SVGNS = "http://www.w3.org/2000/svg";
@@ -2189,6 +2215,12 @@ var Z10_EVENTS = [      // box (t0-t1, lat0-lat1); label anchor (at, anc); leade
 ];
 // an event still going on (t1 null) ends with the newest month of the map
 Z10_EVENTS.forEach(function (E) { if (E.t1 == null) E.t1 = G.zonal10 ? ym2t(G.zonal10.date[G.zonal10.date.length - 1]) + 1 / 24 : 9999; });
+// the embed version keeps the events that start inside its months (decision 166: the 2026 El Niño starts after them) and
+// numbers them newest first again
+if (document.documentElement.classList.contains("embed") && G.zonal10) {
+  Z10_EVENTS = Z10_EVENTS.filter(function (E) { return E.t0 < ym2t(G.zonal10.date[G.zonal10.date.length - 1]) + 1 / 24; });
+  Z10_EVENTS.forEach(function (E, k) { E.n = k + 1; });
+}
 // the latitude heat map shows one satellite at a time (user, 2026-11-09: "switch the heat map between OCO-2 and GOSAT";
 // decision 93), on one colour scale: centred on the OCO-2 median of all band-months, as before
 var Z10_SAT = { oco2: "OCO-2", gosat: "GOSAT" };
